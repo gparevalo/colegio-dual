@@ -11,6 +11,7 @@ import { z } from "zod";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { useToast } from "@/hooks/use-toast";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import contactBg from "@assets/stock_images/teacher_explaining_t_f58b2194.jpg";
 
 const formSchema = z.object({
   name: z.string().min(2, "El nombre debe tener al menos 2 caracteres."),
@@ -46,8 +47,14 @@ export function Contacto() {
     <div className="min-h-screen flex flex-col">
       <Navbar />
       
-      <div className="bg-slate-900 text-white py-16">
-        <div className="container-custom text-center">
+      <div className="bg-slate-900 text-white py-16 relative overflow-hidden">
+        <img 
+          src={contactBg} 
+          alt="Contacto" 
+          className="absolute inset-0 w-full h-full object-cover opacity-20"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-90" />
+        <div className="container-custom text-center relative z-10">
           <h1 className="font-heading text-4xl font-bold mb-4">Contáctanos</h1>
           <p className="text-xl text-slate-300">
             Estamos aquí para resolver tus dudas.

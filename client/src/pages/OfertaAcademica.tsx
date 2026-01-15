@@ -6,6 +6,9 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Check, BookOpen, GraduationCap, Microscope, Palette, Globe, Users } from "lucide-react";
 import { Link } from "wouter";
+import inicialImg from "@assets/stock_images/kindergarten_student_bb6106e3.jpg";
+import egbImg from "@assets/stock_images/elementary_school_st_e02208ee.jpg";
+import bachiImg from "@assets/stock_images/high_school_students_78f1f22b.jpg";
 
 const LEVELS = [
   {
@@ -14,7 +17,8 @@ const LEVELS = [
     age: "3 a 5 años",
     description: "Un entorno seguro y estimulante donde el juego es el motor del aprendizaje. Fomentamos la autonomía, la motricidad y las primeras habilidades sociales.",
     features: ["Inmersión temprana al inglés", "Estimulación sensorial", "Desarrollo socio-emocional", "Espacios de aprendizaje lúdico"],
-    icon: Palette
+    icon: Palette,
+    image: inicialImg
   },
   {
     id: "egb",
@@ -22,7 +26,8 @@ const LEVELS = [
     age: "6 a 14 años",
     description: "Consolidamos las bases académicas con metodología ABP. Los estudiantes aprenden investigando y creando, desarrollando pensamiento crítico.",
     features: ["Aprendizaje Basado en Proyectos", "Inglés intensivo (certificación Cambridge)", "Robótica y programación básica", "Deportes y arte"],
-    icon: BookOpen
+    icon: BookOpen,
+    image: egbImg
   },
   {
     id: "bachillerato",
@@ -30,7 +35,8 @@ const LEVELS = [
     age: "15 a 18 años",
     description: "Preparación pre-universitaria de alto nivel. Ofrecemos Bachillerato Técnico y en Ciencias, con opción a certificación de suficiencia en Alemán.",
     features: ["Formación Dual (Prácticas empresariales)", "Bachillerato Técnico en Administración", "Orientación vocacional", "Convenios universitarios"],
-    icon: GraduationCap
+    icon: GraduationCap,
+    image: bachiImg
   }
 ];
 
@@ -96,10 +102,11 @@ export function OfertaAcademica() {
                   <div className="order-1 md:order-2">
                     <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-square md:aspect-[4/5] bg-slate-200">
                       <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 mix-blend-multiply z-10" />
-                      {/* Placeholder for specific level image */}
-                      <div className="absolute inset-0 flex items-center justify-center bg-slate-100 text-slate-400">
-                        <span className="text-lg font-medium">Imagen de {level.title}</span>
-                      </div>
+                      <img 
+                        src={level.image} 
+                        alt={level.title}
+                        className="w-full h-full object-cover"
+                      />
                     </div>
                   </div>
                 </div>

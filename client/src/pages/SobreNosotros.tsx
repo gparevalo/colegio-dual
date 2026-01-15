@@ -1,8 +1,10 @@
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Section } from "@/components/ui/section";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Check } from "lucide-react";
+import historicPhoto from "@assets/stock_images/group_of_diverse_stu_614b3ec0.jpg";
 
 export function SobreNosotros() {
   return (
@@ -32,10 +34,11 @@ export function SobreNosotros() {
               </p>
             </div>
             <div className="relative h-[400px] rounded-2xl overflow-hidden bg-slate-200 shadow-xl rotate-2 hover:rotate-0 transition-transform duration-500">
-               {/* Placeholder Image */}
-               <div className="absolute inset-0 flex items-center justify-center bg-slate-300">
-                 <span className="text-slate-500 font-medium">Foto Histórica / Campus</span>
-               </div>
+               <img 
+                 src={historicPhoto} 
+                 alt="Estudiantes en el campus" 
+                 className="w-full h-full object-cover"
+               />
             </div>
           </div>
 

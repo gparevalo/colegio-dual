@@ -1,7 +1,9 @@
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Section } from "@/components/ui/section";
-import { Briefcase, Lightbulb, Cog } from "lucide-react";
+import { Briefcase, Lightbulb } from "lucide-react";
+import abpImage from "@assets/stock_images/teacher_explaining_t_f58b2194.jpg";
+import dualImage from "@assets/stock_images/student_internship_i_ca802da0.jpg";
 
 export function Propuesta() {
   return (
@@ -54,12 +56,12 @@ export function Propuesta() {
                 </li>
               </ul>
             </div>
-            <div className="bg-slate-100 rounded-2xl p-8 flex items-center justify-center aspect-square">
-               {/* Visual Diagram Placeholder */}
-               <div className="text-center text-slate-400">
-                 <Cog className="h-24 w-24 mx-auto mb-4 opacity-20" />
-                 <span className="text-lg font-medium">Diagrama Ciclo ABP</span>
-               </div>
+            <div className="bg-slate-100 rounded-2xl overflow-hidden shadow-lg aspect-square">
+               <img 
+                 src={abpImage} 
+                 alt="Estudiantes trabajando en proyectos" 
+                 className="w-full h-full object-cover"
+               />
             </div>
           </div>
         </Section>
@@ -67,12 +69,12 @@ export function Propuesta() {
         {/* Dual Section */}
         <Section background="muted" id="dual">
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="order-2 md:order-1 bg-white rounded-2xl p-8 flex items-center justify-center aspect-square shadow-sm">
-               {/* Visual Diagram Placeholder */}
-               <div className="text-center text-slate-400">
-                 <Briefcase className="h-24 w-24 mx-auto mb-4 opacity-20" />
-                 <span className="text-lg font-medium">Diagrama Colegio + Empresa</span>
-               </div>
+            <div className="order-2 md:order-1 bg-white rounded-2xl overflow-hidden shadow-lg aspect-square">
+               <img 
+                 src={dualImage} 
+                 alt="Estudiante en práctica empresarial" 
+                 className="w-full h-full object-cover"
+               />
             </div>
             <div className="order-1 md:order-2">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary font-medium text-sm mb-4">

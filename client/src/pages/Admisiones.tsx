@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Card, CardContent } from "@/components/ui/card";
 import { CheckCircle2, FileText, Calendar, Users, ClipboardCheck } from "lucide-react";
-import { Link } from "wouter";
+import heroBg from "@assets/stock_images/group_of_diverse_stu_614b3ec0.jpg";
 
 export function Admisiones() {
   const steps = [
@@ -41,7 +41,13 @@ export function Admisiones() {
       
       {/* Hero Header */}
       <div className="bg-slate-900 text-white py-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-primary/10" />
+        <img 
+          src={heroBg} 
+          alt="Admisiones" 
+          className="absolute inset-0 w-full h-full object-cover opacity-20"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-90" />
+        
         <div className="container-custom relative z-10 text-center max-w-3xl">
           <h1 className="font-heading text-4xl md:text-5xl font-bold mb-6">Admisiones 2026-2027</h1>
           <p className="text-xl text-slate-300">
