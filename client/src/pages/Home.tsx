@@ -54,7 +54,7 @@ export function Home() {
         </div>
 
         {/* USP / Methodology Section */}
-        <Section className="bg-slate-50">
+        <Section className="bg-primary text-white">
           <motion.div 
             initial="hidden"
             whileInView="visible"
@@ -62,10 +62,10 @@ export function Home() {
             variants={fadeIn}
             className="text-center max-w-3xl mx-auto mb-16"
           >
-            <h2 className="font-heading text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+            <h2 className="font-heading text-3xl md:text-4xl font-bold text-white mb-4">
               ¿Por qué elegir Colegio Dual?
             </h2>
-            <p className="text-lg text-slate-600">
+            <p className="text-lg text-red-100">
               Nuestra metodología rompe con el esquema tradicional. No solo enseñamos teoría, formamos competencias para la vida real.
             </p>
           </motion.div>
