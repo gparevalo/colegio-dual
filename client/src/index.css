@@ -10,10 +10,12 @@
   --color-background: hsl(0 0% 100%);
   --color-foreground: hsl(222 47% 11%);
 
-  --color-primary: hsl(221 83% 53%); /* Vibrant Royal Blue */
+  /* Refined Institutional Blue - Deeper and more trustworthy */
+  --color-primary: hsl(217 91% 32%); 
   --color-primary-foreground: hsl(210 40% 98%);
   
-  --color-secondary: hsl(45 93% 47%); /* Academic Gold/Yellow Accent */
+  /* Academic Gold - Adjusted for better contrast */
+  --color-secondary: hsl(45 93% 47%); 
   --color-secondary-foreground: hsl(26 83% 14%);
 
   --color-muted: hsl(210 40% 96.1%);
@@ -50,4 +52,9 @@
 
 .container-custom {
   @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+}
+
+/* Smooth scrolling for the whole page */
+html {
+  scroll-behavior: smooth;
 }
