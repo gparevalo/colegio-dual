@@ -1,0 +1,77 @@
+Actúa como un equipo senior de Product Designer + UX Writer + Frontend Engineer.
+
+OBJETIVO
+Mejorar la experiencia de usuario (UX/UI) y mejorar/redactar el contenido existente del sitio https://www.colegiodual.com/ sin cambiar la idea central (colegio binacional ecuatoriano-alemán con metodología “aprender haciendo”, ABP y Formación Dual; oferta académica; admisiones; noticias; etc.). Mantén la identidad y el mensaje, pero haz la web más clara, moderna, consistente y orientada a conversión (admisiones / contacto).
+
+ALCANCE
+1) Auditoría rápida del sitio actual:
+   - Problemas de navegación, jerarquía visual, legibilidad, consistencia, CTAs, accesibilidad, mobile, performance.
+   - Identifica fricciones del journey principal: “familias interesadas → entender propuesta → elegir oferta académica → admisiones → contacto”.
+
+2) Nueva propuesta UX (sin cambiar la estructura general):
+   - Mantén secciones/páginas principales (Inicio, Sobre nosotros, Oferta académica, Propuesta de formación, Admisiones, Noticias, Log in).
+   - Reorganiza el contenido dentro de cada página para que sea más escaneable: títulos claros, subtítulos, bullets, módulos, FAQs, y llamadas a la acción.
+   - Mejora el menú y el footer: que el usuario encuentre rápido “Admisiones”, “Oferta académica”, “Metodología” y “Contacto”.
+
+3) Mejora de contenido (UX writing) SIN cambiar la idea:
+   - Corrige ortografía, cortes raros y consistencia de términos (ej: “¿En qué consiste?”; “Formación Dual”; “Aprendizaje Basado en Proyectos (ABP)”).
+   - Reescribe textos para que sean más claros, cálidos y directos, con enfoque en beneficios para familias y estudiantes.
+   - Mantén el tono institucional, pero más moderno y humano.
+   - Evita promesas vagas: usa mensajes concretos (qué, cómo, para quién, por qué importa).
+   - Añade microcopy útil: botones, ayudas en formularios, confirmaciones, mensajes de error.
+
+4) Diseño UI (look & feel):
+   - Mantén branding general (sin inventar una marca nueva). Si no tienes manual de marca, crea un sistema visual coherente basado en lo existente: tipografías web seguras o Google Fonts, espaciado, tamaños, componentes.
+   - Diseña en mobile-first.
+   - Usa componentes reutilizables: Hero, Cards, Stats/Highlights, Timeline/Steps (admisiones), Testimonials, FAQ, CTA band, Footer.
+
+5) Implementación técnica en Replit:
+   - Entrega un proyecto funcional con componentes y estilos.
+   - Stack recomendado: Next.js + Tailwind (o React + Vite + Tailwind si es más simple). Elige uno y justifica brevemente.
+   - Crea páginas equivalentes a las principales del sitio (rutas) y deja el contenido en archivos fáciles de editar (por ejemplo: /content/*.json o /data/*.ts).
+   - Agrega SEO básico: titles, meta description, Open Graph, estructura semántica (H1 único por página).
+   - Accesibilidad: contraste, foco visible, alt en imágenes, navegación por teclado.
+   - Performance: imágenes optimizadas (lazy loading), layout estable, evitar bloqueos de render.
+   - Formularios: “Contacto / Admisiones” con validación básica (front). Deja claro cómo conectar luego a email/CRM.
+
+REQUISITOS CLAVE DE UX (muy importante)
+- La home debe responder en 5 segundos a:
+  1) ¿Qué es Duale Schule?
+  2) ¿Qué hace diferente su metodología?
+  3) ¿Qué ofertas académicas tienen?
+  4) ¿Cómo me inscribo / contacto?
+- CTAs persistentes y claros:
+  - “Agenda una visita”
+  - “Hablar por WhatsApp”
+  - “Ver proceso de admisiones”
+- Página de Admisiones:
+  - Convertirla en un flujo por pasos (stepper) + tiempos + requisitos + FAQs + CTA final.
+- Oferta académica:
+  - Cards por nivel (Primaria / EGB / Bachillerato técnico / Productivo / Idiomas y convenios) con “ver detalles”.
+- Propuesta de formación:
+  - Explicar ABP y Formación Dual con módulos visuales, y “cómo se aplica” (días/espacios) cuando corresponda.
+- Noticias:
+  - Mejorar lectura (cards, tags, buscador, paginación simple si aplica).
+
+ENTREGABLES
+A) Lista priorizada de mejoras (Quick wins / Mediano / Largo) en un archivo README.md.
+B) Un rediseño funcional implementado (UI + contenido mejorado).
+C) Copys reescritos en español para:
+   - Hero de Home (título + subtítulo + 2 CTAs)
+   - Sección “Puntos que nos destacan”
+   - Sección “Ejes de la propuesta”
+   - Admisiones (intro + pasos + FAQs)
+   - Microcopy de formularios (placeholders, ayudas, confirmación)
+D) Un checklist final de accesibilidad + SEO + performance.
+
+REGLAS
+- No cambies la idea principal ni la propuesta educativa.
+- No inventes datos (fechas, cifras, premios) que no estén en el sitio.
+- Si falta info, usa texto neutro o marca como “pendiente por completar”.
+- Mantén consistencia terminológica: “aprendices” si ya se usa, pero aclara una vez el significado (estudiantes).
+
+COMIENZA
+1) Resume en 10 bullets los problemas UX actuales (basado en el sitio).
+2) Propón la nueva arquitectura de información (IA) y el orden de secciones de la Home.
+3) Implementa el proyecto y muestra cómo ejecutar.
+4) Deja todo listo para que luego solo se cambien textos e imágenes.
