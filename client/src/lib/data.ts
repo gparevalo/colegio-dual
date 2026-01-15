@@ -1,7 +1,7 @@
 import { GraduationCap, BookOpen, Users, Briefcase, Award, Globe, Lightbulb, UserCheck } from "lucide-react";
 
 // Import images
-import egbImg from "@assets/stock_images/elementary_school_st_45052d20.jpg";
+import egbImg from "@assets/stock_images/happy_elementary_sch_5ef9a3a5.jpg";
 import bachiImg from "@assets/stock_images/high_school_students_53df820d.jpg";
 import dualImg from "@assets/stock_images/student_apprentice_w_552611ae.jpg";
 import labImg from "@assets/stock_images/modern_high_school_s_f7d12c0d.jpg";
