@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { ArrowRight, CalendarDays } from "lucide-react";
-import heroBg from "@assets/stock_images/group_of_students_si_2f7a6c01.jpg";
+import heroBg from "@assets/stock_images/group_of_teenage_stu_9c6c63ac.jpg";
 
 export function Hero() {
   return (
