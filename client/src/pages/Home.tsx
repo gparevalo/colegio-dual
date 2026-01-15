@@ -220,7 +220,7 @@ export function Home() {
             <h2 className="font-heading text-3xl md:text-5xl font-bold">
               ¿Listo para dar el siguiente paso?
             </h2>
-            <p className="text-blue-100 text-lg md:text-xl">
+            <p className="text-red-100 text-lg md:text-xl">
               Agenda una visita guiada o inicia el proceso de admisión en línea hoy mismo.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">

@@ -8,27 +8,27 @@
   --font-heading: 'Plus Jakarta Sans', sans-serif;
 
   --color-background: hsl(0 0% 100%);
-  --color-foreground: hsl(222 47% 11%);
+  --color-foreground: hsl(0 0% 10%); /* Near Black for text */
 
-  /* Refined Institutional Blue - Deeper and more trustworthy */
-  --color-primary: hsl(217 91% 32%); 
-  --color-primary-foreground: hsl(210 40% 98%);
+  /* Institutional Red - Strong, academic, and bold */
+  --color-primary: hsl(354 78% 54%); /* #DC1E35 - A vibrant academic red */
+  --color-primary-foreground: hsl(0 0% 100%);
   
-  /* Academic Gold - Adjusted for better contrast */
-  --color-secondary: hsl(45 93% 47%); 
-  --color-secondary-foreground: hsl(26 83% 14%);
+  /* Solid Black - For high contrast and serious tone */
+  --color-secondary: hsl(0 0% 9%); /* #171717 - Neutral Black */
+  --color-secondary-foreground: hsl(0 0% 98%);
 
-  --color-muted: hsl(210 40% 96.1%);
-  --color-muted-foreground: hsl(215.4 16.3% 46.9%);
+  --color-muted: hsl(0 0% 96%);
+  --color-muted-foreground: hsl(0 0% 45%);
 
-  --color-accent: hsl(210 40% 96.1%);
-  --color-accent-foreground: hsl(222.2 47.4% 11.2%);
+  --color-accent: hsl(0 0% 96%);
+  --color-accent-foreground: hsl(0 0% 9%);
 
   --color-card: hsl(0 0% 100%);
-  --color-card-foreground: hsl(222.2 47.4% 11.2%);
+  --color-card-foreground: hsl(0 0% 10%);
 
-  --color-border: hsl(214.3 31.8% 91.4%);
-  --color-input: hsl(214.3 31.8% 91.4%);
+  --color-border: hsl(0 0% 90%);
+  --color-input: hsl(0 0% 90%);
   
   --color-destructive: hsl(0 84.2% 60.2%);
   --color-destructive-foreground: hsl(210 40% 98%);

@@ -29,7 +29,7 @@ export function Hero() {
 
           <h1 className="font-heading font-extrabold text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white leading-[1.1] tracking-tight">
             Formando líderes que <br className="hidden md:block"/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-200 to-white">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-200 to-white">
               aprenden haciendo.
             </span>
           </h1>

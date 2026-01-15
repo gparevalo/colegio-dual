@@ -40,7 +40,7 @@ export function SobreNosotros() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
-            <Card className="bg-blue-50/50 border-blue-100">
+            <Card className="bg-red-50/50 border-red-100">
               <CardContent className="pt-8 px-8 pb-8">
                 <h3 className="font-heading text-2xl font-bold mb-4 text-primary">Misión</h3>
                 <p className="text-slate-700 leading-relaxed">
@@ -48,9 +48,9 @@ export function SobreNosotros() {
                 </p>
               </CardContent>
             </Card>
-            <Card className="bg-amber-50/50 border-amber-100">
+            <Card className="bg-neutral-50/50 border-neutral-200">
               <CardContent className="pt-8 px-8 pb-8">
-                <h3 className="font-heading text-2xl font-bold mb-4 text-amber-700">Visión</h3>
+                <h3 className="font-heading text-2xl font-bold mb-4 text-slate-800">Visión</h3>
                 <p className="text-slate-700 leading-relaxed">
                   Ser reconocidos como una institución líder en innovación educativa y formación dual en Latinoamérica, referente por la calidad humana y académica de sus graduados.
                 </p>

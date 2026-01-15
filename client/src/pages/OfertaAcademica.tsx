@@ -43,7 +43,7 @@ export function OfertaAcademica() {
       <div className="bg-primary text-white py-16">
         <div className="container-custom">
           <h1 className="font-heading text-4xl font-bold mb-4">Oferta Académica</h1>
-          <p className="text-xl text-blue-100 max-w-2xl">
+          <p className="text-xl text-red-100 max-w-2xl">
             Desde los primeros pasos hasta la graduación, acompañamos a tus hijos con una educación de calidad internacional.
           </p>
         </div>
