@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Card, CardContent } from "@/components/ui/card";
 import { CheckCircle2, FileText, Calendar, Users, ClipboardCheck } from "lucide-react";
-import heroBg from "@assets/stock_images/group_of_diverse_stu_614b3ec0.jpg";
+import heroBg from "@assets/stock_images/happy_white_students_451c11b5.jpg";
 
 export function Admisiones() {
   const steps = [

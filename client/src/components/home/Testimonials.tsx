@@ -1,25 +1,28 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Quote } from "lucide-react";
 import { motion } from "framer-motion";
+import momImg from "@assets/stock_images/portrait_of_smiling__49f7e1da.jpg";
+import studentImg from "@assets/stock_images/portrait_of_smiling__1f9d6503.jpg";
+import dadImg from "@assets/stock_images/portrait_of_smiling__2aa99364.jpg";
 
 const TESTIMONIALS = [
   {
     quote: "La metodología ABP ha transformado la forma en que mis hijos aprenden. Ya no solo memorizan, entienden el porqué de las cosas.",
     author: "María Augusta P.",
     role: "Madre de Familia",
-    image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80"
+    image: momImg
   },
   {
     quote: "Gracias a la formación dual, tuve mi primera experiencia laboral antes de graduarme. Entré a la universidad con una ventaja competitiva enorme.",
     author: "Sebastián M.",
     role: "Exalumno, Promoción 2023",
-    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80"
+    image: studentImg
   },
   {
     quote: "El ambiente internacional y el aprendizaje del idioma alemán abrieron las puertas para que mi hija estudie en Europa.",
     author: "Roberto C.",
     role: "Padre de Familia",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80"
+    image: dadImg
   }
 ];
 

@@ -11,7 +11,7 @@ import { z } from "zod";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { useToast } from "@/hooks/use-toast";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
-import contactBg from "@assets/stock_images/teacher_explaining_t_f58b2194.jpg";
+import contactBg from "@assets/stock_images/modern_classroom_wit_954dcd3a.jpg";
 
 import mapBg from "@assets/stock_images/overhead_map_view_of_dc2b3a3a.jpg";
 

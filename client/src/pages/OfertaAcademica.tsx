@@ -6,9 +6,9 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Check, BookOpen, GraduationCap, Microscope, Palette, Globe, Users } from "lucide-react";
 import { Link } from "wouter";
-import inicialImg from "@assets/stock_images/kindergarten_student_bb6106e3.jpg";
-import egbImg from "@assets/stock_images/happy_elementary_sch_5ef9a3a5.jpg";
-import bachiImg from "@assets/stock_images/high_school_students_78f1f22b.jpg";
+import inicialImg from "@assets/stock_images/white_kindergarten_c_016dad2b.jpg";
+import egbImg from "@assets/stock_images/white_elementary_sch_3a47e27e.jpg";
+import bachiImg from "@assets/stock_images/white_high_school_st_598f902b.jpg";
 
 const LEVELS = [
   {

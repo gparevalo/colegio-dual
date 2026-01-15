@@ -4,7 +4,7 @@ import { Section } from "@/components/ui/section";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Check } from "lucide-react";
-import historicPhoto from "@assets/stock_images/group_of_diverse_stu_614b3ec0.jpg";
+import historicPhoto from "@assets/stock_images/white_students_walki_20b5d332.jpg";
 
 export function SobreNosotros() {
   return (

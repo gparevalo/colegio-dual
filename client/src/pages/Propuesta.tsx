@@ -2,8 +2,8 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Section } from "@/components/ui/section";
 import { Briefcase, Lightbulb } from "lucide-react";
-import abpImage from "@assets/stock_images/teacher_explaining_t_f58b2194.jpg";
-import dualImage from "@assets/stock_images/student_internship_i_ca802da0.jpg";
+import abpImage from "@assets/stock_images/white_students_colla_4469186a.jpg";
+import dualImage from "@assets/stock_images/white_student_intern_ddaa6f64.jpg";
 
 export function Propuesta() {
   return (

@@ -1,12 +1,12 @@
 import { GraduationCap, BookOpen, Users, Briefcase, Award, Globe, Lightbulb, UserCheck } from "lucide-react";
 
 // Import images
-import egbImg from "@assets/stock_images/happy_elementary_sch_5ef9a3a5.jpg";
-import bachiImg from "@assets/stock_images/high_school_students_53df820d.jpg";
-import dualImg from "@assets/stock_images/student_apprentice_w_552611ae.jpg";
-import labImg from "@assets/stock_images/modern_high_school_s_f7d12c0d.jpg";
-import projectImg from "@assets/stock_images/students_presenting__043045f9.jpg";
-import admissionImg from "@assets/stock_images/friendly_school_admi_8823d227.jpg";
+import egbImg from "@assets/stock_images/white_elementary_sch_3a47e27e.jpg";
+import bachiImg from "@assets/stock_images/white_high_school_st_598f902b.jpg";
+import dualImg from "@assets/stock_images/white_student_intern_ddaa6f64.jpg";
+import labImg from "@assets/stock_images/white_students_in_hi_5677747e.jpg";
+import projectImg from "@assets/stock_images/white_students_prese_6afdb250.jpg";
+import admissionImg from "@assets/stock_images/happy_white_students_451c11b5.jpg";
 
 export const NAV_LINKS = [
   { label: "Inicio", href: "/" },
