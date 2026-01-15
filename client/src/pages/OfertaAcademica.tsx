@@ -7,8 +7,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Check, BookOpen, GraduationCap, Microscope, Palette, Globe, Users } from "lucide-react";
 import { Link } from "wouter";
 import inicialImg from "@assets/stock_images/white_kindergarten_c_016dad2b.jpg";
-import egbImg from "@assets/stock_images/white_elementary_sch_158be0d0.jpg";
-import bachiImg from "@assets/stock_images/white_high_school_st_2d75b70a.jpg";
+import egbImg from "@assets/stock_images/white_children_playi_d8947c72.jpg";
+import bachiImg from "@assets/stock_images/group_of_white_stude_65d22834.jpg";
 
 const LEVELS = [
   {

@@ -1,9 +1,9 @@
 import { GraduationCap, BookOpen, Users, Briefcase, Award, Globe, Lightbulb, UserCheck } from "lucide-react";
 
 // Import images
-import egbImg from "@assets/stock_images/white_elementary_sch_158be0d0.jpg";
-import bachiImg from "@assets/stock_images/white_high_school_st_2d75b70a.jpg";
-import dualImg from "@assets/stock_images/white_university_stu_f3b17c0b.jpg";
+import egbImg from "@assets/stock_images/white_children_playi_d8947c72.jpg";
+import bachiImg from "@assets/stock_images/group_of_white_stude_65d22834.jpg";
+import dualImg from "@assets/stock_images/white_student_intern_c789d72b.jpg";
 import labImg from "@assets/stock_images/white_students_in_hi_5677747e.jpg";
 import projectImg from "@assets/stock_images/white_students_prese_6afdb250.jpg";
 import admissionImg from "@assets/stock_images/happy_white_students_451c11b5.jpg";
