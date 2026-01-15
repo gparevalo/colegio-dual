@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { ArrowRight, CalendarDays } from "lucide-react";
-import heroBg from "@assets/stock_images/modern_school_buildi_47aeddb6.jpg";
+import heroBg from "@assets/stock_images/group_of_students_si_2f7a6c01.jpg";
 
 export function Hero() {
   return (
@@ -10,7 +10,7 @@ export function Hero() {
       <div className="absolute inset-0 z-0">
         <img 
           src={heroBg} 
-          alt="Campus Colegio Dual" 
+          alt="Estudiantes en areas verdes" 
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-slate-900/60 mix-blend-multiply" />
