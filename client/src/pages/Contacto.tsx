@@ -13,6 +13,8 @@ import { useToast } from "@/hooks/use-toast";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
 import contactBg from "@assets/stock_images/teacher_explaining_t_f58b2194.jpg";
 
+import mapBg from "@assets/stock_images/overhead_map_view_of_dc2b3a3a.jpg";
+
 const formSchema = z.object({
   name: z.string().min(2, "El nombre debe tener al menos 2 caracteres."),
   email: z.string().email("Por favor ingrese un correo válido."),
@@ -105,9 +107,17 @@ export function Contacto() {
               </div>
 
               {/* Map Placeholder */}
-              <div className="h-64 bg-slate-200 rounded-xl overflow-hidden relative">
-                 <div className="absolute inset-0 flex items-center justify-center text-slate-500 font-medium">
-                   Mapa de Google Maps
+              <div className="h-64 bg-slate-200 rounded-xl overflow-hidden relative shadow-md">
+                 <img 
+                   src={mapBg} 
+                   alt="Ubicación en mapa" 
+                   className="w-full h-full object-cover"
+                 />
+                 <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                   <div className="bg-white/90 backdrop-blur-sm px-4 py-2 rounded-lg shadow-lg text-primary font-bold text-sm flex items-center gap-2">
+                     <MapPin className="h-4 w-4" />
+                     Ver en Google Maps
+                   </div>
                  </div>
               </div>
             </div>

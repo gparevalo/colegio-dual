@@ -1,11 +1,20 @@
 import { GraduationCap, BookOpen, Users, Briefcase, Award, Globe, Lightbulb, UserCheck } from "lucide-react";
 
+// Import images
+import egbImg from "@assets/stock_images/elementary_school_st_45052d20.jpg";
+import bachiImg from "@assets/stock_images/high_school_students_53df820d.jpg";
+import dualImg from "@assets/stock_images/student_apprentice_w_552611ae.jpg";
+import labImg from "@assets/stock_images/modern_high_school_s_f7d12c0d.jpg";
+import projectImg from "@assets/stock_images/students_presenting__043045f9.jpg";
+import admissionImg from "@assets/stock_images/friendly_school_admi_8823d227.jpg";
+
 export const NAV_LINKS = [
   { label: "Inicio", href: "/" },
   { label: "Sobre Nosotros", href: "/sobre-nosotros" },
   { label: "Oferta Académica", href: "/oferta-academica" },
   { label: "Propuesta de Formación", href: "/propuesta" },
   { label: "Noticias", href: "/noticias" },
+  { label: "Contacto", href: "/contacto" },
 ];
 
 export const ACADEMIC_OFFER = [
@@ -14,7 +23,7 @@ export const ACADEMIC_OFFER = [
     title: "Educación General Básica",
     description: "Formación integral desde los primeros años, fomentando la curiosidad y el aprendizaje activo.",
     icon: BookOpen,
-    image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&q=80",
+    image: egbImg,
     link: "/oferta-academica#egb"
   },
   {
@@ -22,7 +31,7 @@ export const ACADEMIC_OFFER = [
     title: "Bachillerato",
     description: "Preparación académica rigurosa con enfoque en ciencias y humanidades para el ingreso universitario.",
     icon: GraduationCap,
-    image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80",
+    image: bachiImg,
     link: "/oferta-academica#bachillerato"
   },
   {
@@ -30,7 +39,7 @@ export const ACADEMIC_OFFER = [
     title: "Formación Dual",
     description: "Aprende haciendo. Combina teoría en el aula con práctica real en empresas asociadas.",
     icon: Briefcase,
-    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80",
+    image: dualImg,
     link: "/propuesta#dual"
   }
 ];
@@ -71,20 +80,20 @@ export const NEWS_HIGHLIGHTS = [
     title: "Inauguración del nuevo laboratorio de ciencias",
     date: "15 Ene, 2026",
     category: "Institucional",
-    image: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&q=80"
+    image: labImg
   },
   {
     id: 2,
     title: "Estudiantes de bachillerato presentan proyectos finales",
     date: "10 Dic, 2025",
     category: "Académico",
-    image: "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&q=80"
+    image: projectImg
   },
   {
     id: 3,
     title: "Abiertas las inscripciones para el periodo 2026-2027",
     date: "01 Nov, 2025",
     category: "Admisiones",
-    image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80"
+    image: admissionImg
   }
 ];
