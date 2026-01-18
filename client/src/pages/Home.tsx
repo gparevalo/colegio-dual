@@ -119,8 +119,10 @@ export function Home() {
               </h2>
             </div>
             <Link href="/oferta-academica">
-              <Button variant="outline" className="hidden md:flex group">
-                Ver toda la oferta <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+              <Button variant="outline" asChild className="hidden md:flex group">
+                <a className="flex items-center">
+                  Ver toda la oferta <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                </a>
               </Button>
             </Link>
           </motion.div>
@@ -151,8 +153,8 @@ export function Home() {
                       <p className="text-slate-200 text-sm mb-6 line-clamp-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
                         {offer.description}
                       </p>
-                      <Button variant="secondary" className="w-full font-semibold">
-                        Conoce más
+                      <Button variant="secondary" asChild className="w-full font-semibold">
+                        <a className="flex items-center justify-center">Conoce más</a>
                       </Button>
                     </div>
                   </div>
@@ -223,10 +225,9 @@ export function Home() {
             </div>
 
             <div className="flex flex-wrap justify-center items-center gap-12 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-700">
-                 <span className="text-xl font-bold text-slate-400">ESPOL</span>
-                 <span className="text-xl font-bold text-slate-400">Comité Ceibos</span>
-                 <span className="text-xl font-bold text-slate-400">Teatro Centro de Arte</span>
-              </div>
+               <span className="text-xl font-bold text-slate-400">ESPOL</span>
+               <span className="text-xl font-bold text-slate-400">Comité Ceibos</span>
+               <span className="text-xl font-bold text-slate-400">Teatro Centro de Arte</span>
             </div>
           </div>
         </Section>
@@ -269,8 +270,10 @@ export function Home() {
           <div className="flex justify-between items-center mb-10">
             <h2 className="font-heading text-3xl font-bold">Noticias Recientes</h2>
             <Link href="/noticias">
-              <Button variant="link" className="text-primary font-medium hover:underline flex items-center gap-1 group">
-                Ver todas <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+              <Button variant="link" asChild className="text-primary font-medium hover:underline flex items-center gap-1 group">
+                <a className="flex items-center gap-1">
+                  Ver todas <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                </a>
               </Button>
             </Link>
           </div>
@@ -324,8 +327,8 @@ export function Home() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
               <Link href="/admisiones">
-                <Button size="lg" variant="secondary" className="h-14 px-8 text-lg shadow-xl hover:scale-105 transition-transform">
-                  Iniciar Admisión
+                <Button size="lg" variant="secondary" asChild className="h-14 px-8 text-lg shadow-xl hover:scale-105 transition-transform">
+                  <a className="flex items-center justify-center">Iniciar Admisión</a>
                 </Button>
               </Link>
               <Button size="lg" variant="outline" className="h-14 px-8 text-lg bg-transparent border-white text-white hover:bg-white hover:text-primary">

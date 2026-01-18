@@ -30,13 +30,11 @@ export function Navbar() {
       <div className="container-custom flex h-20 items-center justify-between">
         {/* Logo */}
         <Link href="/">
-          <a className="flex items-center gap-2">
-            <img 
-              src={LOGO_URL} 
-              alt="Colegio Dual Logo" 
-              className="h-12 w-auto object-contain"
-            />
-          </a>
+          <img 
+            src={LOGO_URL} 
+            alt="Colegio Dual Logo" 
+            className="h-12 w-auto object-contain cursor-pointer"
+          />
         </Link>
 
         {/* Desktop Nav */}
