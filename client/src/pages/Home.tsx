@@ -222,9 +222,7 @@ export function Home() {
               </div>
             </div>
 
-            <div className="pt-12 border-t border-slate-200">
-              <p className="text-center text-slate-500 font-medium mb-10 uppercase tracking-widest text-xs">Nuestras Sedes y Alianzas</p>
-              <div className="flex flex-wrap justify-center items-center gap-12 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-700">
+            <div className="flex flex-wrap justify-center items-center gap-12 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-700">
                  <span className="text-xl font-bold text-slate-400">ESPOL</span>
                  <span className="text-xl font-bold text-slate-400">Comité Ceibos</span>
                  <span className="text-xl font-bold text-slate-400">Teatro Centro de Arte</span>
@@ -271,9 +269,9 @@ export function Home() {
           <div className="flex justify-between items-center mb-10">
             <h2 className="font-heading text-3xl font-bold">Noticias Recientes</h2>
             <Link href="/noticias">
-              <a className="text-primary font-medium hover:underline flex items-center gap-1 group">
+              <Button variant="link" className="text-primary font-medium hover:underline flex items-center gap-1 group">
                 Ver todas <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-              </a>
+              </Button>
             </Link>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
