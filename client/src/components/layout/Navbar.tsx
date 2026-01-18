@@ -40,17 +40,17 @@ export function Navbar() {
         {/* Desktop Nav */}
         <div className="hidden lg:flex items-center gap-6">
           {extendedLinks.map((link) => (
-            <Link key={link.href} href={link.href}>
-              <a
-                className={cn(
-                  "text-sm font-medium transition-colors hover:text-primary",
-                  location === link.href
-                    ? "text-primary font-semibold"
-                    : "text-muted-foreground"
-                )}
-              >
-                {link.label}
-              </a>
+            <Link
+              key={link.href}
+              href={link.href}
+              className={cn(
+                "text-sm font-medium transition-colors hover:text-primary",
+                location === link.href
+                  ? "text-primary font-semibold"
+                  : "text-muted-foreground"
+              )}
+            >
+              {link.label}
             </Link>
           ))}
         </div>
@@ -97,13 +97,13 @@ export function Navbar() {
         <div className="lg:hidden border-t bg-background p-4 absolute w-full shadow-lg">
           <div className="flex flex-col space-y-4">
             {extendedLinks.map((link) => (
-              <Link key={link.href} href={link.href}>
-                <a
-                  className="block text-base font-medium text-foreground hover:text-primary py-2 border-b border-border/50"
-                  onClick={() => setIsOpen(false)}
-                >
-                  {link.label}
-                </a>
+              <Link
+                key={link.href}
+                href={link.href}
+                className="block text-base font-medium text-foreground hover:text-primary py-2 border-b border-border/50"
+                onClick={() => setIsOpen(false)}
+              >
+                {link.label}
               </Link>
             ))}
             <div className="pt-4 flex flex-col gap-3">

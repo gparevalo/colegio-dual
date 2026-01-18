@@ -272,15 +272,15 @@ export function Home() {
                 <p className="text-slate-600 leading-relaxed mb-6">
                   Formamos parte de la Asociación Mundial de Escuelas Alemanas en el Extranjero (WDA), que representa a las autoridades escolares libres y sin fines de lucro de las escuelas alemanas en el extranjero y combina sus voces individuales en una voz fuerte.
                 </p>
-                <a 
-                  href="https://www.auslandsschulnetz.de/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                >
-                  <Button className="font-semibold">
+                <Button asChild className="font-semibold">
+                  <a 
+                    href="https://www.auslandsschulnetz.de/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                  >
                     Más información <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
-                </a>
+                  </a>
+                </Button>
               </div>
               <div className="order-1 lg:order-2 flex justify-center">
                 <img 

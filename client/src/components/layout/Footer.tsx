@@ -36,23 +36,23 @@ export function Footer() {
             <h3 className="font-heading font-semibold text-white mb-4">Enlaces Rápidos</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/admisiones">
-                  <a className="hover:text-primary-foreground transition-colors">Proceso de Admisión</a>
+                <Link href="/admisiones" className="hover:text-primary-foreground transition-colors">
+                  Proceso de Admisión
                 </Link>
               </li>
               <li>
-                <Link href="/oferta-academica">
-                  <a className="hover:text-primary-foreground transition-colors">Oferta Académica</a>
+                <Link href="/oferta-academica" className="hover:text-primary-foreground transition-colors">
+                  Oferta Académica
                 </Link>
               </li>
               <li>
-                <Link href="/propuesta">
-                  <a className="hover:text-primary-foreground transition-colors">Metodología Dual</a>
+                <Link href="/propuesta" className="hover:text-primary-foreground transition-colors">
+                  Metodología Dual
                 </Link>
               </li>
               <li>
-                <Link href="/noticias">
-                  <a className="hover:text-primary-foreground transition-colors">Noticias y Eventos</a>
+                <Link href="/noticias" className="hover:text-primary-foreground transition-colors">
+                  Noticias y Eventos
                 </Link>
               </li>
               <li>
