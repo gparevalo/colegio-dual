@@ -324,7 +324,7 @@ export function Home() {
               </div>
               <div className="order-1 lg:order-2 flex justify-center">
                 <img
-                  src="https://static.wixstatic.com/media/720b25_50f74d3bc5c74c68a10b48c57e2e3e5e~mv2.png/v1/fill/w_440,h_154,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/wda-logo-print-transparent.png"
+                  src="https://static.wixstatic.com/media/720b25_50f74d3b5e6848e38008bc329493b3f2~mv2.png/v1/fill/w_486,h_384,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/wda-logo-print-transparent.png"
                   alt="WDA Logo - Asociación Mundial de Escuelas Alemanas"
                   className="max-w-[300px] w-full h-auto"
                 />
