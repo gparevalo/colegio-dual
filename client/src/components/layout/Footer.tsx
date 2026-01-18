@@ -9,17 +9,11 @@ export function Footer() {
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center gap-2">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-white text-primary font-bold text-xl">
-                CD
-              </div>
-              <div className="flex flex-col">
-                <span className="font-heading font-bold text-lg leading-tight text-white">
-                  Colegio Dual
-                </span>
-                <span className="text-xs text-slate-400 tracking-wider uppercase">
-                  Duale Schule
-                </span>
-              </div>
+              <img 
+                src="https://static.wixstatic.com/media/e2a619_9b518fdc457d4856af0d8f7b13c6760a~mv2.png/v1/crop/x_0,y_825,w_3000,h_1350/fill/w_440,h_198,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Logo%20Duale%20Schule%20sin%20hz_Mesa%20de%20trabajo%201_Mesa%20de%20trabajo%201_edited.png" 
+                alt="Colegio Dual Logo" 
+                className="h-14 w-auto object-contain"
+              />
             </div>
             <p className="text-sm text-slate-400 leading-relaxed">
               Formando líderes con visión global a través de la metodología "Aprender Haciendo". Excelencia académica ecuatoriano-alemana.
@@ -69,22 +63,26 @@ export function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="font-heading font-semibold text-white mb-4">Contacto</h3>
+            <h3 className="font-heading font-semibold text-white mb-4">Contacto - Admisiones</h3>
             <ul className="space-y-4 text-sm">
               <li className="flex items-start gap-3">
                 <MapPin className="h-5 w-5 text-primary shrink-0" />
                 <span>
-                  Av. Interoceánica Km 14.5,<br />
-                  Tumbaco, Quito - Ecuador
+                  Campus ESPOL Km 30.5<br />
+                  Vía Perimetral
                 </span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="h-5 w-5 text-primary shrink-0" />
-                <span>+593 2 123 4567</span>
+                <span>+593 99 512 1024</span>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="h-5 w-5 text-primary shrink-0" />
-                <span>info@colegiodual.com</span>
+                <span>admisiones@humboldt.edu.ec</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <Mail className="h-5 w-5 text-primary shrink-0" />
+                <span>cobranzas@humboldt.edu.ec</span>
               </li>
             </ul>
           </div>
