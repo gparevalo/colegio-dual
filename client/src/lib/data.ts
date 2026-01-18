@@ -17,13 +17,13 @@ export const NAV_LINKS = [
   { label: "Contacto", href: "/contacto" },
 ];
 
-const ABP_IMG = "https://static.wixstatic.com/media/720b25_c97aad89c0204683935218d6f5194161~mv2.png/v1/fill/w_1000,h_1000,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG_9258edit.png";
+const ABP_IMG = "https://static.wixstatic.com/media/720b25_c97aad897d8f4bebbc298fa427e7e726~mv2.png/v1/crop/x_1643,y_580,w_2720,h_3420/fill/w_538,h_678,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG_9258edit.png";
 const DUAL_BACH_IMG = "https://static.wixstatic.com/media/720b25_b3d85a88628d44528d40a8d467f1767d~mv2.png/v1/fill/w_1000,h_1000,al_c,q_90,enc_avif,quality_auto/720b25_b3d85a88628d44528d40a8d467f1767d~mv2.png";
 
 export const ACADEMIC_OFFER = [
   {
     id: "egb-superior",
-    title: "8vo a 10mo EGB",
+    title: "Aprendizaje por proyectos",
     description: "Implementamos el ABP (Aprendizaje basado en Proyectos) durante los 3 primeros años de colegio. Los estudiantes aprenden en contextos reales para solucionar retos y desafíos mediante proyectos interdisciplinarios por bloque.",
     icon: BookOpen,
     image: ABP_IMG,
@@ -36,14 +36,6 @@ export const ACADEMIC_OFFER = [
     icon: Briefcase,
     image: DUAL_BACH_IMG,
     link: "/oferta-academica#bachillerato"
-  },
-  {
-    id: "inicial",
-    title: "Inicial y Preparatoria",
-    description: "Entorno seguro y estimulante donde el juego es el motor del aprendizaje para niños de 3 a 5 años.",
-    icon: Users,
-    image: egbImg,
-    link: "/oferta-academica#inicial"
   }
 ];
 
