@@ -77,7 +77,7 @@ export function Contacto() {
                       <MapPin className="h-6 w-6 text-primary shrink-0 mt-1" />
                       <div>
                         <h3 className="font-bold text-slate-900 mb-1">Ubicación</h3>
-                        <p className="text-slate-600">Av. Interoceánica Km 14.5, Tumbaco, Quito - Ecuador</p>
+                        <p className="text-slate-600">Campus ESPOL Km 30.5 Vía Perimetral, Quito - Ecuador</p>
                       </div>
                     </CardContent>
                   </Card>
@@ -87,7 +87,7 @@ export function Contacto() {
                       <Phone className="h-6 w-6 text-primary shrink-0 mt-1" />
                       <div>
                         <h3 className="font-bold text-slate-900 mb-1">Teléfonos</h3>
-                        <p className="text-slate-600">+593 2 123 4567 / +593 99 123 4567</p>
+                        <p className="text-slate-600">+593 99 512 1024</p>
                         <p className="text-sm text-slate-500 mt-1">Atención Lunes a Viernes</p>
                       </div>
                     </CardContent>
@@ -98,8 +98,8 @@ export function Contacto() {
                       <Mail className="h-6 w-6 text-primary shrink-0 mt-1" />
                       <div>
                         <h3 className="font-bold text-slate-900 mb-1">Correo Electrónico</h3>
-                        <p className="text-slate-600">info@colegiodual.com</p>
-                        <p className="text-slate-600">admisiones@colegiodual.com</p>
+                        <p className="text-slate-600">admisiones@humboldt.edu.ec</p>
+                        <p className="text-slate-600">cobranzas@humboldt.edu.ec</p>
                       </div>
                     </CardContent>
                   </Card>
