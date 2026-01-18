@@ -116,123 +116,6 @@ export function Home() {
           </motion.div>
         </Section>
 
-
-        {/* WDA Section - Cerca de Alemania */}
-        <Section background="muted">
-          <div className="container-custom">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div className="order-2 lg:order-1">
-                <span className="text-primary font-bold uppercase tracking-wider text-sm mb-2 block">
-                  Cerca de Alemania!
-                </span>
-                <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6">
-                  Asociación Mundial de Escuelas Alemanas
-                </h2>
-                <p className="text-slate-600 leading-relaxed mb-6">
-                  Formamos parte de la Asociación Mundial de Escuelas Alemanas
-                  en el Extranjero (WDA), que representa a las autoridades
-                  escolares libres y sin fines de lucro de las escuelas alemanas
-                  en el extranjero y combina sus voces individuales en una voz
-                  fuerte.
-                </p>
-                <Button asChild className="font-semibold">
-                  <a
-                    href="https://www.auslandsschulnetz.de/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Más información <ArrowRight className="ml-2 h-4 w-4" />
-                  </a>
-                </Button>
-              </div>
-              <div className="order-1 lg:order-2 flex justify-center">
-                <img
-                  src="https://static.wixstatic.com/media/720b25_50f74d3bc5c74c68a10b48c57e2e3e5e~mv2.png/v1/fill/w_440,h_154,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/wda-logo-print-transparent.png"
-                  alt="WDA Logo - Asociación Mundial de Escuelas Alemanas"
-                  className="max-w-[300px] w-full h-auto"
-                />
-              </div>
-            </div>
-          </div>
-        </Section>
-
-
-        {/* Academic Offer */}
-        <Section>
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeIn}
-            className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6"
-          >
-            <div className="max-w-2xl">
-              <span className="text-primary font-bold uppercase tracking-wider text-sm mb-2 block">
-                Nuestra Oferta
-              </span>
-              <h2 className="font-heading text-3xl md:text-4xl font-bold text-slate-900">
-                Formación integral en cada etapa
-              </h2>
-            </div>
-            <Link href="/oferta-academica">
-              <Button
-                variant="outline"
-                asChild
-                className="hidden md:flex group"
-              >
-                <a className="flex items-center">
-                  Ver toda la oferta{" "}
-                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                </a>
-              </Button>
-            </Link>
-          </motion.div>
-
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-            className="grid md:grid-cols-3 gap-8"
-          >
-            {ACADEMIC_OFFER.map((offer, i) => (
-              <motion.div key={offer.id} variants={fadeIn}>
-                <Link href={offer.link}>
-                  <div className="group relative overflow-hidden rounded-2xl aspect-[4/5] md:aspect-[3/4] cursor-pointer shadow-md hover:shadow-2xl transition-all duration-500">
-                    <img
-                      src={offer.image}
-                      alt={offer.title}
-                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent opacity-80 md:opacity-90 transition-opacity" />
-
-                    <div className="absolute bottom-0 left-0 p-6 md:p-8 w-full translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                      <div className="h-10 w-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white mb-4">
-                        <offer.icon className="h-5 w-5" />
-                      </div>
-                      <h3 className="font-heading text-xl font-bold text-white mb-2">
-                        {offer.title}
-                      </h3>
-                      <p className="text-slate-200 text-sm mb-6 line-clamp-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
-                        {offer.description}
-                      </p>
-                      <Button
-                        variant="secondary"
-                        asChild
-                        className="w-full font-semibold"
-                      >
-                        <a className="flex items-center justify-center">
-                          Conoce más
-                        </a>
-                      </Button>
-                    </div>
-                  </div>
-                </Link>
-              </motion.div>
-            ))}
-          </motion.div>
-        </Section>
-
         {/* How and Where We Learn Section */}
         <Section background="muted" className="overflow-hidden">
           <div className="container-custom">
@@ -331,6 +214,121 @@ export function Home() {
               <span className="text-xl font-bold text-slate-400">
                 Teatro Centro de Arte
               </span>
+            </div>
+          </div>
+        </Section>
+
+        {/* Academic Offer */}
+        <Section>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeIn}
+            className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6"
+          >
+            <div className="max-w-2xl">
+              <span className="text-primary font-bold uppercase tracking-wider text-sm mb-2 block">
+                Nuestra Oferta
+              </span>
+              <h2 className="font-heading text-3xl md:text-4xl font-bold text-slate-900">
+                Formación integral en cada etapa
+              </h2>
+            </div>
+            <Link href="/oferta-academica">
+              <Button
+                variant="outline"
+                asChild
+                className="hidden md:flex group"
+              >
+                <a className="flex items-center">
+                  Ver toda la oferta{" "}
+                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                </a>
+              </Button>
+            </Link>
+          </motion.div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+            className="grid md:grid-cols-3 gap-8"
+          >
+            {ACADEMIC_OFFER.map((offer, i) => (
+              <motion.div key={offer.id} variants={fadeIn}>
+                <Link href={offer.link}>
+                  <div className="group relative overflow-hidden rounded-2xl aspect-[4/5] md:aspect-[3/4] cursor-pointer shadow-md hover:shadow-2xl transition-all duration-500">
+                    <img
+                      src={offer.image}
+                      alt={offer.title}
+                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent opacity-80 md:opacity-90 transition-opacity" />
+
+                    <div className="absolute bottom-0 left-0 p-6 md:p-8 w-full translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                      <div className="h-10 w-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white mb-4">
+                        <offer.icon className="h-5 w-5" />
+                      </div>
+                      <h3 className="font-heading text-xl font-bold text-white mb-2">
+                        {offer.title}
+                      </h3>
+                      <p className="text-slate-200 text-sm mb-6 line-clamp-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
+                        {offer.description}
+                      </p>
+                      <Button
+                        variant="secondary"
+                        asChild
+                        className="w-full font-semibold"
+                      >
+                        <a className="flex items-center justify-center">
+                          Conoce más
+                        </a>
+                      </Button>
+                    </div>
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
+          </motion.div>
+        </Section>
+
+        {/* WDA Section - Cerca de Alemania */}
+        <Section background="muted">
+          <div className="container-custom">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div className="order-2 lg:order-1">
+                <span className="text-primary font-bold uppercase tracking-wider text-sm mb-2 block">
+                  Cerca de Alemania!
+                </span>
+                <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6">
+                  Asociación Mundial de Escuelas Alemanas
+                </h2>
+                <p className="text-slate-600 leading-relaxed mb-6">
+                  Formamos parte de la Asociación Mundial de Escuelas Alemanas
+                  en el Extranjero (WDA), que representa a las autoridades
+                  escolares libres y sin fines de lucro de las escuelas alemanas
+                  en el extranjero y combina sus voces individuales en una voz
+                  fuerte.
+                </p>
+                <Button asChild className="font-semibold">
+                  <a
+                    href="https://www.auslandsschulnetz.de/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Más información <ArrowRight className="ml-2 h-4 w-4" />
+                  </a>
+                </Button>
+              </div>
+              <div className="order-1 lg:order-2 flex justify-center">
+                <img
+                  src="https://static.wixstatic.com/media/720b25_50f74d3bc5c74c68a10b48c57e2e3e5e~mv2.png/v1/fill/w_440,h_154,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/wda-logo-print-transparent.png"
+                  alt="WDA Logo - Asociación Mundial de Escuelas Alemanas"
+                  className="max-w-[300px] w-full h-auto"
+                />
+              </div>
             </div>
           </div>
         </Section>
