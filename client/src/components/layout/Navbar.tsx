@@ -11,6 +11,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
+const LOGO_URL = "https://static.wixstatic.com/media/e2a619_9b518fdc457d4856af0d8f7b13c6760a~mv2.png/v1/crop/x_0,y_825,w_3000,h_1350/fill/w_440,h_198,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Logo%20Duale%20Schule%20sin%20hz_Mesa%20de%20trabajo%201_Mesa%20de%20trabajo%201_edited.png";
+
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [location] = useLocation();
@@ -29,17 +31,11 @@ export function Navbar() {
         {/* Logo */}
         <Link href="/">
           <a className="flex items-center gap-2">
-            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-white font-bold text-xl">
-              CD
-            </div>
-            <div className="flex flex-col">
-              <span className="font-heading font-bold text-lg leading-tight text-foreground">
-                Colegio Dual
-              </span>
-              <span className="text-xs text-muted-foreground tracking-wider uppercase">
-                Duale Schule
-              </span>
-            </div>
+            <img 
+              src={LOGO_URL} 
+              alt="Colegio Dual Logo" 
+              className="h-12 w-auto object-contain"
+            />
           </a>
         </Link>
 
@@ -65,16 +61,16 @@ export function Navbar() {
         <div className="hidden lg:flex items-center gap-4">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="sm" className="gap-2">
+              <Button variant="ghost" size="sm" className="gap-2 hover:bg-white transition-colors">
                 <User className="h-4 w-4" />
                 Login
                 <ChevronDown className="h-4 w-4" />
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
+            <DropdownMenuContent align="end" className="bg-white border shadow-md">
               {loginOptions.map((option) => (
-                <DropdownMenuItem key={option.href} asChild>
-                  <a href={option.href} target="_blank" rel="noopener noreferrer">
+                <DropdownMenuItem key={option.href} asChild className="focus:bg-slate-50">
+                  <a href={option.href} target="_blank" rel="noopener noreferrer" className="cursor-pointer">
                     {option.label}
                   </a>
                 </DropdownMenuItem>

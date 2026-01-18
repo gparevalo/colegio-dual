@@ -17,30 +17,33 @@ export const NAV_LINKS = [
   { label: "Contacto", href: "/contacto" },
 ];
 
+const ABP_IMG = "https://static.wixstatic.com/media/720b25_c97aad89c0204683935218d6f5194161~mv2.png/v1/fill/w_1000,h_1000,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG_9258edit.png";
+const DUAL_BACH_IMG = "https://static.wixstatic.com/media/720b25_b3d85a88628d44528d40a8d467f1767d~mv2.png/v1/fill/w_1000,h_1000,al_c,q_90,enc_avif,quality_auto/720b25_b3d85a88628d44528d40a8d467f1767d~mv2.png";
+
 export const ACADEMIC_OFFER = [
   {
-    id: "primaria",
-    title: "Educación General Básica",
-    description: "Formación integral desde los primeros años, fomentando la curiosidad y el aprendizaje activo.",
+    id: "egb-superior",
+    title: "8vo a 10mo EGB",
+    description: "Implementamos el ABP (Aprendizaje basado en Proyectos) durante los 3 primeros años de colegio. Los estudiantes aprenden en contextos reales para solucionar retos y desafíos mediante proyectos interdisciplinarios por bloque.",
     icon: BookOpen,
-    image: egbImg,
+    image: ABP_IMG,
     link: "/oferta-academica#egb"
   },
   {
     id: "bachillerato",
-    title: "Bachillerato",
-    description: "Preparación académica rigurosa con enfoque en ciencias y humanidades para el ingreso universitario.",
-    icon: GraduationCap,
-    image: bachiImg,
+    title: "Bachillerato - Formación Dual",
+    description: "Implementamos la Formación técnica profesional. En 3ro de Bachillerato realizan formación práctica en empresas formadoras (3 días) y teórica en el colegio (2 días), graduándose como Bachilleres Técnicos.",
+    icon: Briefcase,
+    image: DUAL_BACH_IMG,
     link: "/oferta-academica#bachillerato"
   },
   {
-    id: "dual",
-    title: "Formación Dual",
-    description: "Aprende haciendo. Combina teoría en el aula con práctica real en empresas asociadas.",
-    icon: Briefcase,
-    image: dualImg,
-    link: "/propuesta#dual"
+    id: "inicial",
+    title: "Inicial y Preparatoria",
+    description: "Entorno seguro y estimulante donde el juego es el motor del aprendizaje para niños de 3 a 5 años.",
+    icon: Users,
+    image: egbImg,
+    link: "/oferta-academica#inicial"
   }
 ];
 

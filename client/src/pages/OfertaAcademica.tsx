@@ -11,6 +11,8 @@ import egbImg from "@assets/stock_images/white_children_playi_d8947c72.jpg";
 import bachiImg from "@assets/stock_images/group_of_white_stude_65d22834.jpg";
 
 const OFERTA_IMAGE = "https://static.wixstatic.com/media/e2a619_419d60265bfb4b258520a630022541dc~mv2.jpg/v1/fit/w_1804,h_1197,q_90,enc_avif,quality_auto/e2a619_419d60265bfb4b258520a630022541dc~mv2.jpg";
+const ABP_IMG = "https://static.wixstatic.com/media/720b25_c97aad89c0204683935218d6f5194161~mv2.png/v1/fill/w_1000,h_1000,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG_9258edit.png";
+const DUAL_BACH_IMG = "https://static.wixstatic.com/media/720b25_b3d85a88628d44528d40a8d467f1767d~mv2.png/v1/fill/w_1000,h_1000,al_c,q_90,enc_avif,quality_auto/720b25_b3d85a88628d44528d40a8d467f1767d~mv2.png";
 
 const LEVELS = [
   {
@@ -24,21 +26,21 @@ const LEVELS = [
   },
   {
     id: "egb",
-    title: "Educación General Básica",
-    age: "6 a 14 años",
-    description: "Consolidamos las bases académicas con metodología ABP. Los estudiantes aprenden investigando y creando, desarrollando pensamiento crítico.",
-    features: ["Aprendizaje Basado en Proyectos", "Inglés intensivo (certificación Cambridge)", "Robótica y programación básica", "Deportes y arte"],
+    title: "8vo a 10mo EGB - ABP",
+    age: "12 a 14 años",
+    description: "Implementamos el ABP (Aprendizaje basado en Proyectos) durante los 3 primeros años de colegio. Consiste en aprender en contextos reales para solucionar retos y desafíos mediante proyectos interdisciplinarios que integran diversas destrezas académicas.",
+    features: ["Aprendizaje Basado en Proyectos (ABP)", "Proyectos interdisciplinarios", "Matemáticas y Ciencias Naturales integradas", "Ciencias Sociales y Lenguaje integrados"],
     icon: BookOpen,
-    image: egbImg
+    image: ABP_IMG
   },
   {
     id: "bachillerato",
-    title: "Bachillerato",
+    title: "Bachillerato - Formación Dual",
     age: "15 a 18 años",
-    description: "Preparación pre-universitaria de alto nivel. Ofrecemos Bachillerato Técnico y en Ciencias, con opción a certificación de suficiencia en Alemán.",
-    features: ["Formación Dual (Prácticas empresariales)", "Bachillerato Técnico en Administración", "Orientación vocacional", "Convenios universitarios"],
+    description: "Implementamos la Formación técnica profesional. En 3ro de Bachillerato inician su Formación Dual: 2 días de formación teórica en el colegio y 3 días de formación práctica en empresas formadoras, graduándose como Bachilleres Técnicos en Comercialización y Ventas.",
+    features: ["Formación Dual Alemana", "Prácticas en empresas reales (3 días/semana)", "Título de Bachiller Técnico en Ventas", "Vinculación directa con el sector experto"],
     icon: GraduationCap,
-    image: bachiImg
+    image: DUAL_BACH_IMG
   }
 ];
 

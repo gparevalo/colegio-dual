@@ -7,7 +7,7 @@ import { Section } from "@/components/ui/section";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { USP_POINTS, ACADEMIC_OFFER, STATS, NEWS_HIGHLIGHTS } from "@/lib/data";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, PlayCircle, FileText, LayoutGrid, BookOpen, Briefcase } from "lucide-react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 
@@ -27,6 +27,14 @@ const staggerContainer = {
   }
 };
 
+// Gallery images
+const GALLERY_IMAGES = [
+  "https://static.wixstatic.com/media/e2a619_536198d18d014e7ea62e6eb275dc398e~mv2.png",
+  "https://static.wixstatic.com/media/e2a619_cac267b654fc4eee9ffaba234e405ffb~mv2.jpg",
+  "https://static.wixstatic.com/media/e2a619_419d60265bfb4b258520a630022541dc~mv2.jpg",
+  "https://static.wixstatic.com/media/e2a619_4a082129c8fa45b4b7dc89855511b7c6~mv2.jpg",
+];
+
 export function Home() {
   return (
     <div className="min-h-screen flex flex-col font-sans">
@@ -34,7 +42,7 @@ export function Home() {
       
       <main className="flex-grow">
         <Hero />
-
+        
         {/* Stats Section - Floating */}
         <div className="border-b bg-background relative z-20 -mt-0 shadow-sm">
           <div className="container-custom">
@@ -139,12 +147,12 @@ export function Home() {
                       <div className="h-10 w-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white mb-4">
                         <offer.icon className="h-5 w-5" />
                       </div>
-                      <h3 className="font-heading text-2xl font-bold text-white mb-2">{offer.title}</h3>
-                      <p className="text-slate-200 text-sm mb-6 line-clamp-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
+                      <h3 className="font-heading text-xl font-bold text-white mb-2">{offer.title}</h3>
+                      <p className="text-slate-200 text-sm mb-6 line-clamp-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
                         {offer.description}
                       </p>
                       <Button variant="secondary" className="w-full font-semibold">
-                        Más Información
+                        Conoce más
                       </Button>
                     </div>
                   </div>
@@ -152,13 +160,106 @@ export function Home() {
               </motion.div>
             ))}
           </motion.div>
+        </Section>
+
+        {/* How and Where We Learn Section */}
+        <Section background="muted" className="overflow-hidden">
+          <div className="container-custom">
+            <div className="text-center mb-16">
+              <h2 className="font-heading text-3xl md:text-5xl font-bold mb-4">¿Cómo y dónde se aprende?</h2>
+              <p className="text-slate-600 max-w-2xl mx-auto">Nuestro programa formativo se extiende más allá del aula tradicional en diversas sedes aliadas.</p>
+            </div>
+
+            <div className="grid lg:grid-cols-2 gap-12 items-center mb-20">
+              <div className="relative aspect-video rounded-3xl overflow-hidden shadow-2xl group">
+                <img 
+                  src="https://static.wixstatic.com/media/e2a619_536198d18d014e7ea62e6eb275dc398e~mv2.png" 
+                  className="w-full h-full object-cover" 
+                  alt="Video thumbnail"
+                />
+                <div className="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/20 transition-all">
+                  <PlayCircle className="w-20 h-20 text-white opacity-80 group-hover:opacity-100 transition-opacity cursor-pointer" />
+                </div>
+              </div>
+
+              <div className="space-y-8">
+                <div className="flex gap-6 items-start">
+                  <div className="bg-primary/10 p-4 rounded-2xl">
+                    <BookOpen className="w-8 h-8 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold mb-2">EGB Superior</h3>
+                    <p className="text-slate-600 mb-4 text-sm leading-relaxed">Aprendizaje basado en proyectos reales e interdisciplinarios.</p>
+                    <Link href="/oferta-academica#egb">
+                      <Button variant="link" className="p-0 text-primary font-bold h-auto">Conoce más <ArrowRight className="ml-1 w-4 h-4" /></Button>
+                    </Link>
+                  </div>
+                </div>
+
+                <div className="flex gap-6 items-start">
+                  <div className="bg-primary/10 p-4 rounded-2xl">
+                    <Briefcase className="w-8 h-8 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold mb-2">Bachillerato</h3>
+                    <p className="text-slate-600 mb-4 text-sm leading-relaxed">Formación Dual con 3 días de práctica empresarial semanal.</p>
+                    <Link href="/oferta-academica#bachillerato">
+                      <Button variant="link" className="p-0 text-primary font-bold h-auto">Conoce más <ArrowRight className="ml-1 w-4 h-4" /></Button>
+                    </Link>
+                  </div>
+                </div>
+
+                <div className="flex gap-6 items-start">
+                  <div className="bg-primary/10 p-4 rounded-2xl">
+                    <FileText className="w-8 h-8 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold mb-2">Código de Convivencia</h3>
+                    <p className="text-slate-600 mb-4 text-sm leading-relaxed">Normas que garantizan un ambiente de respeto y crecimiento.</p>
+                    <Button variant="link" className="p-0 text-primary font-bold h-auto">Conoce más <ArrowRight className="ml-1 w-4 h-4" /></Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="pt-12 border-t border-slate-200">
+              <p className="text-center text-slate-500 font-medium mb-10 uppercase tracking-widest text-xs">Nuestras Sedes y Alianzas</p>
+              <div className="flex flex-wrap justify-center items-center gap-12 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-700">
+                 <span className="text-xl font-bold text-slate-400">ESPOL</span>
+                 <span className="text-xl font-bold text-slate-400">Comité Ceibos</span>
+                 <span className="text-xl font-bold text-slate-400">Teatro Centro de Arte</span>
+              </div>
+            </div>
+          </div>
+        </Section>
+
+        {/* Minimalist Gallery Section */}
+        <Section className="bg-white">
+          <div className="text-center mb-12">
+            <span className="text-primary font-bold uppercase tracking-wider text-sm mb-2 block">Vivir Colegio Dual</span>
+            <h2 className="font-heading text-3xl md:text-5xl font-bold mb-4">Galería de Momentos</h2>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {GALLERY_IMAGES.map((img, i) => (
+              <motion.div 
+                key={i}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="group relative aspect-square overflow-hidden rounded-2xl cursor-pointer"
+              >
+                <img src={img} alt={`Gallery item ${i}`} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                  <LayoutGrid className="text-white w-8 h-8 scale-0 group-hover:scale-100 transition-transform duration-300" />
+                </div>
+              </motion.div>
+            ))}
+          </div>
           
-          <div className="mt-8 text-center md:hidden">
-            <Link href="/oferta-academica">
-              <Button variant="outline" className="w-full">
-                Ver toda la oferta <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-            </Link>
+          <div className="mt-12 text-center">
+            <Button variant="outline" size="lg" className="rounded-full px-8">Explorar Galería Completa</Button>
           </div>
         </Section>
 
