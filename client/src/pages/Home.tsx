@@ -71,45 +71,6 @@ export function Home() {
           </div>
         </div>
 
-        {/* WDA Section - Cerca de Alemania */}
-        <Section background="muted">
-          <div className="container-custom">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div className="order-2 lg:order-1">
-                <span className="text-primary font-bold uppercase tracking-wider text-sm mb-2 block">
-                  Cerca de Alemania!
-                </span>
-                <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6">
-                  Asociación Mundial de Escuelas Alemanas
-                </h2>
-                <p className="text-slate-600 leading-relaxed mb-6">
-                  Formamos parte de la Asociación Mundial de Escuelas Alemanas
-                  en el Extranjero (WDA), que representa a las autoridades
-                  escolares libres y sin fines de lucro de las escuelas alemanas
-                  en el extranjero y combina sus voces individuales en una voz
-                  fuerte.
-                </p>
-                <Button asChild className="font-semibold">
-                  <a
-                    href="https://www.auslandsschulnetz.de/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Más información <ArrowRight className="ml-2 h-4 w-4" />
-                  </a>
-                </Button>
-              </div>
-              <div className="order-1 lg:order-2 flex justify-center">
-                <img
-                  src="https://static.wixstatic.com/media/720b25_50f74d3bc5c74c68a10b48c57e2e3e5e~mv2.png/v1/fill/w_440,h_154,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/wda-logo-print-transparent.png"
-                  alt="WDA Logo - Asociación Mundial de Escuelas Alemanas"
-                  className="max-w-[300px] w-full h-auto"
-                />
-              </div>
-            </div>
-          </div>
-        </Section>
-
         {/* USP / Methodology Section */}
         <Section className="bg-primary text-white">
           <motion.div
@@ -154,6 +115,47 @@ export function Home() {
             ))}
           </motion.div>
         </Section>
+
+
+        {/* WDA Section - Cerca de Alemania */}
+        <Section background="muted">
+          <div className="container-custom">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div className="order-2 lg:order-1">
+                <span className="text-primary font-bold uppercase tracking-wider text-sm mb-2 block">
+                  Cerca de Alemania!
+                </span>
+                <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6">
+                  Asociación Mundial de Escuelas Alemanas
+                </h2>
+                <p className="text-slate-600 leading-relaxed mb-6">
+                  Formamos parte de la Asociación Mundial de Escuelas Alemanas
+                  en el Extranjero (WDA), que representa a las autoridades
+                  escolares libres y sin fines de lucro de las escuelas alemanas
+                  en el extranjero y combina sus voces individuales en una voz
+                  fuerte.
+                </p>
+                <Button asChild className="font-semibold">
+                  <a
+                    href="https://www.auslandsschulnetz.de/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Más información <ArrowRight className="ml-2 h-4 w-4" />
+                  </a>
+                </Button>
+              </div>
+              <div className="order-1 lg:order-2 flex justify-center">
+                <img
+                  src="https://static.wixstatic.com/media/720b25_50f74d3bc5c74c68a10b48c57e2e3e5e~mv2.png/v1/fill/w_440,h_154,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/wda-logo-print-transparent.png"
+                  alt="WDA Logo - Asociación Mundial de Escuelas Alemanas"
+                  className="max-w-[300px] w-full h-auto"
+                />
+              </div>
+            </div>
+          </div>
+        </Section>
+
 
         {/* Academic Offer */}
         <Section>
