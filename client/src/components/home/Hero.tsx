@@ -3,13 +3,15 @@ import { Link } from "wouter";
 import { ArrowRight, CalendarDays } from "lucide-react";
 import heroBg from "@assets/stock_images/group_of_white_high__50262c92.jpg";
 
+const NEW_HERO_IMAGE = "https://static.wixstatic.com/media/e2a619_536198d18d014e7ea62e6eb275dc398e~mv2.png/v1/fill/w_3232,h_1460,al_c,q_95,usm_0.66_1.00_0.01,enc_avif,quality_auto/e2a619_536198d18d014e7ea62e6eb275dc398e~mv2.png";
+
 export function Hero() {
   return (
     <div className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img 
-          src={heroBg} 
+          src={NEW_HERO_IMAGE} 
           alt="Estudiantes en areas verdes" 
           className="w-full h-full object-cover"
         />

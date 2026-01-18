@@ -1,18 +1,26 @@
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
-import { Menu, X, Phone, User } from "lucide-react";
+import { Menu, X, Phone, User, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { NAV_LINKS } from "@/lib/data";
 import { cn } from "@/lib/utils";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [location] = useLocation();
 
-  // Extend nav links manually or modify data.ts. Modifying here for now to include Contacto
-  const extendedLinks = [
-    ...NAV_LINKS,
-    { label: "Contacto", href: "/contacto" }
+  const extendedLinks = [...NAV_LINKS];
+
+  const loginOptions = [
+    { label: "Sistema Académico", href: "http://academico.humboldt.edu.ec/?db=capacitacion" },
+    { label: "Correo Institucional", href: "https://www.office.com/" },
+    { label: "Campus Virtual", href: "https://www.campushumboldtzentrum.com/login/index.php" },
   ];
 
   return (
@@ -55,10 +63,25 @@ export function Navbar() {
 
         {/* Desktop Actions */}
         <div className="hidden lg:flex items-center gap-4">
-          <Button variant="ghost" size="sm" className="hidden xl:flex gap-2">
-            <User className="h-4 w-4" />
-            Portal Padres
-          </Button>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" size="sm" className="gap-2">
+                <User className="h-4 w-4" />
+                Login
+                <ChevronDown className="h-4 w-4" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              {loginOptions.map((option) => (
+                <DropdownMenuItem key={option.href} asChild>
+                  <a href={option.href} target="_blank" rel="noopener noreferrer">
+                    {option.label}
+                  </a>
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+
           <Link href="/admisiones">
             <Button className="font-semibold shadow-md">
               Admisiones
@@ -90,12 +113,21 @@ export function Navbar() {
               </Link>
             ))}
             <div className="pt-4 flex flex-col gap-3">
-              <Button variant="outline" className="w-full justify-start gap-2">
-                <User className="h-4 w-4" />
-                Portal Padres
-              </Button>
+              <div className="px-2 py-1 text-xs font-semibold uppercase text-muted-foreground">Login</div>
+              {loginOptions.map((option) => (
+                <a 
+                  key={option.href} 
+                  href={option.href} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 p-2 text-sm font-medium hover:text-primary"
+                >
+                  <User className="h-4 w-4" />
+                  {option.label}
+                </a>
+              ))}
               <Link href="/admisiones" onClick={() => setIsOpen(false)}>
-                <Button className="w-full">Admisiones</Button>
+                <Button className="w-full mt-2">Admisiones</Button>
               </Link>
             </div>
           </div>

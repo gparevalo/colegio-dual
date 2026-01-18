@@ -5,6 +5,9 @@ import { Briefcase, Lightbulb } from "lucide-react";
 import abpImage from "@assets/stock_images/white_students_colla_4469186a.jpg";
 import dualImage from "@assets/stock_images/white_student_intern_ddaa6f64.jpg";
 
+const PROPUESTA_IMG1 = "https://static.wixstatic.com/media/e2a619_4a082129c8fa45b4b7dc89855511b7c6~mv2.jpg/v1/fit/w_2872,h_1906,q_90,enc_avif,quality_auto/e2a619_4a082129c8fa45b4b7dc89855511b7c6~mv2.jpg";
+const PROPUESTA_IMG2 = "https://static.wixstatic.com/media/e2a619_95d2d6ec66544c16b9dc0213e88b80da~mv2.jpg/v1/fit/w_1579,h_1047,q_90,enc_avif,quality_auto/e2a619_95d2d6ec66544c16b9dc0213e88b80da~mv2.jpg";
+
 export function Propuesta() {
   return (
     <div className="min-h-screen flex flex-col">
@@ -58,7 +61,7 @@ export function Propuesta() {
             </div>
             <div className="bg-slate-100 rounded-2xl overflow-hidden shadow-lg aspect-square">
                <img 
-                 src={abpImage} 
+                 src={PROPUESTA_IMG1} 
                  alt="Estudiantes trabajando en proyectos" 
                  className="w-full h-full object-cover"
                />
@@ -71,7 +74,7 @@ export function Propuesta() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="order-2 md:order-1 bg-white rounded-2xl overflow-hidden shadow-lg aspect-square">
                <img 
-                 src={dualImage} 
+                 src={PROPUESTA_IMG2} 
                  alt="Estudiante en práctica empresarial" 
                  className="w-full h-full object-cover"
                />

@@ -6,6 +6,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Check } from "lucide-react";
 import historicPhoto from "@assets/stock_images/white_students_walki_20b5d332.jpg";
 
+const SOBRE_NOSOTROS_IMAGE = "https://static.wixstatic.com/media/e2a619_cac267b654fc4eee9ffaba234e405ffb~mv2.jpg/v1/fill/w_1616,h_1994,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/e2a619_cac267b654fc4eee9ffaba234e405ffb~mv2.jpg";
+
 export function SobreNosotros() {
   return (
     <div className="min-h-screen flex flex-col">
@@ -35,7 +37,7 @@ export function SobreNosotros() {
             </div>
             <div className="relative h-[400px] rounded-2xl overflow-hidden bg-slate-200 shadow-xl rotate-2 hover:rotate-0 transition-transform duration-500">
                <img 
-                 src={historicPhoto} 
+                 src={SOBRE_NOSOTROS_IMAGE} 
                  alt="Estudiantes en el campus" 
                  className="w-full h-full object-cover"
                />

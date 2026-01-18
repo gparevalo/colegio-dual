@@ -10,6 +10,8 @@ import inicialImg from "@assets/stock_images/white_kindergarten_c_016dad2b.jpg";
 import egbImg from "@assets/stock_images/white_children_playi_d8947c72.jpg";
 import bachiImg from "@assets/stock_images/group_of_white_stude_65d22834.jpg";
 
+const OFERTA_IMAGE = "https://static.wixstatic.com/media/e2a619_419d60265bfb4b258520a630022541dc~mv2.jpg/v1/fit/w_1804,h_1197,q_90,enc_avif,quality_auto/e2a619_419d60265bfb4b258520a630022541dc~mv2.jpg";
+
 const LEVELS = [
   {
     id: "inicial",
@@ -18,7 +20,7 @@ const LEVELS = [
     description: "Un entorno seguro y estimulante donde el juego es el motor del aprendizaje. Fomentamos la autonomía, la motricidad y las primeras habilidades sociales.",
     features: ["Inmersión temprana al inglés", "Estimulación sensorial", "Desarrollo socio-emocional", "Espacios de aprendizaje lúdico"],
     icon: Palette,
-    image: inicialImg
+    image: OFERTA_IMAGE
   },
   {
     id: "egb",
