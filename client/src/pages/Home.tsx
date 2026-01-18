@@ -254,7 +254,7 @@ export function Home() {
             whileInView="visible"
             viewport={{ once: true }}
             variants={staggerContainer}
-            className="grid md:grid-cols-3 gap-8"
+            className="grid md:grid-cols-2 gap-8"
           >
             {ACADEMIC_OFFER.map((offer, i) => (
               <motion.div key={offer.id} variants={fadeIn}>
