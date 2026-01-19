@@ -100,13 +100,15 @@ export function Home() {
               <motion.div key={i} variants={fadeIn}>
                 <Card className="h-full border-none shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                   <CardContent className="pt-6">
-                    <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-6">
-                      <usp.icon className="h-6 w-6" />
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary shrink-0">
+                        <usp.icon className="h-5 w-5" />
+                      </div>
+                      <h3 className="font-heading font-semibold text-lg">
+                        {usp.title}
+                      </h3>
                     </div>
-                    <h3 className="font-heading font-semibold text-xl mb-3">
-                      {usp.title}
-                    </h3>
-                    <p className="text-slate-600 leading-relaxed">
+                    <p className="text-slate-600 leading-relaxed text-sm">
                       {usp.description}
                     </p>
                   </CardContent>
@@ -195,12 +197,14 @@ export function Home() {
                       Normas que garantizan un ambiente de respeto y
                       crecimiento.
                     </p>
-                    <Button
-                      variant="link"
-                      className="p-0 text-primary font-bold h-auto"
-                    >
-                      Conoce más <ArrowRight className="ml-1 w-4 h-4" />
-                    </Button>
+                    <Link href="/oferta-academica">
+                      <Button
+                        variant="link"
+                        className="p-0 text-primary font-bold h-auto"
+                      >
+                        Conoce más <ArrowRight className="ml-1 w-4 h-4" />
+                      </Button>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -235,16 +239,13 @@ export function Home() {
                 Formación integral en cada etapa
               </h2>
             </div>
-            <Link href="/oferta-academica">
+            <Link href="/oferta-academica" className="hidden md:flex">
               <Button
                 variant="outline"
-                asChild
-                className="hidden md:flex group"
+                className="group flex items-center"
               >
-                <a className="flex items-center">
-                  Ver toda la oferta{" "}
-                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                </a>
+                Ver toda la oferta{" "}
+                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Button>
             </Link>
           </motion.div>
@@ -277,15 +278,9 @@ export function Home() {
                       <p className="text-slate-200 text-sm mb-6 line-clamp-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
                         {offer.description}
                       </p>
-                      <Button
-                        variant="secondary"
-                        asChild
-                        className="w-full font-semibold"
-                      >
-                        <a className="flex items-center justify-center">
-                          Conoce más
-                        </a>
-                      </Button>
+                      <span className="inline-flex items-center justify-center w-full h-10 px-4 py-2 bg-secondary text-secondary-foreground rounded-md font-semibold text-sm">
+                        Conoce más
+                      </span>
                     </div>
                   </div>
                 </Link>
@@ -382,17 +377,9 @@ export function Home() {
             <h2 className="font-heading text-3xl font-bold">
               Noticias Recientes
             </h2>
-            <Link href="/noticias">
-              <Button
-                variant="link"
-                asChild
-                className="text-primary font-medium hover:underline flex items-center gap-1 group"
-              >
-                <a className="flex items-center gap-1">
-                  Ver todas{" "}
-                  <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                </a>
-              </Button>
+            <Link href="/noticias" className="text-primary font-medium hover:underline flex items-center gap-1 group">
+              Ver todas{" "}
+              <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
@@ -454,20 +441,20 @@ export function Home() {
                 <Button
                   size="lg"
                   variant="secondary"
-                  asChild
                   className="h-14 px-8 text-lg shadow-xl hover:scale-105 transition-transform"
                 >
-                  <a className="flex items-center justify-center">
-                    Iniciar Admisión
-                  </a>
+                  Iniciar Admisión
                 </Button>
               </Link>
               <Button
+                asChild
                 size="lg"
                 variant="outline"
                 className="h-14 px-8 text-lg bg-transparent border-white text-white hover:bg-white hover:text-primary"
               >
-                Contactar Asesor
+                <a href="https://wa.me/593995121024" target="_blank" rel="noopener noreferrer">
+                  Contactar Asesor
+                </a>
               </Button>
             </div>
           </motion.div>
