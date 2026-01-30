@@ -86,7 +86,7 @@ export function Admisiones() {
           
           <div className="mt-16 text-center">
             <Button asChild size="lg" className="h-14 px-10 text-lg shadow-xl hover:scale-105 transition-transform">
-              <a href="https://wa.me/593995121024?text=Hola%2C%20me%20gustar%C3%ADa%20informaci%C3%B3n%20sobre%20el%20proceso%20de%20admisi%C3%B3n" target="_blank" rel="noopener noreferrer">
+              <a href="https://wa.me/593984215308?text=Hola%2C%20me%20gustar%C3%ADa%20informaci%C3%B3n%20sobre%20el%20proceso%20de%20admisi%C3%B3n" target="_blank" rel="noopener noreferrer">
                 Llenar Formulario de Solicitud
               </a>
             </Button>

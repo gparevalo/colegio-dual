@@ -1,17 +1,20 @@
-import { useState } from "react";
-import { Link, useLocation } from "wouter";
-import { Menu, X, Phone, User, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { NAV_LINKS } from "@/lib/data";
-import { cn } from "@/lib/utils";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { NAV_LINKS } from "@/lib/data";
+import { cn } from "@/lib/utils";
+import { ChevronDown, Menu, User, X } from "lucide-react";
+import { useState } from "react";
+import { Link, useLocation } from "wouter";
 
-const LOGO_URL = "https://static.wixstatic.com/media/e2a619_9b518fdc457d4856af0d8f7b13c6760a~mv2.png/v1/crop/x_0,y_825,w_3000,h_1350/fill/w_440,h_198,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Logo%20Duale%20Schule%20sin%20hz_Mesa%20de%20trabajo%201_Mesa%20de%20trabajo%201_edited.png";
+import logo from "@assets/stock_images/CO-BRANDING DS COLOR.png";
+
+const LOGO_URL =
+  "https://static.wixstatic.com/media/e2a619_9b518fdc457d4856af0d8f7b13c6760a~mv2.png/v1/crop/x_0,y_825,w_3000,h_1350/fill/w_440,h_198,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Logo%20Duale%20Schule%20sin%20hz_Mesa%20de%20trabajo%201_Mesa%20de%20trabajo%201_edited.png";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,9 +23,15 @@ export function Navbar() {
   const extendedLinks = [...NAV_LINKS];
 
   const loginOptions = [
-    { label: "Sistema Académico", href: "http://academico.humboldt.edu.ec/?db=capacitacion" },
+    {
+      label: "Sistema Académico",
+      href: "http://academico.humboldt.edu.ec/?db=capacitacion",
+    },
     { label: "Correo Institucional", href: "https://www.office.com/" },
-    { label: "Campus Virtual", href: "https://www.campushumboldtzentrum.com/login/index.php" },
+    {
+      label: "Campus Virtual",
+      href: "https://www.campushumboldtzentrum.com/login/index.php",
+    },
   ];
 
   return (
@@ -30,10 +39,10 @@ export function Navbar() {
       <div className="container-custom flex h-20 items-center justify-between">
         {/* Logo */}
         <Link href="/">
-          <img 
-            src={LOGO_URL} 
-            alt="Colegio Dual Logo" 
-            className="h-12 w-auto object-contain cursor-pointer"
+          <img
+            src={logo}
+            alt="Colegio Dual Logo"
+            className="h-24 w-auto object-contain cursor-pointer"
           />
         </Link>
 
@@ -47,7 +56,7 @@ export function Navbar() {
                 "text-sm font-medium transition-colors hover:text-primary",
                 location === link.href
                   ? "text-primary font-semibold"
-                  : "text-muted-foreground"
+                  : "text-muted-foreground",
               )}
             >
               {link.label}
@@ -59,16 +68,32 @@ export function Navbar() {
         <div className="hidden lg:flex items-center gap-4">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="sm" className="gap-2 hover:bg-white transition-colors">
+              <Button
+                variant="ghost"
+                size="sm"
+                className="gap-2 hover:bg-white transition-colors"
+              >
                 <User className="h-4 w-4" />
                 Login
                 <ChevronDown className="h-4 w-4" />
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="bg-white border shadow-md">
+            <DropdownMenuContent
+              align="end"
+              className="bg-white border shadow-md"
+            >
               {loginOptions.map((option) => (
-                <DropdownMenuItem key={option.href} asChild className="focus:bg-slate-50">
-                  <a href={option.href} target="_blank" rel="noopener noreferrer" className="cursor-pointer">
+                <DropdownMenuItem
+                  key={option.href}
+                  asChild
+                  className="focus:bg-slate-50"
+                >
+                  <a
+                    href={option.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="cursor-pointer"
+                  >
                     {option.label}
                   </a>
                 </DropdownMenuItem>
@@ -77,9 +102,7 @@ export function Navbar() {
           </DropdownMenu>
 
           <Link href="/admisiones">
-            <Button className="font-semibold shadow-md">
-              Admisiones
-            </Button>
+            <Button className="font-semibold shadow-md">Admisiones</Button>
           </Link>
         </div>
 
@@ -107,12 +130,14 @@ export function Navbar() {
               </Link>
             ))}
             <div className="pt-4 flex flex-col gap-3">
-              <div className="px-2 py-1 text-xs font-semibold uppercase text-muted-foreground">Login</div>
+              <div className="px-2 py-1 text-xs font-semibold uppercase text-muted-foreground">
+                Login
+              </div>
               {loginOptions.map((option) => (
-                <a 
-                  key={option.href} 
-                  href={option.href} 
-                  target="_blank" 
+                <a
+                  key={option.href}
+                  href={option.href}
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 p-2 text-sm font-medium hover:text-primary"
                 >

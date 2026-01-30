@@ -452,7 +452,7 @@ export function Home() {
                 variant="outline"
                 className="h-14 px-8 text-lg bg-transparent border-white text-white hover:bg-white hover:text-primary"
               >
-                <a href="https://wa.me/593995121024" target="_blank" rel="noopener noreferrer">
+                <a href="https://wa.me/593984215308" target="_blank" rel="noopener noreferrer">
                   Contactar Asesor
                 </a>
               </Button>

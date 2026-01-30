@@ -87,7 +87,7 @@ export function Contacto() {
                       <Phone className="h-6 w-6 text-primary shrink-0 mt-1" />
                       <div>
                         <h3 className="font-bold text-slate-900 mb-1">Teléfonos</h3>
-                        <p className="text-slate-600">+593 99 512 1024</p>
+                        <p className="text-slate-600">+593 98 421 5308</p>
                         <p className="text-sm text-slate-500 mt-1">Atención Lunes a Viernes</p>
                       </div>
                     </CardContent>

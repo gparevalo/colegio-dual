@@ -49,7 +49,7 @@ export function Hero() {
             </Link>
             
             <Button asChild variant="outline" size="lg" className="h-14 px-8 text-lg font-medium bg-white/5 border-white/20 text-white hover:bg-white/10 backdrop-blur-sm">
-              <a href="https://wa.me/593995121024" target="_blank" rel="noopener noreferrer">
+              <a href="https://wa.me/593984215308" target="_blank" rel="noopener noreferrer">
                 <CalendarDays className="mr-2 h-5 w-5" />
                 Agendar Visita
               </a>
