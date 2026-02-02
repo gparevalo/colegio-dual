@@ -1,23 +1,28 @@
-import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { Navbar } from "@/components/layout/Navbar";
 import { Section } from "@/components/ui/section";
 import { Briefcase, Lightbulb } from "lucide-react";
-import abpImage from "@assets/stock_images/white_students_colla_4469186a.jpg";
-import dualImage from "@assets/stock_images/white_student_intern_ddaa6f64.jpg";
 
-const PROPUESTA_IMG1 = "https://static.wixstatic.com/media/e2a619_4a082129c8fa45b4b7dc89855511b7c6~mv2.jpg/v1/fit/w_2872,h_1906,q_90,enc_avif,quality_auto/e2a619_4a082129c8fa45b4b7dc89855511b7c6~mv2.jpg";
-const PROPUESTA_IMG2 = "https://static.wixstatic.com/media/e2a619_95d2d6ec66544c16b9dc0213e88b80da~mv2.jpg/v1/fit/w_1579,h_1047,q_90,enc_avif,quality_auto/e2a619_95d2d6ec66544c16b9dc0213e88b80da~mv2.jpg";
+const PROPUESTA_IMG1 =
+  "https://static.wixstatic.com/media/e2a619_4a082129c8fa45b4b7dc89855511b7c6~mv2.jpg/v1/fit/w_2872,h_1906,q_90,enc_avif,quality_auto/e2a619_4a082129c8fa45b4b7dc89855511b7c6~mv2.jpg";
+const PROPUESTA_IMG2 =
+  "https://static.wixstatic.com/media/e2a619_f16f3516457d481f850f99751ef4f28c~mv2.jpg/v1/fill/w_1056,h_694,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/AFPH200(1).jpg";
 
 export function Propuesta() {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
-      
+
       <div className="bg-slate-900 text-white py-20">
         <div className="container-custom text-center">
-          <h1 className="font-heading text-4xl md:text-5xl font-bold mb-6">Nuestra Propuesta Educativa</h1>
+          <h1 className="font-heading text-4xl md:text-5xl font-bold mb-6">
+            Nuestra propuesta de formación
+          </h1>
           <p className="text-xl text-slate-300 max-w-2xl mx-auto">
-            Innovamos con metodologías que conectan el conocimiento académico con la realidad práctica.
+            Somos parte de la Red de Colegios CRISFE, una comunidad educativa
+            que forma estudiantes competentes, solidarios, incluyentes e
+            íntegros, con una visión humanista, crítica e inclusiva, donde el
+            aprendizaje es activo, significativo y conectado con la vida real.
           </p>
         </div>
       </div>
@@ -31,40 +36,59 @@ export function Propuesta() {
                 <Lightbulb className="h-4 w-4" />
                 Metodología Activa
               </div>
-              <h2 className="font-heading text-3xl font-bold mb-6">Aprendizaje Basado en Proyectos (ABP)</h2>
+              <h2 className="font-heading text-3xl font-bold mb-6">
+                Aprendizaje Basado en Proyectos (ABP)
+              </h2>
               <p className="text-lg text-slate-600 mb-6 leading-relaxed">
-                El ABP es el corazón de nuestra propuesta pedagógica. Los estudiantes no solo memorizan conceptos, sino que los aplican para resolver problemas del mundo real.
+                El ABP es el corazón de nuestra propuesta pedagógica. Los
+                estudiantes no solo memorizan conceptos, sino que los aplican
+                para resolver problemas del mundo real.
               </p>
               <ul className="space-y-4">
                 <li className="flex gap-4">
-                  <div className="h-8 w-8 rounded-full bg-slate-100 flex items-center justify-center font-bold text-slate-600 shrink-0">1</div>
+                  <div className="h-8 w-8 rounded-full bg-slate-100 flex items-center justify-center font-bold text-slate-600 shrink-0">
+                    1
+                  </div>
                   <div>
                     <h4 className="font-bold">Investigación</h4>
-                    <p className="text-sm text-slate-500">Los alumnos indagan sobre un tema relevante o problemática.</p>
+                    <p className="text-sm text-slate-500">
+                      Los alumnos indagan sobre un tema relevante o
+                      problemática.
+                    </p>
                   </div>
                 </li>
                 <li className="flex gap-4">
-                  <div className="h-8 w-8 rounded-full bg-slate-100 flex items-center justify-center font-bold text-slate-600 shrink-0">2</div>
+                  <div className="h-8 w-8 rounded-full bg-slate-100 flex items-center justify-center font-bold text-slate-600 shrink-0">
+                    2
+                  </div>
                   <div>
                     <h4 className="font-bold">Creación</h4>
-                    <p className="text-sm text-slate-500">Diseñan y construyen una solución tangible (producto, campaña, modelo).</p>
+                    <p className="text-sm text-slate-500">
+                      Diseñan y construyen una solución tangible (producto,
+                      campaña, modelo).
+                    </p>
                   </div>
                 </li>
                 <li className="flex gap-4">
-                  <div className="h-8 w-8 rounded-full bg-slate-100 flex items-center justify-center font-bold text-slate-600 shrink-0">3</div>
+                  <div className="h-8 w-8 rounded-full bg-slate-100 flex items-center justify-center font-bold text-slate-600 shrink-0">
+                    3
+                  </div>
                   <div>
                     <h4 className="font-bold">Presentación</h4>
-                    <p className="text-sm text-slate-500">Exponen sus resultados ante la comunidad, desarrollando oratoria y confianza.</p>
+                    <p className="text-sm text-slate-500">
+                      Exponen sus resultados ante la comunidad, desarrollando
+                      oratoria y confianza.
+                    </p>
                   </div>
                 </li>
               </ul>
             </div>
             <div className="bg-slate-100 rounded-2xl overflow-hidden shadow-lg aspect-square">
-               <img 
-                 src={PROPUESTA_IMG1} 
-                 alt="Estudiantes trabajando en proyectos" 
-                 className="w-full h-full object-cover"
-               />
+              <img
+                src={PROPUESTA_IMG1}
+                alt="Estudiantes trabajando en proyectos"
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
         </Section>
@@ -73,30 +97,42 @@ export function Propuesta() {
         <Section background="muted" id="dual">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="order-2 md:order-1 bg-white rounded-2xl overflow-hidden shadow-lg aspect-square">
-               <img 
-                 src={PROPUESTA_IMG2} 
-                 alt="Estudiante en práctica empresarial" 
-                 className="w-full h-full object-cover"
-               />
+              <img
+                src={PROPUESTA_IMG2}
+                alt="Estudiante en práctica empresarial"
+                className="w-full h-full object-cover"
+              />
             </div>
             <div className="order-1 md:order-2">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary font-medium text-sm mb-4">
                 <Briefcase className="h-4 w-4" />
                 Modelo Alemán
               </div>
-              <h2 className="font-heading text-3xl font-bold mb-6">Formación Dual</h2>
+              <h2 className="font-heading text-3xl font-bold mb-6">
+                Formación Dual
+              </h2>
               <p className="text-lg text-slate-600 mb-6 leading-relaxed">
-                Únicos en la región con el verdadero sistema dual alemán. Los estudiantes de bachillerato dividen su tiempo entre el colegio y empresas formadoras.
+                Únicos en la región con el verdadero sistema dual alemán. Los
+                estudiantes de bachillerato dividen su tiempo entre el colegio y
+                empresas formadoras.
               </p>
-              
+
               <div className="grid grid-cols-2 gap-6 mb-8">
                 <div className="bg-white p-4 rounded-lg shadow-sm">
-                  <h4 className="font-heading font-bold text-primary text-xl mb-1">60%</h4>
-                  <span className="text-sm text-slate-500">Teoría en el Colegio</span>
+                  <h4 className="font-heading font-bold text-primary text-xl mb-1">
+                    60%
+                  </h4>
+                  <span className="text-sm text-slate-500">
+                    Teoría en el Colegio
+                  </span>
                 </div>
                 <div className="bg-white p-4 rounded-lg shadow-sm">
-                  <h4 className="font-heading font-bold text-primary text-xl mb-1">40%</h4>
-                  <span className="text-sm text-slate-500">Práctica en Empresa</span>
+                  <h4 className="font-heading font-bold text-primary text-xl mb-1">
+                    40%
+                  </h4>
+                  <span className="text-sm text-slate-500">
+                    Práctica en Empresa
+                  </span>
                 </div>
               </div>
 
@@ -107,6 +143,78 @@ export function Propuesta() {
                 <li>Certificación reconocida por cámaras de comercio.</li>
                 <li>Mayor facilidad para elegir carrera universitaria.</li>
               </ul>
+            </div>
+          </div>
+        </Section>
+
+        {/* Pilares Section */}
+        <Section>
+          <div className="container-custom">
+            <h2 className="font-heading text-3xl md:text-4xl font-bold text-center mb-12">
+              Nuestra propuesta integra dos pilares complementarios
+            </h2>
+
+            <div className="grid md:grid-cols-2 gap-10">
+              {/* EducARTE */}
+              <div className="bg-white rounded-2xl shadow-sm p-8 border">
+                <h3 className="font-heading text-2xl font-bold mb-4">
+                  1. EducARTE
+                </h3>
+                <p className="text-slate-600 mb-6 leading-relaxed">
+                  Estrategias pedagógicas basadas en evidencia. Modelo
+                  socio-constructivista, con enfoque humanista e inclusivo,
+                  implementado mediante metodologías activas.
+                </p>
+
+                <h4 className="font-semibold mb-2">¿Cómo lo hacemos?</h4>
+                <ul className="space-y-2 text-slate-600 text-sm">
+                  <li>
+                    • Aprendizaje interdisciplinario y contextualizado (ABP).
+                  </li>
+                  <li>• Metodologías activas y pensamiento crítico.</li>
+                  <li>
+                    • Autonomía, colaboración y protagonismo del estudiante.
+                  </li>
+                </ul>
+
+                <h4 className="font-semibold mt-6 mb-2">Diferenciadores</h4>
+                <ul className="grid grid-cols-2 gap-2 text-slate-600 text-sm">
+                  <li>• Educación personalizada</li>
+                  <li>• Valores en el currículo</li>
+                  <li>• Currículo trilingüe</li>
+                  <li>• Certificaciones internacionales</li>
+                  <li>• Science of Reading & Math</li>
+                  <li>• Ludobiblioteca activa</li>
+                </ul>
+              </div>
+
+              {/* CuidARte */}
+              <div className="bg-slate-50 rounded-2xl shadow-sm p-8 border">
+                <h3 className="font-heading text-2xl font-bold mb-4">
+                  2. CuidARte
+                </h3>
+                <p className="text-slate-600 mb-6 leading-relaxed">
+                  El bienestar es un prerrequisito del aprendizaje. Se
+                  fundamenta en el autocuidado, el cuidado de otros y el cuidado
+                  del entorno.
+                </p>
+
+                <h4 className="font-semibold mb-2">Enfoques</h4>
+                <ul className="space-y-2 text-slate-600 text-sm">
+                  <li>
+                    • Biopsicosocial: dimensión biológica, psicológica y social.
+                  </li>
+                  <li>
+                    • Ecológico: bienestar en todos los entornos del estudiante.
+                  </li>
+                </ul>
+
+                <h4 className="font-semibold mt-6 mb-2">Procesos</h4>
+                <ul className="space-y-2 text-slate-600 text-sm">
+                  <li>• Aprendizaje socioemocional continuo.</li>
+                  <li>• Salud integral y hábitos de vida saludables.</li>
+                </ul>
+              </div>
             </div>
           </div>
         </Section>

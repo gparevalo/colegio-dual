@@ -216,7 +216,7 @@ export function SobreNosotros() {
                   <h3 className="text-2xl font-bold mb-2">
                     Valores integrados al currículo
                   </h3>
-                  <p className="text-slate-600 mb-4 text-sm leading-relaxed">
+                  <p className="text-slate-600  text-sm leading-relaxed">
                     Formación integral con valores como eje transversal de la
                     vida escolar.
                   </p>
@@ -231,7 +231,7 @@ export function SobreNosotros() {
                   <h3 className="text-2xl font-bold mb-2">
                     Currículo trilingüe
                   </h3>
-                  <p className="text-slate-600 mb-4 text-sm leading-relaxed">
+                  <p className="text-slate-600  text-sm leading-relaxed">
                     50% inglés, 30% alemán y 20% español, con proyección hacia
                     certificaciones internacionales.
                   </p>

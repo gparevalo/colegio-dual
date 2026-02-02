@@ -119,11 +119,7 @@ export function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="h-5 w-5 text-primary shrink-0" />
-                <span>admisiones@humboldt.edu.ec</span>
-              </li>
-              <li className="flex items-center gap-3">
-                <Mail className="h-5 w-5 text-primary shrink-0" />
-                <span>cobranzas@humboldt.edu.ec</span>
+                <span>francesca.espinosa@crisfe.org</span>
               </li>
             </ul>
           </div>

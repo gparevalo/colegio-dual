@@ -8,7 +8,14 @@ import { Card, CardContent } from "@/components/ui/card";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 import { useToast } from "@/hooks/use-toast";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
 import contactBg from "@assets/stock_images/modern_classroom_wit_954dcd3a.jpg";
@@ -40,7 +47,8 @@ export function Contacto() {
     console.log(values);
     toast({
       title: "Mensaje enviado",
-      description: "Gracias por contactarnos. Nos pondremos en contacto pronto.",
+      description:
+        "Gracias por contactarnos. Nos pondremos en contacto pronto.",
     });
     form.reset();
   }
@@ -48,11 +56,11 @@ export function Contacto() {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
-      
+
       <div className="bg-slate-900 text-white py-16 relative overflow-hidden">
-        <img 
-          src={contactBg} 
-          alt="Contacto" 
+        <img
+          src={contactBg}
+          alt="Contacto"
           className="absolute inset-0 w-full h-full object-cover opacity-20"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-90" />
@@ -70,25 +78,35 @@ export function Contacto() {
             {/* Contact Info */}
             <div className="space-y-8">
               <div>
-                <h2 className="font-heading text-2xl font-bold mb-6 text-slate-900">Información de Contacto</h2>
+                <h2 className="font-heading text-2xl font-bold mb-6 text-slate-900">
+                  Información de Contacto
+                </h2>
                 <div className="grid gap-6">
                   <Card className="border-none shadow-sm bg-slate-50">
                     <CardContent className="flex items-start gap-4 p-6">
                       <MapPin className="h-6 w-6 text-primary shrink-0 mt-1" />
                       <div>
-                        <h3 className="font-bold text-slate-900 mb-1">Ubicación</h3>
-                        <p className="text-slate-600">Campus ESPOL Km 30.5 Vía Perimetral, Quito - Ecuador</p>
+                        <h3 className="font-bold text-slate-900 mb-1">
+                          Ubicación
+                        </h3>
+                        <p className="text-slate-600">
+                          Campus ESPOL Km 30.5 Vía Perimetral, Quito - Ecuador
+                        </p>
                       </div>
                     </CardContent>
                   </Card>
-                  
+
                   <Card className="border-none shadow-sm bg-slate-50">
                     <CardContent className="flex items-start gap-4 p-6">
                       <Phone className="h-6 w-6 text-primary shrink-0 mt-1" />
                       <div>
-                        <h3 className="font-bold text-slate-900 mb-1">Teléfonos</h3>
+                        <h3 className="font-bold text-slate-900 mb-1">
+                          Teléfonos
+                        </h3>
                         <p className="text-slate-600">+593 98 421 5308</p>
-                        <p className="text-sm text-slate-500 mt-1">Atención Lunes a Viernes</p>
+                        <p className="text-sm text-slate-500 mt-1">
+                          Atención Lunes a Viernes
+                        </p>
                       </div>
                     </CardContent>
                   </Card>
@@ -97,9 +115,12 @@ export function Contacto() {
                     <CardContent className="flex items-start gap-4 p-6">
                       <Mail className="h-6 w-6 text-primary shrink-0 mt-1" />
                       <div>
-                        <h3 className="font-bold text-slate-900 mb-1">Correo Electrónico</h3>
-                        <p className="text-slate-600">admisiones@humboldt.edu.ec</p>
-                        <p className="text-slate-600">cobranzas@humboldt.edu.ec</p>
+                        <h3 className="font-bold text-slate-900 mb-1">
+                          Correo Electrónico
+                        </h3>
+                        <p className="text-slate-600">
+                          francesca.espinosa@crisfe.org
+                        </p>
                       </div>
                     </CardContent>
                   </Card>
@@ -108,26 +129,31 @@ export function Contacto() {
 
               {/* Map Placeholder */}
               <div className="h-64 bg-slate-200 rounded-xl overflow-hidden relative shadow-md">
-                 <img 
-                   src={mapBg} 
-                   alt="Ubicación en mapa" 
-                   className="w-full h-full object-cover"
-                 />
-                 <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                   <div className="bg-white/90 backdrop-blur-sm px-4 py-2 rounded-lg shadow-lg text-primary font-bold text-sm flex items-center gap-2">
-                     <MapPin className="h-4 w-4" />
-                     Ver en Google Maps
-                   </div>
-                 </div>
+                <img
+                  src={mapBg}
+                  alt="Ubicación en mapa"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                  <div className="bg-white/90 backdrop-blur-sm px-4 py-2 rounded-lg shadow-lg text-primary font-bold text-sm flex items-center gap-2">
+                    <MapPin className="h-4 w-4" />
+                    Ver en Google Maps
+                  </div>
+                </div>
               </div>
             </div>
 
             {/* Contact Form */}
             <div className="bg-white p-8 rounded-2xl shadow-lg border border-slate-100">
-              <h2 className="font-heading text-2xl font-bold mb-6 text-slate-900">Envíanos un mensaje</h2>
-              
+              <h2 className="font-heading text-2xl font-bold mb-6 text-slate-900">
+                Envíanos un mensaje
+              </h2>
+
               <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                <form
+                  onSubmit={form.handleSubmit(onSubmit)}
+                  className="space-y-6"
+                >
                   <div className="grid md:grid-cols-2 gap-4">
                     <FormField
                       control={form.control}
@@ -156,7 +182,7 @@ export function Contacto() {
                       )}
                     />
                   </div>
-                  
+
                   <FormField
                     control={form.control}
                     name="email"
@@ -178,7 +204,10 @@ export function Contacto() {
                       <FormItem>
                         <FormLabel>Asunto</FormLabel>
                         <FormControl>
-                          <Input placeholder="Información sobre..." {...field} />
+                          <Input
+                            placeholder="Información sobre..."
+                            {...field}
+                          />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -192,7 +221,11 @@ export function Contacto() {
                       <FormItem>
                         <FormLabel>Mensaje</FormLabel>
                         <FormControl>
-                          <Textarea placeholder="Escribe tu mensaje aquí..." className="min-h-[120px]" {...field} />
+                          <Textarea
+                            placeholder="Escribe tu mensaje aquí..."
+                            className="min-h-[120px]"
+                            {...field}
+                          />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
