@@ -596,10 +596,10 @@ export function Home() {
           <div className="grid md:grid-cols-3 gap-8">
             {posts.length > 0 ? (
               posts.map((post) => (
-                <Card
-                  key={post.id}
-                  className="overflow-hidden hover:shadow-lg transition-shadow border-none group cursor-pointer h-full flex flex-col"
-                >
+                <Link key={post.id} href={`/noticias/${post.link.split('/').filter(Boolean).pop()}`}>
+                  <Card
+                    className="overflow-hidden hover:shadow-lg transition-shadow border-none group cursor-pointer h-full flex flex-col"
+                  >
                   <div className="aspect-video relative bg-slate-200 overflow-hidden">
                     <img
                       src={post._embedded?.['wp:featuredmedia']?.[0]?.source_url || NEWS_HIGHLIGHTS[0].image}
@@ -627,8 +627,9 @@ export function Home() {
                     </div>
                   </CardContent>
                 </Card>
-              ))
-            ) : (
+              </Link>
+            ))
+          ) : (
               NEWS_HIGHLIGHTS.map((news) => (
                 <Card
                   key={news.id}

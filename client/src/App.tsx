@@ -12,6 +12,7 @@ import { Noticias } from "@/pages/Noticias";
 import { SobreNosotros } from "@/pages/SobreNosotros";
 import { Contacto } from "@/pages/Contacto";
 import { Gallery } from "@/pages/Gallery";
+import { PostDetail } from "@/pages/PostDetail";
 import { Navbar } from "@/components/layout/Navbar";
 
 function Router() {
@@ -32,6 +33,7 @@ function Router() {
             <Route path="/oferta-academica" component={OfertaAcademica} />
             <Route path="/propuesta" component={Propuesta} />
             <Route path="/noticias" component={Noticias} />
+            <Route path="/noticias/:slug" component={PostDetail} />
             <Route path="/sobre-nosotros" component={SobreNosotros} />
             <Route path="/contacto" component={Contacto} />
             <Route path="/galeria" component={Gallery} />

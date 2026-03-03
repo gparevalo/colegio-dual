@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { NEWS_HIGHLIGHTS } from "@/lib/data";
 import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
+import { Link } from "wouter";
 
 interface WPPost {
   id: number;
@@ -79,7 +80,8 @@ export function Noticias() {
               ))
             ) : filteredPosts.length > 0 ? (
               filteredPosts.map((post) => (
-                <Card key={post.id} className="overflow-hidden hover:shadow-lg transition-shadow border-none group cursor-pointer h-full flex flex-col">
+                <Link key={post.id} href={`/noticias/${post.link.split('/').filter(Boolean).pop()}`}>
+                  <Card className="overflow-hidden hover:shadow-lg transition-shadow border-none group cursor-pointer h-full flex flex-col">
                   <div className="aspect-video relative bg-slate-200 overflow-hidden">
                     <img 
                       src={post._embedded?.['wp:featuredmedia']?.[0]?.source_url || "https://static.wixstatic.com/media/e2a619_536198d18d014e7ea62e6eb275dc398e~mv2.png"} 
@@ -109,6 +111,7 @@ export function Noticias() {
                     </div>
                   </CardContent>
                 </Card>
+                </Link>
               ))
             ) : (
               <div className="col-span-full text-center py-20 text-slate-400">
