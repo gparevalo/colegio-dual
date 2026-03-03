@@ -46,6 +46,10 @@ async function buildAll() {
     recursive: true,
   });
 
+  // Copy institutional logo to theme assets as well for direct PHP use
+  const logoDest = path.join(wpThemePath, "logo.png");
+  await fs.promises.copyFile(path.resolve("attached_assets/logo.png"), logoDest);
+
   console.log("generating deployment package in deploy/wp-theme-colegio...");
   const deployPath = path.resolve("deploy/wp-theme-colegio");
   await fs.promises.mkdir(deployPath, { recursive: true });
