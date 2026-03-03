@@ -7,19 +7,64 @@ const PROPUESTA_IMG1 =
 const PROPUESTA_IMG2 =
   "https://static.wixstatic.com/media/e2a619_f16f3516457d481f850f99751ef4f28c~mv2.jpg/v1/fill/w_1056,h_694,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/AFPH200(1).jpg";
 
+import { useWordPress } from "@/hooks/use-wordpress";
+
 export function Propuesta() {
+  const { data: wpPage } = useWordPress("propuesta");
+
+  // Fallbacks
+  const hero = {
+    titulo: wpPage?.acf?.propuesta_hero?.titulo || "Nuestra propuesta de formación",
+    descripcion: wpPage?.acf?.propuesta_hero?.descripcion || "Somos parte de la Red de Colegios CRISFE, una comunidad educativa que forma estudiantes competentes, solidarios, incluyentes e íntegros, con una visión humanista, crítica e inclusiva, donde el aprendizaje es activo, significativo y conectado con la vida real."
+  };
+
+  const abp = {
+    titulo: wpPage?.acf?.propuesta_abp?.titulo || "Aprendizaje Basado en Proyectos (ABP)",
+    descripcion: wpPage?.acf?.propuesta_abp?.descripcion || "El ABP es el corazón de nuestra propuesta pedagógica. Los estudiantes no solo memorizan conceptos, sino que los aplican para resolver problemas del mundo real.",
+    imagen: wpPage?.acf?.propuesta_abp?.imagen || PROPUESTA_IMG1,
+    pasos: wpPage?.acf?.propuesta_abp?.pasos || [
+      { titulo: "Investigación", descripcion: "Los alumnos indagan sobre un tema relevante o problemática." },
+      { titulo: "Creación", descripcion: "Diseñan y construyen una solución tangible (producto, campaña, modelo)." },
+      { titulo: "Presentación", descripcion: "Exponen sus resultados ante la comunidad, desarrollando oratoria y confianza." }
+    ]
+  };
+
+  const dual = {
+    titulo: wpPage?.acf?.propuesta_dual?.titulo || "Formación Dual",
+    descripcion: wpPage?.acf?.propuesta_dual?.descripcion || "Únicos en la región con el verdadero sistema dual alemán. Los estudiantes de bachillerato dividen su tiempo entre el colegio y empresas formadoras.",
+    imagen: wpPage?.acf?.propuesta_dual?.imagen || PROPUESTA_IMG2,
+    beneficios: wpPage?.acf?.propuesta_dual?.beneficios?.map((b: any) => b.texto) || [
+      "Primera experiencia laboral real antes de graduarse.",
+      "Desarrollo de responsabilidad y ética profesional.",
+      "Certificación reconocida por cámaras de comercio.",
+      "Mayor facilidad para elegir carrera universitaria."
+    ]
+  };
+
+  const pilares = wpPage?.acf?.propuesta_pilares ? {
+    pilar1: {
+      titulo: "1. EducARTE",
+      descripcion: wpPage.acf.propuesta_pilares.pilar1.descripcion,
+      items_como: wpPage.acf.propuesta_pilares.pilar1.items_como?.map((i: any) => i.texto) || [],
+      diferenciadores: wpPage.acf.propuesta_pilares.pilar1.diferenciadores?.map((i: any) => i.texto) || []
+    },
+    pilar2: {
+      titulo: "2. CuidARte",
+      descripcion: wpPage.acf.propuesta_pilares.pilar2.descripcion,
+      enfoques: wpPage.acf.propuesta_pilares.pilar2.enfoques?.map((i: any) => i.texto) || [],
+      procesos: wpPage.acf.propuesta_pilares.pilar2.procesos?.map((i: any) => i.texto) || []
+    }
+  } : null;
+
   return (
     <div className="min-h-screen flex flex-col">
       <div className="bg-slate-900 text-white py-20">
         <div className="container-custom text-center">
           <h1 className="font-heading text-4xl md:text-5xl font-bold mb-6">
-            Nuestra propuesta de formación
+            {hero.titulo}
           </h1>
           <p className="text-xl text-slate-300 max-w-2xl mx-auto">
-            Somos parte de la Red de Colegios CRISFE, una comunidad educativa
-            que forma estudiantes competentes, solidarios, incluyentes e
-            íntegros, con una visión humanista, crítica e inclusiva, donde el
-            aprendizaje es activo, significativo y conectado con la vida real.
+            {hero.descripcion}
           </p>
         </div>
       </div>
@@ -34,56 +79,31 @@ export function Propuesta() {
                 Metodología Activa
               </div>
               <h2 className="font-heading text-3xl font-bold mb-6">
-                Aprendizaje Basado en Proyectos (ABP)
+                {abp.titulo}
               </h2>
               <p className="text-lg text-slate-600 mb-6 leading-relaxed">
-                El ABP es el corazón de nuestra propuesta pedagógica. Los
-                estudiantes no solo memorizan conceptos, sino que los aplican
-                para resolver problemas del mundo real.
+                {abp.descripcion}
               </p>
               <ul className="space-y-4">
-                <li className="flex gap-4">
-                  <div className="h-8 w-8 rounded-full bg-slate-100 flex items-center justify-center font-bold text-slate-600 shrink-0">
-                    1
-                  </div>
-                  <div>
-                    <h4 className="font-bold">Investigación</h4>
-                    <p className="text-sm text-slate-500">
-                      Los alumnos indagan sobre un tema relevante o
-                      problemática.
-                    </p>
-                  </div>
-                </li>
-                <li className="flex gap-4">
-                  <div className="h-8 w-8 rounded-full bg-slate-100 flex items-center justify-center font-bold text-slate-600 shrink-0">
-                    2
-                  </div>
-                  <div>
-                    <h4 className="font-bold">Creación</h4>
-                    <p className="text-sm text-slate-500">
-                      Diseñan y construyen una solución tangible (producto,
-                      campaña, modelo).
-                    </p>
-                  </div>
-                </li>
-                <li className="flex gap-4">
-                  <div className="h-8 w-8 rounded-full bg-slate-100 flex items-center justify-center font-bold text-slate-600 shrink-0">
-                    3
-                  </div>
-                  <div>
-                    <h4 className="font-bold">Presentación</h4>
-                    <p className="text-sm text-slate-500">
-                      Exponen sus resultados ante la comunidad, desarrollando
-                      oratoria y confianza.
-                    </p>
-                  </div>
-                </li>
+                {abp.pasos.map((paso: any, i: number) => (
+                  <li key={i} className="flex gap-4">
+                    <div className="h-8 w-8 rounded-full bg-slate-100 flex items-center justify-center font-bold text-slate-600 shrink-0">
+                      {i + 1}
+                    </div>
+                    <div>
+                      <h4 className="font-bold">{paso.titulo}</h4>
+                      <p className="text-sm text-slate-500">
+                        {paso.descripcion}
+                      </p>
+                    </div>
+                  </li>
+                ))}
               </ul>
             </div>
             <div className="bg-slate-100 rounded-2xl overflow-hidden shadow-lg aspect-square">
               <img
-                src={PROPUESTA_IMG1}
-                alt="Estudiantes trabajando en proyectos"
+                src={abp.imagen}
+                alt={abp.titulo}
                 className="w-full h-full object-cover"
               />
             </div>
@@ -95,8 +115,8 @@ export function Propuesta() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="order-2 md:order-1 bg-white rounded-2xl overflow-hidden shadow-lg aspect-square">
               <img
-                src={PROPUESTA_IMG2}
-                alt="Estudiante en práctica empresarial"
+                src={dual.imagen}
+                alt={dual.titulo}
                 className="w-full h-full object-cover"
               />
             </div>
@@ -106,40 +126,20 @@ export function Propuesta() {
                 Modelo Alemán
               </div>
               <h2 className="font-heading text-3xl font-bold mb-6">
-                Formación Dual
+                {dual.titulo}
               </h2>
               <p className="text-lg text-slate-600 mb-6 leading-relaxed">
-                Únicos en la región con el verdadero sistema dual alemán. Los
-                estudiantes de bachillerato dividen su tiempo entre el colegio y
-                empresas formadoras.
+                {dual.descripcion}
               </p>
 
-              <div className="grid grid-cols-2 gap-6 mb-8">
-                <div className="bg-white p-4 rounded-lg shadow-sm">
-                  <h4 className="font-heading font-bold text-primary text-xl mb-1">
-                    60%
-                  </h4>
-                  <span className="text-sm text-slate-500">
-                    Teoría en el Colegio
-                  </span>
-                </div>
-                <div className="bg-white p-4 rounded-lg shadow-sm">
-                  <h4 className="font-heading font-bold text-primary text-xl mb-1">
-                    40%
-                  </h4>
-                  <span className="text-sm text-slate-500">
-                    Práctica en Empresa
-                  </span>
-                </div>
+              <div className="space-y-3">
+                <h3 className="font-bold text-lg mb-2">Beneficios:</h3>
+                <ul className="list-disc pl-5 space-y-2 text-slate-600">
+                  {dual.beneficios.map((beneficio: string, i: number) => (
+                    <li key={i}>{beneficio}</li>
+                  ))}
+                </ul>
               </div>
-
-              <h3 className="font-bold text-lg mb-2">Beneficios:</h3>
-              <ul className="list-disc pl-5 space-y-2 text-slate-600">
-                <li>Primera experiencia laboral real antes de graduarse.</li>
-                <li>Desarrollo de responsabilidad y ética profesional.</li>
-                <li>Certificación reconocida por cámaras de comercio.</li>
-                <li>Mayor facilidad para elegir carrera universitaria.</li>
-              </ul>
             </div>
           </div>
         </Section>
@@ -152,64 +152,68 @@ export function Propuesta() {
             </h2>
 
             <div className="grid md:grid-cols-2 gap-10">
-              {/* EducARTE */}
+              {/* Pilar 1 */}
               <div className="bg-white rounded-2xl shadow-sm p-8 border">
                 <h3 className="font-heading text-2xl font-bold mb-4">
-                  1. EducARTE
+                  {pilares?.pilar1.titulo || "1. EducARTE"}
                 </h3>
                 <p className="text-slate-600 mb-6 leading-relaxed">
-                  Estrategias pedagógicas basadas en evidencia. Modelo
-                  socio-constructivista, con enfoque humanista e inclusivo,
-                  implementado mediante metodologías activas.
+                  {pilares?.pilar1.descripcion || "Estrategias pedagógicas basadas en evidencia. Modelo socio-constructivista, con enfoque humanista e inclusivo, implementado mediante metodologías activas."}
                 </p>
 
                 <h4 className="font-semibold mb-2">¿Cómo lo hacemos?</h4>
                 <ul className="space-y-2 text-slate-600 text-sm">
-                  <li>
-                    • Aprendizaje interdisciplinario y contextualizado (ABP).
-                  </li>
-                  <li>• Metodologías activas y pensamiento crítico.</li>
-                  <li>
-                    • Autonomía, colaboración y protagonismo del estudiante.
-                  </li>
+                  {(pilares?.pilar1.items_como || [
+                    "Aprendizaje interdisciplinario y contextualizado (ABP).",
+                    "Metodologías activas y pensamiento crítico.",
+                    "Autonomía, colaboración y protagonismo del estudiante."
+                  ]).map((item: string, i: number) => (
+                    <li key={i}>• {item}</li>
+                  ))}
                 </ul>
 
                 <h4 className="font-semibold mt-6 mb-2">Diferenciadores</h4>
                 <ul className="grid grid-cols-2 gap-2 text-slate-600 text-sm">
-                  <li>• Educación personalizada</li>
-                  <li>• Valores en el currículo</li>
-                  <li>• Currículo trilingüe</li>
-                  <li>• Certificaciones internacionales</li>
-                  <li>• Science of Reading & Math</li>
-                  <li>• Ludobiblioteca activa</li>
+                  {(pilares?.pilar1.diferenciadores || [
+                    "Educación personalizada",
+                    "Valores en el currículo",
+                    "Currículo trilingüe",
+                    "Certificaciones internacionales",
+                    "Science of Reading & Math",
+                    "Ludobiblioteca activa"
+                  ]).map((item: string, i: number) => (
+                    <li key={i}>• {item}</li>
+                  ))}
                 </ul>
               </div>
 
-              {/* CuidARte */}
+              {/* Pilar 2 */}
               <div className="bg-slate-50 rounded-2xl shadow-sm p-8 border">
                 <h3 className="font-heading text-2xl font-bold mb-4">
-                  2. CuidARte
+                  {pilares?.pilar2.titulo || "2. CuidARte"}
                 </h3>
                 <p className="text-slate-600 mb-6 leading-relaxed">
-                  El bienestar es un prerrequisito del aprendizaje. Se
-                  fundamenta en el autocuidado, el cuidado de otros y el cuidado
-                  del entorno.
+                  {pilares?.pilar2.descripcion || "El bienestar es un prerrequisito del aprendizaje. Se fundamenta en el autocuidado, el cuidado de otros y el cuidado del entorno."}
                 </p>
 
                 <h4 className="font-semibold mb-2">Enfoques</h4>
                 <ul className="space-y-2 text-slate-600 text-sm">
-                  <li>
-                    • Biopsicosocial: dimensión biológica, psicológica y social.
-                  </li>
-                  <li>
-                    • Ecológico: bienestar en todos los entornos del estudiante.
-                  </li>
+                  {(pilares?.pilar2.enfoques || [
+                    "Biopsicosocial: dimensión biológica, psicológica y social.",
+                    "Ecológico: bienestar en todos los entornos del estudiante."
+                  ]).map((item: string, i: number) => (
+                    <li key={i}>• {item}</li>
+                  ))}
                 </ul>
 
                 <h4 className="font-semibold mt-6 mb-2">Procesos</h4>
                 <ul className="space-y-2 text-slate-600 text-sm">
-                  <li>• Aprendizaje socioemocional continuo.</li>
-                  <li>• Salud integral y hábitos de vida saludables.</li>
+                  {(pilares?.pilar2.procesos || [
+                    "Aprendizaje socioemocional continuo.",
+                    "Salud integral y hábitos de vida saludables."
+                  ]).map((item: string, i: number) => (
+                    <li key={i}>• {item}</li>
+                  ))}
                 </ul>
               </div>
             </div>

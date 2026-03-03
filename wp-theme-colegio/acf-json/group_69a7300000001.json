@@ -1,0 +1,100 @@
+{
+    "key": "group_69a7300000001",
+    "title": "Configuración: Admisiones",
+    "fields": [
+        {
+            "key": "field_69a7300000002",
+            "label": "Pasos del Proceso",
+            "name": "admisiones_proceso",
+            "type": "repeater",
+            "layout": "block",
+            "button_label": "Añadir Paso",
+            "sub_fields": [
+                {
+                    "key": "field_69a7300000003",
+                    "label": "Título Paso",
+                    "name": "titulo",
+                    "type": "text"
+                },
+                {
+                    "key": "field_69a7300000004",
+                    "label": "Descripción",
+                    "name": "descripcion",
+                    "type": "textarea",
+                    "rows": 2
+                },
+                {
+                    "key": "field_69a7300000005",
+                    "label": "Duración / Info Extra",
+                    "name": "info_extra",
+                    "type": "text",
+                    "instructions": "Ej: 1 mañana, Presencial, etc."
+                },
+                {
+                    "key": "field_69a7300000006",
+                    "label": "Icono (Lucide)",
+                    "name": "icono",
+                    "type": "text",
+                    "default_value": "CheckCircle2"
+                }
+            ]
+        },
+        {
+            "key": "field_69a7300000007",
+            "label": "Requisitos de Ingreso",
+            "name": "admisiones_requisitos",
+            "type": "repeater",
+            "layout": "table",
+            "button_label": "Añadir Requisito",
+            "sub_fields": [
+                {
+                    "key": "field_69a7300000008",
+                    "label": "Requisito",
+                    "name": "texto",
+                    "type": "text"
+                }
+            ]
+        },
+        {
+            "key": "field_69a7300000009",
+            "label": "Preguntas Frecuentes (FAQ)",
+            "name": "admisiones_faq",
+            "type": "repeater",
+            "layout": "block",
+            "button_label": "Añadir FAQ",
+            "sub_fields": [
+                {
+                    "key": "field_69a7300000010",
+                    "label": "Pregunta",
+                    "name": "pregunta",
+                    "type": "text"
+                },
+                {
+                    "key": "field_69a7300000011",
+                    "label": "Respuesta",
+                    "name": "respuesta",
+                    "type": "textarea"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_slug",
+                "operator": "==",
+                "value": "admisiones"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Campos para la página de Admisiones",
+    "show_in_rest": 1,
+    "display_title": ""
+}

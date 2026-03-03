@@ -1,0 +1,236 @@
+{
+    "key": "group_69a7100000001",
+    "title": "Configuración: Propuesta Pedagógica",
+    "fields": [
+        {
+            "key": "field_69a7100000002",
+            "label": "Hero Section",
+            "name": "propuesta_hero",
+            "type": "group",
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_69a7100000003",
+                    "label": "Título Principal",
+                    "name": "titulo",
+                    "type": "text",
+                    "default_value": "Nuestra propuesta de formación"
+                },
+                {
+                    "key": "field_69a7100000004",
+                    "label": "Descripción Hero",
+                    "name": "descripcion",
+                    "type": "textarea",
+                    "rows": 3
+                }
+            ]
+        },
+        {
+            "key": "field_69a7100000005",
+            "label": "Sección ABP",
+            "name": "propuesta_abp",
+            "type": "group",
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_69a7100000006",
+                    "label": "Título",
+                    "name": "titulo",
+                    "type": "text",
+                    "default_value": "Aprendizaje Basado en Proyectos (ABP)"
+                },
+                {
+                    "key": "field_69a7100000007",
+                    "label": "Descripción",
+                    "name": "descripcion",
+                    "type": "textarea"
+                },
+                {
+                    "key": "field_69a7100000008",
+                    "label": "Imagen",
+                    "name": "imagen",
+                    "type": "image",
+                    "return_format": "url"
+                },
+                {
+                    "key": "field_69a7100000009",
+                    "label": "Pasos / Pilares",
+                    "name": "pasos",
+                    "type": "repeater",
+                    "layout": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_69a7100000010",
+                            "label": "Título Paso",
+                            "name": "titulo",
+                            "type": "text"
+                        },
+                        {
+                            "key": "field_69a7100000011",
+                            "label": "Descripción Paso",
+                            "name": "descripcion",
+                            "type": "textarea",
+                            "rows": 2
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "field_69a7100000012",
+            "label": "Sección Dual",
+            "name": "propuesta_dual",
+            "type": "group",
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_69a7100000013",
+                    "label": "Título",
+                    "name": "titulo",
+                    "type": "text",
+                    "default_value": "Formación Dual"
+                },
+                {
+                    "key": "field_69a7100000014",
+                    "label": "Descripción",
+                    "name": "descripcion",
+                    "type": "textarea"
+                },
+                {
+                    "key": "field_69a7100000015",
+                    "label": "Imagen",
+                    "name": "imagen",
+                    "type": "image",
+                    "return_format": "url"
+                },
+                {
+                    "key": "field_69a7100000016",
+                    "label": "Beneficios",
+                    "name": "beneficios",
+                    "type": "repeater",
+                    "layout": "table",
+                    "sub_fields": [
+                        {
+                            "key": "field_69a7100000017",
+                            "label": "Beneficio",
+                            "name": "texto",
+                            "type": "text"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "field_69a7100000018",
+            "label": "Sección Pilares",
+            "name": "propuesta_pilares",
+            "type": "group",
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_69a7100000019",
+                    "label": "Pilar 1: EducARTE",
+                    "name": "pilar1",
+                    "type": "group",
+                    "sub_fields": [
+                        {
+                            "key": "field_69a7100000020",
+                            "label": "Descripción",
+                            "name": "descripcion",
+                            "type": "textarea"
+                        },
+                        {
+                            "key": "field_69a7100000021",
+                            "label": "Items Como lo hacemos",
+                            "name": "items_como",
+                            "type": "repeater",
+                            "sub_fields": [
+                                {
+                                    "key": "field_69a7100000022",
+                                    "label": "Texto",
+                                    "name": "texto",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        {
+                            "key": "field_69a7100000023",
+                            "label": "Diferenciadores",
+                            "name": "diferenciadores",
+                            "type": "repeater",
+                            "sub_fields": [
+                                {
+                                    "key": "field_69a7100000024",
+                                    "label": "Texto",
+                                    "name": "texto",
+                                    "type": "text"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "key": "field_69a7100000025",
+                    "label": "Pilar 2: CuidARte",
+                    "name": "pilar2",
+                    "type": "group",
+                    "sub_fields": [
+                        {
+                            "key": "field_69a7100000026",
+                            "label": "Descripción",
+                            "name": "descripcion",
+                            "type": "textarea"
+                        },
+                        {
+                            "key": "field_69a7100000027",
+                            "label": "Enfoques",
+                            "name": "enfoques",
+                            "type": "repeater",
+                            "sub_fields": [
+                                {
+                                    "key": "field_69a7100000028",
+                                    "label": "Texto",
+                                    "name": "texto",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        {
+                            "key": "field_69a7100000029",
+                            "label": "Procesos",
+                            "name": "procesos",
+                            "type": "repeater",
+                            "sub_fields": [
+                                {
+                                    "key": "field_69a7100000030",
+                                    "label": "Texto",
+                                    "name": "texto",
+                                    "type": "text"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_slug",
+                "operator": "==",
+                "value": "propuesta"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Campos para la página de Propuesta Pedagógica",
+    "show_in_rest": 1,
+    "display_title": ""
+}

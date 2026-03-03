@@ -21,6 +21,7 @@ export interface WpPageContent {
   excerpt: { rendered: string };
   featured_media_url?: string;
   images: string[];
+  acf?: any;
 }
 
 export function useWordPress(slug?: string) {
@@ -43,7 +44,7 @@ export function useWordPress(slug?: string) {
       }
 
       const response = await fetch(
-        `${wpData.apiUrl}wp/v2/pages?slug=${currentSlug}&_embed&t=${Date.now()}`
+        `${wpData.apiUrl}wp/v2/pages?slug=${currentSlug}&_embed&acf_format=standard&t=${Date.now()}`
       );
       const pages = await response.json();
 

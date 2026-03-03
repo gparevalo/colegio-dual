@@ -199,6 +199,21 @@ function LevelContent({ level }: { level: typeof LEVELS[0] }) {
 }
 
 export function OfertaAcademica() {
+  const { data: wpPage } = useWordPress("oferta-academica");
+
+  // Map ACF data if available, otherwise use static LEVELS
+  const levels = wpPage?.acf?.niveles ? wpPage.acf.niveles.map((n: any, index: number) => ({
+    id: n.titulo.toLowerCase().replace(/\s+/g, '-'),
+    title: n.titulo,
+    subtitle: n.subtitulo,
+    age: n.edad,
+    description: n.descripcion,
+    methodology: n.metodologia,
+    features: n.features?.map((f: any) => f.texto) || [],
+    icon: LEVELS[index]?.icon || School,
+    image: n.imagen || LEVELS[index]?.image
+  })) : LEVELS;
+
   return (
     <div className="min-h-screen flex flex-col">
       {/* Header */}
@@ -216,7 +231,7 @@ export function OfertaAcademica() {
           <Tabs defaultValue="primaria" className="w-full">
             <div className="flex justify-center mb-12 overflow-x-auto pb-2">
               <TabsList className="flex flex-wrap justify-center gap-1 h-auto p-2 bg-slate-100 rounded-xl">
-                {LEVELS.map((level) => (
+                {levels.map((level: any) => (
                   <TabsTrigger 
                     key={level.id}
                     value={level.id} 
@@ -228,7 +243,7 @@ export function OfertaAcademica() {
               </TabsList>
             </div>
 
-            {LEVELS.map((level) => (
+            {levels.map((level: any) => (
               <TabsContent key={level.id} value={level.id}>
                 <LevelContent level={level} />
               </TabsContent>

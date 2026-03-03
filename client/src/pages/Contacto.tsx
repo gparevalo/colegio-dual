@@ -29,8 +29,22 @@ const formSchema = z.object({
   message: z.string().min(10, "El mensaje debe tener al menos 10 caracteres."),
 });
 
+import { useWordPress } from "@/hooks/use-wordpress";
+
 export function Contacto() {
+  const { data: wpPage } = useWordPress("contacto");
   const { toast } = useToast();
+
+  // Fallbacks
+  const info = {
+    direccion: wpPage?.acf?.contacto_info?.direccion || "Campus ESPOL Km 30.5 Vía Perimetral, Guayaquil - Ecuador",
+    telefono: wpPage?.acf?.contacto_info?.telefono || "+593 98 421 5308",
+    correo: wpPage?.acf?.contacto_info?.correo || "info@colegiodual.edu.ec",
+    horarios: wpPage?.acf?.contacto_info?.horarios || "Lunes a Viernes: 07:30 - 15:30"
+  };
+
+  const mapaUrl = wpPage?.acf?.contacto_mapa?.mapa_url;
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -87,7 +101,7 @@ export function Contacto() {
                           Ubicación
                         </h3>
                         <p className="text-slate-600">
-                          Campus ESPOL Km 30.5 Vía Perimetral, Guayaquil - Ecuador
+                          {info.direccion}
                         </p>
                       </div>
                     </CardContent>
@@ -98,11 +112,10 @@ export function Contacto() {
                       <Phone className="h-6 w-6 text-primary shrink-0 mt-1" />
                       <div>
                         <h3 className="font-bold text-slate-900 mb-1">
-                          Teléfonos
+                          Teléfono
                         </h3>
-                        <p className="text-slate-600">+593 98 421 5308</p>
-                        <p className="text-sm text-slate-500 mt-1">
-                          Atención Lunes a Viernes
+                        <p className="text-slate-600">
+                          {info.telefono}
                         </p>
                       </div>
                     </CardContent>
@@ -116,7 +129,21 @@ export function Contacto() {
                           Correo Electrónico
                         </h3>
                         <p className="text-slate-600">
-                          francesca.espinosa@crisfe.org
+                          {info.correo}
+                        </p>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  <Card className="border-none shadow-sm bg-slate-50">
+                    <CardContent className="flex items-start gap-4 p-6">
+                      <Clock className="h-6 w-6 text-primary shrink-0 mt-1" />
+                      <div>
+                        <h3 className="font-bold text-slate-900 mb-1">
+                          Horarios de Atención
+                        </h3>
+                        <p className="text-slate-600">
+                          {info.horarios}
                         </p>
                       </div>
                     </CardContent>
@@ -124,19 +151,32 @@ export function Contacto() {
                 </div>
               </div>
 
-              {/* Map Placeholder */}
+              {/* Map */}
               <div className="h-64 bg-slate-200 rounded-xl overflow-hidden relative shadow-md">
-                <img
-                  src={mapBg}
-                  alt="Ubicación en mapa"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                  <div className="bg-white/90 backdrop-blur-sm px-4 py-2 rounded-lg shadow-lg text-primary font-bold text-sm flex items-center gap-2">
-                    <MapPin className="h-4 w-4" />
-                    Ver en Google Maps
-                  </div>
-                </div>
+                {mapaUrl ? (
+                  <iframe
+                    src={mapaUrl}
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                  />
+                ) : (
+                  <>
+                    <img
+                      src={mapBg}
+                      alt="Ubicación en mapa"
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                      <div className="bg-white/90 backdrop-blur-sm px-4 py-2 rounded-lg shadow-lg text-primary font-bold text-sm flex items-center gap-2">
+                        <MapPin className="h-4 w-4" />
+                        Ver en Google Maps
+                      </div>
+                    </div>
+                  </>
+                )}
               </div>
             </div>
 

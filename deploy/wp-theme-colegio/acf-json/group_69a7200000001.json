@@ -1,0 +1,78 @@
+{
+    "key": "group_69a7200000001",
+    "title": "Configuración: Contacto",
+    "fields": [
+        {
+            "key": "field_69a7200000002",
+            "label": "Información General",
+            "name": "contacto_info",
+            "type": "group",
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_69a7200000003",
+                    "label": "Dirección",
+                    "name": "direccion",
+                    "type": "text",
+                    "default_value": "Campus ESPOL Km 30.5 Vía Perimetral, Guayaquil - Ecuador"
+                },
+                {
+                    "key": "field_69a7200000004",
+                    "label": "Teléfono",
+                    "name": "telefono",
+                    "type": "text",
+                    "default_value": "+593 4 285 4124"
+                },
+                {
+                    "key": "field_69a7200000005",
+                    "label": "Correo Electrónico",
+                    "name": "correo",
+                    "type": "text",
+                    "default_value": "info@colegiodual.edu.ec"
+                },
+                {
+                    "key": "field_69a7200000006",
+                    "label": "Horarios de Atención",
+                    "name": "horarios",
+                    "type": "textarea",
+                    "rows": 2,
+                    "default_value": "Lunes a Viernes: 07:30 - 15:30"
+                }
+            ]
+        },
+        {
+            "key": "field_69a7200000007",
+            "label": "Mapa",
+            "name": "contacto_mapa",
+            "type": "group",
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_69a7200000008",
+                    "label": "URL Google Maps (Iframe Src)",
+                    "name": "mapa_url",
+                    "type": "text"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_slug",
+                "operator": "==",
+                "value": "contacto"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Campos para la página de Contacto",
+    "show_in_rest": 1,
+    "display_title": ""
+}
