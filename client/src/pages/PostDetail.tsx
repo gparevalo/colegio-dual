@@ -22,6 +22,13 @@ interface WPPost {
     og_image?: string;
     canonical_url?: string;
     structured_data?: string;
+    news_subtitle?: string;
+    news_gallery?: Array<{
+      url: string;
+      alt?: string;
+      caption?: string;
+    }>;
+    news_video_url?: string;
   };
 }
 
@@ -134,6 +141,12 @@ export function PostDetail() {
             </div>
           </header>
 
+          {post.acf?.news_subtitle && (
+            <div className="mb-10 text-2xl font-medium text-slate-600 border-l-4 border-primary pl-6 py-2 italic font-heading">
+              {post.acf.news_subtitle}
+            </div>
+          )}
+
           {featuredImage && (
             <div className="mb-12 rounded-3xl overflow-hidden shadow-xl aspect-video bg-slate-100">
               <img 
@@ -148,9 +161,58 @@ export function PostDetail() {
             className="prose prose-slate prose-lg max-w-none 
               prose-headings:font-heading prose-headings:font-bold 
               prose-a:text-primary hover:prose-a:underline
-              prose-img:rounded-2xl"
+              prose-img:rounded-3xl prose-img:shadow-md"
             dangerouslySetInnerHTML={{ __html: post.content.rendered }}
           />
+
+          {/* Dynamic Video Section */}
+          {post.acf?.news_video_url && (
+            <div className="mt-16 mb-16">
+              <h2 className="font-heading text-2xl font-bold mb-6 text-slate-900 flex items-center gap-3">
+                <span className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                  <span className="text-primary">▶</span>
+                </span>
+                Video Destacado
+              </h2>
+              <div className="aspect-video rounded-3xl overflow-hidden shadow-2xl bg-black">
+                <iframe
+                  src={post.acf.news_video_url.replace("watch?v=", "embed/").replace("vimeo.com/", "player.vimeo.com/video/")}
+                  title="Video Noticia"
+                  className="w-full h-full border-none"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            </div>
+          )}
+
+          {/* Dynamic Gallery Section */}
+          {post.acf?.news_gallery && post.acf.news_gallery.length > 0 && (
+            <div className="mt-16">
+              <h2 className="font-heading text-2xl font-bold mb-6 text-slate-900 flex items-center gap-3">
+                <span className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                  <span className="text-primary">📸</span>
+                </span>
+                Galería de Imágenes
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {post.acf.news_gallery.map((img, idx) => (
+                  <div key={idx} className="group relative aspect-square rounded-2xl overflow-hidden shadow-lg bg-slate-100">
+                    <img 
+                      src={img.url} 
+                      alt={img.alt || "Imagen de galería"} 
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    {img.caption && (
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <p className="text-white text-sm font-medium">{img.caption}</p>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </article>
       </main>
 

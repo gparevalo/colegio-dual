@@ -158,11 +158,14 @@ add_action('init', function() {
  * Admin UI cleanup
  */
 add_action('admin_head', function() {
-    echo '<style>
-        .editor-post-title__block { display:none!important; }
-        .block-editor-default-block-appender { display:none!important; }
-        .edit-post-sidebar { display:none!important; }
-    </style>';
+    $screen = get_current_screen();
+    if ($screen && $screen->post_type === 'page') {
+        echo '<style>
+            .editor-post-title__block { display:none!important; }
+            .block-editor-default-block-appender { display:none!important; }
+            .edit-post-sidebar { display:none!important; }
+        </style>';
+    }
 });
 
 /**
@@ -175,9 +178,12 @@ add_filter('acf/input/meta_box_priority', function() {
 /**
  * Disable Gutenberg blocks
  */
-add_filter('allowed_block_types_all', function() {
-    return [];
-});
+add_filter('allowed_block_types_all', function($allowed_blocks, $editor_context) {
+    if ($editor_context->post->post_type === 'page') {
+        return [];
+    }
+    return $allowed_blocks;
+}, 10, 2);
 
 add_filter('acf/settings/save_json', function() {
     return get_template_directory() . '/acf-json';

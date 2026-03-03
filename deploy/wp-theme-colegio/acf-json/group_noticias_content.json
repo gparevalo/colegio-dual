@@ -1,0 +1,51 @@
+{
+    "key": "group_noticias_content",
+    "title": "Contenido Detallado de Noticia",
+    "fields": [
+        {
+            "key": "field_news_subtitle",
+            "label": "Subtítulo Destacado",
+            "name": "news_subtitle",
+            "type": "text",
+            "instructions": "Un subtítulo que aparecerá justo debajo del título principal.",
+            "required": 0
+        },
+        {
+            "key": "field_news_gallery",
+            "label": "Galería de Imágenes",
+            "name": "news_gallery",
+            "type": "gallery",
+            "instructions": "Sube varias imágenes para crear una sección de galería premium.",
+            "required": 0,
+            "return_format": "array",
+            "preview_size": "medium",
+            "insert": "append"
+        },
+        {
+            "key": "field_news_video_url",
+            "label": "URL de Video (YouTube/Vimeo)",
+            "name": "news_video_url",
+            "type": "url",
+            "instructions": "Pega el enlace de un video para mostrarlo en una sección destacada.",
+            "required": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 1
+}
