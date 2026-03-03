@@ -32,6 +32,12 @@ export function SEO({
       <meta property="og:image" content={ogImage || defaultOgImage} />
       <meta property="og:type" content="website" />
 
+      {/* X (Twitter) Meta Tags */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content={fullTitle} />
+      <meta name="twitter:description" content={description || defaultDescription} />
+      <meta name="twitter:image" content={ogImage || defaultOgImage} />
+
       {/* TEO: Canonical URL */}
       {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
 
