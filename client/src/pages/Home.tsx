@@ -18,6 +18,7 @@ import {
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
+import { SEO } from "@/components/layout/SEO";
 
 // Animation variants
 const fadeIn = {
@@ -103,6 +104,11 @@ interface WPPage {
       btn_contacto_text?: string;
       whatsapp_number?: string;
     };
+    seo_title?: string;
+    seo_description?: string;
+    og_image?: string;
+    canonical_url?: string;
+    structured_data?: string;
   };
 }
 
@@ -201,6 +207,13 @@ export function Home() {
   if (isLoading) {
     return (
       <div className="min-h-screen flex flex-col bg-white overflow-hidden">
+        <SEO 
+          title={wpPage?.acf?.seo_title}
+          description={wpPage?.acf?.seo_description}
+          ogImage={wpPage?.acf?.og_image}
+          canonicalUrl={wpPage?.acf?.canonical_url}
+          structuredData={wpPage?.acf?.structured_data}
+        />
         <Navbar />
         <main className="flex-grow">
           {/* Skeleton Hero */}
@@ -232,6 +245,13 @@ export function Home() {
 
   return (
     <div className="min-h-screen flex flex-col font-sans">
+      <SEO 
+        title={wpPage?.acf?.seo_title}
+        description={wpPage?.acf?.seo_description}
+        ogImage={wpPage?.acf?.og_image}
+        canonicalUrl={wpPage?.acf?.canonical_url}
+        structuredData={wpPage?.acf?.structured_data}
+      />
       <main className="flex-grow">
         <Hero 
           title={heroTitle}

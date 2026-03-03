@@ -1,4 +1,6 @@
 import { Footer } from "@/components/layout/Footer";
+import { Navbar } from "@/components/layout/Navbar";
+import { SEO } from "@/components/layout/SEO";
 import { Section } from "@/components/ui/section";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -68,6 +70,13 @@ export function Contacto() {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <SEO 
+        title={wpPage?.acf?.seo_title}
+        description={wpPage?.acf?.seo_description}
+        ogImage={wpPage?.acf?.og_image}
+        canonicalUrl={wpPage?.acf?.canonical_url}
+        structuredData={wpPage?.acf?.structured_data}
+      />
       <div className="bg-slate-900 text-white py-16 relative overflow-hidden">
         <img
           src={contactBg}

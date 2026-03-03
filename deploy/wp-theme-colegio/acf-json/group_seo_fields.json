@@ -1,0 +1,94 @@
+{
+    "key": "group_seo_fields",
+    "title": "Configuración SEO / TEO / AEO",
+    "fields": [
+        {
+            "key": "field_seo_tab",
+            "label": "SEO (Search Engine)",
+            "name": "",
+            "type": "tab",
+            "placement": "left",
+            "endpoint": 0
+        },
+        {
+            "key": "field_seo_title",
+            "label": "Meta Título",
+            "name": "seo_title",
+            "type": "text",
+            "instructions": "Título que aparece en buscadores. Si está vacío se usará el título de la página.",
+            "required": 0,
+            "wrapper": {
+                "width": "50"
+            }
+        },
+        {
+            "key": "field_seo_description",
+            "label": "Meta Descripción",
+            "name": "seo_description",
+            "type": "textarea",
+            "instructions": "Descripción corta para buscadores y redes sociales (máx 160 caracteres).",
+            "required": 0,
+            "maxlength": 160,
+            "rows": 3
+        },
+        {
+            "key": "field_og_image",
+            "label": "Imagen Compartida (Open Graph)",
+            "name": "og_image",
+            "type": "image",
+            "instructions": "Imagen que aparecerá al compartir en WhatsApp, Facebook, LinkedIn. Recomendado 1200x630px.",
+            "return_format": "url",
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_teo_tab",
+            "label": "TEO (Technical)",
+            "name": "",
+            "type": "tab",
+            "placement": "left",
+            "endpoint": 0
+        },
+        {
+            "key": "field_canonical_url",
+            "label": "URL Canónica",
+            "name": "canonical_url",
+            "type": "url",
+            "instructions": "URL preferida para esta página (evita contenido duplicado).",
+            "required": 0
+        },
+        {
+            "key": "field_aeo_tab",
+            "label": "AEO (Answer Engine)",
+            "name": "",
+            "type": "tab",
+            "placement": "left",
+            "endpoint": 0
+        },
+        {
+            "key": "field_structured_data",
+            "label": "Structured Data (JSON-LD)",
+            "name": "structured_data",
+            "type": "textarea",
+            "instructions": "Código JSON-LD personalizado para optimizar respuestas de IA (Gemini, Perplexity).",
+            "rows": 8
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "page"
+            }
+        ]
+    ],
+    "menu_order": 10,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 1
+}
