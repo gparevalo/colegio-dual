@@ -1,0 +1,629 @@
+{
+    "key": "group_69a611f6338fc",
+    "title": "Home Content",
+    "fields": [
+        {
+            "key": "field_69a611f6efe22",
+            "label": "Home Title",
+            "name": "hero_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Formando líderes que aprenden haciendo.",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_69a6124defe23",
+            "label": "Hero Subtitle",
+            "name": "hero_subtitle",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Somos un colegio binacional con metodología de Formación Dual y Aprendizaje Basado en Proyectos. Preparamos a tus hijos para los desafíos reales del mundo global.",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_69a612a28b049",
+            "label": "Hero Image",
+            "name": "hero_image",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "url",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "allow_in_bindings": 0,
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_69a62f0c58bbb",
+            "label": "Estadísticas Home",
+            "name": "home_stats",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_69a6306c58bbc",
+                    "label": "Label 1",
+                    "name": "s1_l",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_69a630ef58bbe",
+                    "label": "Valor 1",
+                    "name": "s1_v",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_69a630fd58bbf",
+                    "label": "Label 2",
+                    "name": "s2_l",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_69a630e158bbd",
+                    "label": "Valor 2",
+                    "name": "s2_v",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_69a631870d3e5",
+                    "label": "Label 3",
+                    "name": "s3_l",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_69a631b20d3e6",
+                    "label": "Valor 3",
+                    "name": "s3_v",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_69a631c50d3e7",
+                    "label": "Label 4",
+                    "name": "s4_l",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_69a631d40d3e8",
+                    "label": "Valor 4",
+                    "name": "s4_v",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                }
+            ]
+        },
+        {
+            "key": "field_69a632f3d4415",
+            "label": "¿Cómo y dónde se aprende?",
+            "name": "home_como_aprende",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_69a633bed4416",
+                    "label": "Imagen preview",
+                    "name": "hero_video_poster",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "url",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "allow_in_bindings": 0,
+                    "preview_size": "medium"
+                },
+                {
+                    "key": "field_69a633e1d4417",
+                    "label": "Video como aprender",
+                    "name": "hero_video_mp4",
+                    "aria-label": "",
+                    "type": "file",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "library": "all",
+                    "min_size": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "allow_in_bindings": 0
+                }
+            ]
+        },
+        {
+            "key": "field_home_por_que_group",
+            "label": "¿Por qué elegirnos?",
+            "name": "home_por_que",
+            "type": "group",
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_hp_title",
+                    "label": "Título Principal",
+                    "name": "titulo",
+                    "type": "text",
+                    "default_value": "¿Por qué elegir Colegio Dual?"
+                },
+                {
+                    "key": "field_hp_subtitle",
+                    "label": "Subtítulo",
+                    "name": "subtitulo",
+                    "type": "text",
+                    "default_value": "Nuestra metodología rompe con el esquema tradicional. No solo enseñamos teoría, formamos competencias para la vida real."
+                },
+                {
+                    "key": "field_usp1_t",
+                    "label": "USP 1 Título",
+                    "name": "usp1_t",
+                    "type": "text",
+                    "default_value": "Metodología ABP"
+                },
+                {
+                    "key": "field_usp1_d",
+                    "label": "USP 1 Descrip",
+                    "name": "usp1_d",
+                    "type": "textarea",
+                    "default_value": "Aprendizaje Basado en Proyectos. Los estudiantes resuelven problemas reales, desarrollando pensamiento crítico."
+                },
+                {
+                    "key": "field_usp2_t",
+                    "label": "USP 2 Título",
+                    "name": "usp2_t",
+                    "type": "text",
+                    "default_value": "Visión Internacional"
+                },
+                {
+                    "key": "field_usp2_d",
+                    "label": "USP 2 Descrip",
+                    "name": "usp2_d",
+                    "type": "textarea",
+                    "default_value": "Colegio binacional ecuatoriano-alemán que abre puertas al mundo y fomenta el intercambio cultural."
+                },
+                {
+                    "key": "field_usp3_t",
+                    "label": "USP 3 Título",
+                    "name": "usp3_t",
+                    "type": "text",
+                    "default_value": "Formación Dual"
+                },
+                {
+                    "key": "field_usp3_d",
+                    "label": "USP 3 Descrip",
+                    "name": "usp3_d",
+                    "type": "textarea",
+                    "default_value": "Experiencia profesional temprana. Conectamos la educación con el sector productivo."
+                },
+                {
+                    "key": "field_usp4_t",
+                    "label": "USP 4 Título",
+                    "name": "usp4_t",
+                    "type": "text",
+                    "default_value": "Formación Integral"
+                },
+                {
+                    "key": "field_usp4_d",
+                    "label": "USP 4 Descrip",
+                    "name": "usp4_d",
+                    "type": "textarea",
+                    "default_value": "No solo formamos académicos, sino ciudadanos con valores, ética y responsabilidad social."
+                }
+            ]
+        },
+        {
+            "key": "field_home_learning_group",
+            "label": "Contenido Aprendizaje",
+            "name": "home_learning_content",
+            "type": "group",
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_hl_title",
+                    "label": "Título",
+                    "name": "titulo",
+                    "type": "text",
+                    "default_value": "¿Cómo y dónde se aprende?"
+                },
+                {
+                    "key": "field_hl_subtitle",
+                    "label": "Subtítulo",
+                    "name": "subtitulo",
+                    "type": "text",
+                    "default_value": "Nuestro programa formativo se extiende más allá del aula tradicional en diversas sedes aliadas."
+                },
+                {
+                    "key": "field_hl1_t",
+                    "label": "Bloque 1 Título",
+                    "name": "b1_t",
+                    "type": "text",
+                    "default_value": "EGB Superior"
+                },
+                {
+                    "key": "field_hl1_d",
+                    "label": "Bloque 1 Descrip",
+                    "name": "b1_d",
+                    "type": "textarea",
+                    "default_value": "Aprendizaje basado en proyectos reales e interdisciplinarios."
+                },
+                {
+                    "key": "field_hl2_t",
+                    "label": "Bloque 2 Título",
+                    "name": "b2_t",
+                    "type": "text",
+                    "default_value": "Bachillerato"
+                },
+                {
+                    "key": "field_hl2_d",
+                    "label": "Bloque 2 Descrip",
+                    "name": "b2_d",
+                    "type": "textarea",
+                    "default_value": "Formación Dual con 3 días de práctica empresarial semanal."
+                },
+                {
+                    "key": "field_hl3_t",
+                    "label": "Bloque 3 Título",
+                    "name": "b3_t",
+                    "type": "text",
+                    "default_value": "Código de Convivencia"
+                },
+                {
+                    "key": "field_hl3_d",
+                    "label": "Bloque 3 Descrip",
+                    "name": "b3_d",
+                    "type": "textarea",
+                    "default_value": "Normas que garantizan un ambiente de respeto y crecimiento."
+                },
+                {
+                    "key": "field_hl_allies",
+                    "label": "Aliados (separados por coma)",
+                    "name": "aliados",
+                    "type": "text",
+                    "default_value": "ESPOL, Comité Ceibos, Teatro Centro de Arte"
+                }
+            ]
+        },
+        {
+            "key": "field_home_academic_header_group",
+            "label": "Oferta Académica Header",
+            "name": "home_academic_header",
+            "type": "group",
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_ha_tag",
+                    "label": "Tag",
+                    "name": "tag",
+                    "type": "text",
+                    "default_value": "Nuestra Oferta"
+                },
+                {
+                    "key": "field_ha_title",
+                    "label": "Título",
+                    "name": "titulo",
+                    "type": "text",
+                    "default_value": "Formación integral en cada etapa"
+                }
+            ]
+        },
+        {
+            "key": "field_home_wda_group",
+            "label": "Sección WDA",
+            "name": "home_wda_content",
+            "type": "group",
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_hw_tag",
+                    "label": "Tag",
+                    "name": "tag",
+                    "type": "text",
+                    "default_value": "Cerca de Alemania!"
+                },
+                {
+                    "key": "field_hw_title",
+                    "label": "Título",
+                    "name": "titulo",
+                    "type": "text",
+                    "default_value": "Asociación Mundial de Escuelas Alemanas"
+                },
+                {
+                    "key": "field_hw_desc",
+                    "label": "Descripción",
+                    "name": "descripcion",
+                    "type": "textarea",
+                    "default_value": "Formamos parte de la Asociación Mundial de Escuelas Alemanas en el Extranjero (WDA), que representa a las autoridades escolares libres y sin fines de lucro de las escuelas alemanas en el extranjero y combina sus voces individuales en una voz fuerte."
+                },
+                {
+                    "key": "field_hw_link",
+                    "label": "URL Más Información",
+                    "name": "link",
+                    "type": "text",
+                    "default_value": "https://www.auslandsschulnetz.de/"
+                },
+                {
+                    "key": "field_hw_logo",
+                    "label": "Logo WDA",
+                    "name": "logo",
+                    "type": "image",
+                    "return_format": "url"
+                }
+            ]
+        },
+        {
+            "key": "field_home_gallery_group",
+            "label": "Galería Header",
+            "name": "home_gallery_content",
+            "type": "group",
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_hg_tag",
+                    "label": "Tag",
+                    "name": "tag",
+                    "type": "text",
+                    "default_value": "Vivir Colegio Dual"
+                },
+                {
+                    "key": "field_hg_title",
+                    "label": "Título",
+                    "name": "titulo",
+                    "type": "text",
+                    "default_value": "Galería de Momentos"
+                }
+            ]
+        },
+        {
+            "key": "field_home_cta_group",
+            "label": "CTA Final",
+            "name": "home_cta_content",
+            "type": "group",
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_hc_title",
+                    "label": "Título",
+                    "name": "titulo",
+                    "type": "text",
+                    "default_value": "¿Listo para dar el siguiente paso?"
+                },
+                {
+                    "key": "field_hc_desc",
+                    "label": "Descripción",
+                    "name": "descripcion",
+                    "type": "text",
+                    "default_value": "Agenda una visita guiada o inicia el proceso de admisión en línea hoy mismo."
+                },
+                {
+                    "key": "field_hc_btn1",
+                    "label": "Botón Admisión Texto",
+                    "name": "btn_admision_text",
+                    "type": "text",
+                    "default_value": "Iniciar Admisión"
+                },
+                {
+                    "key": "field_hc_btn2",
+                    "label": "Botón Contacto Texto",
+                    "name": "btn_contacto_text",
+                    "type": "text",
+                    "default_value": "Contactar Asesor"
+                },
+                {
+                    "key": "field_hc_wa",
+                    "label": "Número WhatsApp",
+                    "name": "whatsapp_number",
+                    "type": "text",
+                    "default_value": "593984215308"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_slug",
+                "operator": "==",
+                "value": "home"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 1,
+    "display_title": ""
+}

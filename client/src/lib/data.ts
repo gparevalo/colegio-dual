@@ -27,7 +27,7 @@ export const ACADEMIC_OFFER = [
     description: "Implementamos el ABP (Aprendizaje basado en Proyectos) durante los 3 primeros años de colegio. Los estudiantes aprenden en contextos reales para solucionar retos y desafíos mediante proyectos interdisciplinarios por bloque.",
     icon: BookOpen,
     image: ABP_IMG,
-    link: "/oferta-academica#egb"
+    link: "/oferta-academica"
   },
   {
     id: "bachillerato",
@@ -91,4 +91,11 @@ export const NEWS_HIGHLIGHTS = [
     category: "Admisiones",
     image: admissionImg
   }
+];
+
+export const GALLERY_IMAGES = [
+  "https://static.wixstatic.com/media/e2a619_536198d18d014e7ea62e6eb275dc398e~mv2.png",
+  "https://static.wixstatic.com/media/e2a619_cac267b654fc4eee9ffaba234e405ffb~mv2.jpg",
+  "https://static.wixstatic.com/media/e2a619_419d60265bfb4b258520a630022541dc~mv2.jpg",
+  "https://static.wixstatic.com/media/e2a619_4a082129c8fa45b4b7dc89855511b7c6~mv2.jpg",
 ];

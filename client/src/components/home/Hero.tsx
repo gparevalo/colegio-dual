@@ -5,13 +5,25 @@ import heroBg from "@assets/stock_images/group_of_white_high__50262c92.jpg";
 
 const NEW_HERO_IMAGE = "https://static.wixstatic.com/media/e2a619_536198d18d014e7ea62e6eb275dc398e~mv2.png/v1/fill/w_3232,h_1460,al_c,q_95,usm_0.66_1.00_0.01,enc_avif,quality_auto/e2a619_536198d18d014e7ea62e6eb275dc398e~mv2.png";
 
-export function Hero() {
+export interface HeroProps {
+  title?: string;
+  description?: string;
+  image?: string;
+  badge?: string;
+}
+
+export function Hero({ 
+  title = "Formando líderes que aprenden haciendo.", 
+  description = "Somos un colegio binacional con metodología de Formación Dual y Aprendizaje Basado en Proyectos. Preparamos a tus hijos para los desafíos reales del mundo global.", 
+  image = NEW_HERO_IMAGE,
+  badge = "Admisiones Abiertas 2026"
+}: HeroProps) {
   return (
     <div className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img 
-          src={NEW_HERO_IMAGE} 
+          src={image} 
           alt="Estudiantes en areas verdes" 
           className="w-full h-full object-cover"
         />
@@ -26,19 +38,18 @@ export function Hero() {
             <span className="mr-2 rounded-full bg-secondary px-2 py-0.5 text-[10px] font-bold text-secondary-foreground uppercase tracking-wide">
               Nuevo
             </span>
-            Admisiones Abiertas 2026
+            <div dangerouslySetInnerHTML={{ __html: badge }} />
           </div>
 
-          <h1 className="font-heading font-extrabold text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white leading-[1.1] tracking-tight">
-            Formando líderes que <br className="hidden md:block"/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-200 to-white">
-              aprenden haciendo.
-            </span>
-          </h1>
+          <h1 
+            className="font-heading font-extrabold text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white leading-[1.1] tracking-tight"
+            dangerouslySetInnerHTML={{ __html: title }}
+          />
 
-          <p className="text-lg md:text-xl text-slate-200 max-w-2xl leading-relaxed">
-            Somos un colegio binacional con metodología de Formación Dual y Aprendizaje Basado en Proyectos. Preparamos a tus hijos para los desafíos reales del mundo global.
-          </p>
+          <div 
+            className="text-lg md:text-xl text-slate-200 max-w-2xl leading-relaxed"
+            dangerouslySetInnerHTML={{ __html: description }}
+          />
 
           <div className="flex flex-col sm:flex-row gap-4 pt-4">
             <Link href="/admisiones">

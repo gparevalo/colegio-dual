@@ -6,7 +6,7 @@ import { MobileFloatingCTA } from "@/components/layout/MobileFloatingCTA";
 import { Section } from "@/components/ui/section";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { USP_POINTS, ACADEMIC_OFFER, STATS, NEWS_HIGHLIGHTS } from "@/lib/data";
+import { USP_POINTS, ACADEMIC_OFFER, STATS, NEWS_HIGHLIGHTS, GALLERY_IMAGES } from "@/lib/data";
 import {
   ArrowRight,
   PlayCircle,
@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 
 // Animation variants
 const fadeIn = {
@@ -34,27 +35,183 @@ const staggerContainer = {
   },
 };
 
-// Gallery images
-const GALLERY_IMAGES = [
-  "https://static.wixstatic.com/media/e2a619_536198d18d014e7ea62e6eb275dc398e~mv2.png",
-  "https://static.wixstatic.com/media/e2a619_cac267b654fc4eee9ffaba234e405ffb~mv2.jpg",
-  "https://static.wixstatic.com/media/e2a619_419d60265bfb4b258520a630022541dc~mv2.jpg",
-  "https://static.wixstatic.com/media/e2a619_4a082129c8fa45b4b7dc89855511b7c6~mv2.jpg",
-];
+interface WPPost {
+  id: number;
+  title: { rendered: string };
+  date: string;
+  excerpt: { rendered: string };
+  link: string;
+  _embedded?: {
+    'wp:featuredmedia'?: Array<{ source_url: string }>;
+    'wp:term'?: Array<Array<{ name: string }>>;
+  };
+}
+
+interface WPPage {
+  title: { rendered: string };
+  excerpt: { rendered: string };
+  featured_media_url?: string;
+  acf?: {
+    hero_title?: string;
+    hero_subtitle?: string;
+    hero_image?: string;
+    home_stats?: {
+      s1_v?: string; s1_l?: string;
+      s2_v?: string; s2_l?: string;
+      s3_v?: string; s3_l?: string;
+      s4_v?: string; s4_l?: string;
+    };
+    home_como_aprende?: {
+      hero_video_mp4?: string;
+      hero_video_poster?: string;
+    };
+    home_por_que?: {
+      titulo?: string;
+      subtitulo?: string;
+      usp1_t?: string; usp1_d?: string;
+      usp2_t?: string; usp2_d?: string;
+      usp3_t?: string; usp3_d?: string;
+      usp4_t?: string; usp4_d?: string;
+    };
+    home_learning_content?: {
+      titulo?: string;
+      subtitulo?: string;
+      b1_t?: string; b1_d?: string; b1_l?: string;
+      b2_t?: string; b2_d?: string; b2_l?: string;
+      b3_t?: string; b3_d?: string; b3_l?: string;
+      aliados?: string;
+    };
+    home_academic_header?: {
+      tag?: string;
+      titulo?: string;
+    };
+    home_wda_content?: {
+      tag?: string;
+      titulo?: string;
+      descripcion?: string;
+      link?: string;
+      logo?: string;
+    };
+    home_gallery_content?: {
+      tag?: string;
+      titulo?: string;
+    };
+    home_cta_content?: {
+      titulo?: string;
+      descripcion?: string;
+      btn_admision_text?: string;
+      btn_contacto_text?: string;
+      whatsapp_number?: string;
+    };
+  };
+}
 
 export function Home() {
+  const [wpPage, setWpPage] = useState<WPPage | null>(null);
+  const [posts, setPosts] = useState<WPPost[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const wpData = window.wpData;
+      if (!wpData?.apiUrl) {
+        setIsLoading(false);
+        return;
+      }
+
+      try {
+        // Fetch Page Data
+        const pageRes = await fetch(
+          `${wpData.apiUrl}wp/v2/pages?slug=home&acf_format=standard&status=any&t=${Date.now()}`,
+          { headers: { 'X-WP-Nonce': wpData.nonce } }
+        );
+        const pages = await pageRes.json();
+        if (pages?.length > 0) setWpPage(pages[0]);
+
+        // Fetch Recent Posts (News)
+        const postsRes = await fetch(
+          `${wpData.apiUrl}wp/v2/posts?_embed&per_page=3&status=publish`
+        );
+        const postsData = await postsRes.json();
+        if (Array.isArray(postsData)) setPosts(postsData);
+      } catch (error) {
+        console.error("Error fetching home data from WordPress:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  // Hero Fallbacks
+  const heroTitle = wpPage?.acf?.hero_title || wpPage?.title.rendered || "Formando líderes que aprenden haciendo.";
+  const heroSubtitle = wpPage?.acf?.hero_subtitle || wpPage?.excerpt.rendered || "Somos un colegio binacional con metodología de Formación Dual y Aprendizaje Basado en Proyectos. Preparamos a tus hijos para los desafíos reales del mundo global.";
+  const heroImage = wpPage?.acf?.hero_image || wpPage?.featured_media_url || GALLERY_IMAGES[0];
+
+  // Map dynamic stats with fallbacks
+  const statsDisplay = [
+    { 
+      value: wpPage?.acf?.home_stats?.s1_v || STATS[0].value, 
+      label: wpPage?.acf?.home_stats?.s1_l || STATS[0].label 
+    },
+    { 
+      value: wpPage?.acf?.home_stats?.s2_v || STATS[1].value, 
+      label: wpPage?.acf?.home_stats?.s2_l || STATS[1].label 
+    },
+    { 
+      value: wpPage?.acf?.home_stats?.s3_v || STATS[2].value, 
+      label: wpPage?.acf?.home_stats?.s3_l || STATS[2].label 
+    },
+    { 
+      value: wpPage?.acf?.home_stats?.s4_v || STATS[3].value, 
+      label: wpPage?.acf?.home_stats?.s4_l || STATS[3].label 
+    },
+  ];
+
+  // USP Fallbacks
+  const uspTitle = wpPage?.acf?.home_por_que?.titulo || "¿Por qué elegir Colegio Dual?";
+  const uspSubtitle = wpPage?.acf?.home_por_que?.subtitulo || "Nuestra metodología rompe con el esquema tradicional. No solo enseñamos teoría, formamos competencias para la vida real.";
+  const dynamicUSPs = [
+    { title: wpPage?.acf?.home_por_que?.usp1_t || USP_POINTS[0].title, description: wpPage?.acf?.home_por_que?.usp1_d || USP_POINTS[0].description, icon: USP_POINTS[0].icon },
+    { title: wpPage?.acf?.home_por_que?.usp2_t || USP_POINTS[1].title, description: wpPage?.acf?.home_por_que?.usp2_d || USP_POINTS[1].description, icon: USP_POINTS[1].icon },
+    { title: wpPage?.acf?.home_por_que?.usp3_t || USP_POINTS[2].title, description: wpPage?.acf?.home_por_que?.usp3_d || USP_POINTS[2].description, icon: USP_POINTS[2].icon },
+    { title: wpPage?.acf?.home_por_que?.usp4_t || USP_POINTS[3].title, description: wpPage?.acf?.home_por_que?.usp4_d || USP_POINTS[3].description, icon: USP_POINTS[3].icon },
+  ];
+
+  // Learning Content Fallbacks
+  const learnTitle = wpPage?.acf?.home_learning_content?.titulo || "¿Cómo y dónde se aprende?";
+  const learnSubtitle = wpPage?.acf?.home_learning_content?.subtitulo || "Nuestro programa formativo se extiende más allá del aula tradicional en diversas sedes aliadas.";
+  const allies = wpPage?.acf?.home_learning_content?.aliados?.split(",").map(a => a.trim()) || ["ESPOL", "Comité Ceibos", "Teatro Centro de Arte"];
+
+  // WDA Fallbacks
+  const wdaTag = wpPage?.acf?.home_wda_content?.tag || "Cerca de Alemania!";
+  const wdaTitle = wpPage?.acf?.home_wda_content?.titulo || "Asociación Mundial de Escuelas Alemanas";
+  const wdaDesc = wpPage?.acf?.home_wda_content?.descripcion || "Formamos parte de la Asociación Mundial de Escuelas Alemanas en el Extranjero (WDA), que representa a las autoridades escolares libres y sin fines de lucro de las escuelas alemanas en el extranjero y combina sus voces individuales en una voz fuerte.";
+  const wdaLogo = wpPage?.acf?.home_wda_content?.logo || "https://static.wixstatic.com/media/720b25_50f74d3b5e6848e38008bc329493b3f2~mv2.png/v1/fill/w_486,h_384,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/wda-logo-print-transparent.png";
+  const wdaLink = wpPage?.acf?.home_wda_content?.link || "https://www.auslandsschulnetz.de/";
+
+  // CTA Fallbacks
+  const ctaTitle = wpPage?.acf?.home_cta_content?.titulo || "¿Listo para dar el siguiente paso?";
+  const ctaDesc = wpPage?.acf?.home_cta_content?.descripcion || "Agenda una visita guiada o inicia el proceso de admisión en línea hoy mismo.";
+  const ctaBtn1 = wpPage?.acf?.home_cta_content?.btn_admision_text || "Iniciar Admisión";
+  const ctaBtn2 = wpPage?.acf?.home_cta_content?.btn_contacto_text || "Contactar Asesor";
+  const waNumber = wpPage?.acf?.home_cta_content?.whatsapp_number || "593984215308";
+
   return (
     <div className="min-h-screen flex flex-col font-sans">
-      <Navbar />
-
       <main className="flex-grow">
-        <Hero />
+        <Hero 
+          title={heroTitle}
+          description={heroSubtitle}
+          image={heroImage}
+        />
 
         {/* Stats Section - Floating */}
         <div className="border-b bg-background relative z-20 -mt-0 shadow-sm">
           <div className="container-custom">
             <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-border border-x border-border">
-              {STATS.map((stat, i) => (
+              {statsDisplay.map((stat, i) => (
                 <div
                   key={i}
                   className="py-8 md:py-12 px-4 text-center group hover:bg-muted/30 transition-colors cursor-default"
@@ -81,11 +238,10 @@ export function Home() {
             className="text-center max-w-3xl mx-auto mb-16"
           >
             <h2 className="font-heading text-3xl md:text-4xl font-bold text-white mb-4">
-              ¿Por qué elegir Colegio Dual?
+              {uspTitle}
             </h2>
             <p className="text-lg text-red-100">
-              Nuestra metodología rompe con el esquema tradicional. No solo
-              enseñamos teoría, formamos competencias para la vida real.
+              {uspSubtitle}
             </p>
           </motion.div>
 
@@ -96,7 +252,7 @@ export function Home() {
             variants={staggerContainer}
             className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
           >
-            {USP_POINTS.map((usp, i) => (
+            {dynamicUSPs.map((usp, i) => (
               <motion.div key={i} variants={fadeIn}>
                 <Card className="h-full border-none shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                   <CardContent className="pt-6">
@@ -123,24 +279,34 @@ export function Home() {
           <div className="container-custom">
             <div className="text-center mb-16">
               <h2 className="font-heading text-3xl md:text-5xl font-bold mb-4">
-                ¿Cómo y dónde se aprende?
+                {learnTitle}
               </h2>
               <p className="text-slate-600 max-w-2xl mx-auto">
-                Nuestro programa formativo se extiende más allá del aula
-                tradicional en diversas sedes aliadas.
+                {learnSubtitle}
               </p>
             </div>
 
             <div className="grid lg:grid-cols-2 gap-12 items-center mb-20">
-              <div className="relative aspect-video rounded-3xl overflow-hidden shadow-2xl group">
-                <img
-                  src="https://static.wixstatic.com/media/e2a619_536198d18d014e7ea62e6eb275dc398e~mv2.png"
-                  className="w-full h-full object-cover"
-                  alt="Video thumbnail"
-                />
-                <div className="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/20 transition-all">
-                  <PlayCircle className="w-20 h-20 text-white opacity-80 group-hover:opacity-100 transition-opacity cursor-pointer" />
-                </div>
+              <div className="relative aspect-video rounded-3xl overflow-hidden shadow-2xl group bg-slate-200">
+                {wpPage?.acf?.home_como_aprende?.hero_video_mp4 ? (
+                  <video
+                    src={wpPage.acf.home_como_aprende.hero_video_mp4}
+                    poster={wpPage.acf.home_como_aprende.hero_video_poster || "https://static.wixstatic.com/media/e2a619_536198d18d014e7ea62e6eb275dc398e~mv2.png"}
+                    controls
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <>
+                    <img
+                      src={wpPage?.acf?.home_como_aprende?.hero_video_poster || "https://static.wixstatic.com/media/e2a619_536198d18d014e7ea62e6eb275dc398e~mv2.png"}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      alt="Thumbnail de video"
+                    />
+                    <div className="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/20 transition-all">
+                      <PlayCircle className="w-20 h-20 text-white opacity-80 group-hover:opacity-100 transition-opacity cursor-pointer" />
+                    </div>
+                  </>
+                )}
               </div>
 
               <div className="space-y-8">
@@ -149,12 +315,11 @@ export function Home() {
                     <BookOpen className="w-8 h-8 text-primary" />
                   </div>
                   <div>
-                    <h3 className="text-2xl font-bold mb-2">EGB Superior</h3>
+                    <h3 className="text-2xl font-bold mb-2">{wpPage?.acf?.home_learning_content?.b1_t || "EGB Superior"}</h3>
                     <p className="text-slate-600 mb-4 text-sm leading-relaxed">
-                      Aprendizaje basado en proyectos reales e
-                      interdisciplinarios.
+                      {wpPage?.acf?.home_learning_content?.b1_d || "Aprendizaje basado en proyectos reales e interdisciplinarios."}
                     </p>
-                    <Link href="/oferta-academica#egb">
+                    <Link href={wpPage?.acf?.home_learning_content?.b1_l || "/oferta-academica#egb"}>
                       <Button
                         variant="link"
                         className="p-0 text-primary font-bold h-auto"
@@ -170,11 +335,11 @@ export function Home() {
                     <Briefcase className="w-8 h-8 text-primary" />
                   </div>
                   <div>
-                    <h3 className="text-2xl font-bold mb-2">Bachillerato</h3>
+                    <h3 className="text-2xl font-bold mb-2">{wpPage?.acf?.home_learning_content?.b2_t || "Bachillerato"}</h3>
                     <p className="text-slate-600 mb-4 text-sm leading-relaxed">
-                      Formación Dual con 3 días de práctica empresarial semanal.
+                      {wpPage?.acf?.home_learning_content?.b2_d || "Formación Dual con 3 días de práctica empresarial semanal."}
                     </p>
-                    <Link href="/oferta-academica#bachillerato">
+                    <Link href={wpPage?.acf?.home_learning_content?.b2_l || "/oferta-academica#bachillerato"}>
                       <Button
                         variant="link"
                         className="p-0 text-primary font-bold h-auto"
@@ -191,13 +356,12 @@ export function Home() {
                   </div>
                   <div>
                     <h3 className="text-2xl font-bold mb-2">
-                      Código de Convivencia
+                      {wpPage?.acf?.home_learning_content?.b3_t || "Código de Convivencia"}
                     </h3>
                     <p className="text-slate-600 mb-4 text-sm leading-relaxed">
-                      Normas que garantizan un ambiente de respeto y
-                      crecimiento.
+                      {wpPage?.acf?.home_learning_content?.b3_d || "Normas que garantizan un ambiente de respeto y crecimiento."}
                     </p>
-                    <Link href="/oferta-academica">
+                    <Link href={wpPage?.acf?.home_learning_content?.b3_l || "/oferta-academica"}>
                       <Button
                         variant="link"
                         className="p-0 text-primary font-bold h-auto"
@@ -211,13 +375,9 @@ export function Home() {
             </div>
 
             <div className="flex flex-wrap justify-center items-center gap-12 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-700">
-              <span className="text-xl font-bold text-slate-400">ESPOL</span>
-              <span className="text-xl font-bold text-slate-400">
-                Comité Ceibos
-              </span>
-              <span className="text-xl font-bold text-slate-400">
-                Teatro Centro de Arte
-              </span>
+              {allies.map((ally, idx) => (
+                <span key={idx} className="text-xl font-bold text-slate-400">{ally}</span>
+              ))}
             </div>
           </div>
         </Section>
@@ -233,10 +393,10 @@ export function Home() {
           >
             <div className="max-w-2xl">
               <span className="text-primary font-bold uppercase tracking-wider text-sm mb-2 block">
-                Nuestra Oferta
+                {wpPage?.acf?.home_academic_header?.tag || "Nuestra Oferta"}
               </span>
               <h2 className="font-heading text-3xl md:text-4xl font-bold text-slate-900">
-                Formación integral en cada etapa
+                {wpPage?.acf?.home_academic_header?.titulo || "Formación integral en cada etapa"}
               </h2>
             </div>
             <Link href="/oferta-academica" className="hidden md:flex">
@@ -295,21 +455,17 @@ export function Home() {
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div className="order-2 lg:order-1">
                 <span className="text-primary font-bold uppercase tracking-wider text-sm mb-2 block">
-                  Cerca de Alemania!
+                  {wdaTag}
                 </span>
                 <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6">
-                  Asociación Mundial de Escuelas Alemanas
+                  {wdaTitle}
                 </h2>
                 <p className="text-slate-600 leading-relaxed mb-6">
-                  Formamos parte de la Asociación Mundial de Escuelas Alemanas
-                  en el Extranjero (WDA), que representa a las autoridades
-                  escolares libres y sin fines de lucro de las escuelas alemanas
-                  en el extranjero y combina sus voces individuales en una voz
-                  fuerte.
+                  {wdaDesc}
                 </p>
                 <Button asChild className="font-semibold">
                   <a
-                    href="https://www.auslandsschulnetz.de/"
+                    href={wdaLink}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -319,8 +475,8 @@ export function Home() {
               </div>
               <div className="order-1 lg:order-2 flex justify-center">
                 <img
-                  src="https://static.wixstatic.com/media/720b25_50f74d3b5e6848e38008bc329493b3f2~mv2.png/v1/fill/w_486,h_384,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/wda-logo-print-transparent.png"
-                  alt="WDA Logo - Asociación Mundial de Escuelas Alemanas"
+                  src={wdaLogo}
+                  alt="WDA Logo"
                   className="max-w-[300px] w-full h-auto"
                 />
               </div>
@@ -332,39 +488,42 @@ export function Home() {
         <Section className="bg-white">
           <div className="text-center mb-12">
             <span className="text-primary font-bold uppercase tracking-wider text-sm mb-2 block">
-              Vivir Colegio Dual
+              {wpPage?.acf?.home_gallery_content?.tag || "Vivir Colegio Dual"}
             </span>
             <h2 className="font-heading text-3xl md:text-5xl font-bold mb-4">
-              Galería de Momentos
+              {wpPage?.acf?.home_gallery_content?.titulo || "Galería de Momentos"}
             </h2>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {GALLERY_IMAGES.map((img, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="group relative aspect-square overflow-hidden rounded-2xl cursor-pointer"
-              >
-                <img
-                  src={img}
-                  alt={`Gallery item ${i}`}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                  <LayoutGrid className="text-white w-8 h-8 scale-0 group-hover:scale-100 transition-transform duration-300" />
-                </div>
-              </motion.div>
+            {GALLERY_IMAGES.slice(0, 4).map((img, i) => (
+              <Link key={i} href="/galeria">
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                  className="group relative aspect-square overflow-hidden rounded-2xl cursor-pointer"
+                >
+                  <img
+                    src={img}
+                    alt={`Gallery item ${i}`}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <LayoutGrid className="text-white w-8 h-8 scale-0 group-hover:scale-100 transition-transform duration-300" />
+                  </div>
+                </motion.div>
+              </Link>
             ))}
           </div>
 
           <div className="mt-12 text-center">
-            <Button variant="outline" size="lg" className="rounded-full px-8">
-              Explorar Galería Completa
-            </Button>
+            <Link href="/galeria">
+              <Button variant="outline" size="lg" className="rounded-full px-8">
+                Explorar Galería Completa
+              </Button>
+            </Link>
           </div>
         </Section>
 
@@ -383,36 +542,72 @@ export function Home() {
             </Link>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
-            {NEWS_HIGHLIGHTS.map((news) => (
-              <Card
-                key={news.id}
-                className="overflow-hidden hover:shadow-lg transition-shadow border-none group cursor-pointer h-full flex flex-col"
-              >
-                <div className="aspect-video relative bg-slate-200 overflow-hidden">
-                  <img
-                    src={news.image}
-                    alt={news.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-primary uppercase shadow-sm">
-                    {news.category}
+            {posts.length > 0 ? (
+              posts.map((post) => (
+                <Card
+                  key={post.id}
+                  className="overflow-hidden hover:shadow-lg transition-shadow border-none group cursor-pointer h-full flex flex-col"
+                >
+                  <div className="aspect-video relative bg-slate-200 overflow-hidden">
+                    <img
+                      src={post._embedded?.['wp:featuredmedia']?.[0]?.source_url || NEWS_HIGHLIGHTS[0].image}
+                      alt={post.title.rendered}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    {post._embedded?.['wp:term']?.[0]?.[0] && (
+                      <div className="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-primary uppercase shadow-sm">
+                        {post._embedded['wp:term'][0][0].name}
+                      </div>
+                    )}
                   </div>
-                </div>
-                <CardContent className="pt-6 flex-grow flex flex-col">
-                  <div className="text-sm text-muted-foreground mb-3">
-                    {news.date}
+                  <CardContent className="pt-6 flex-grow flex flex-col">
+                    <div className="text-sm text-muted-foreground mb-3">
+                      {new Date(post.date).toLocaleDateString()}
+                    </div>
+                    <h3 
+                      className="font-heading font-bold text-lg leading-tight mb-2 hover:text-primary transition-colors cursor-pointer flex-grow"
+                      dangerouslySetInnerHTML={{ __html: post.title.rendered }}
+                    />
+                    <div className="pt-4 mt-auto">
+                      <span className="text-primary text-sm font-medium inline-flex items-center gap-1 group-hover:gap-2 transition-all">
+                        Leer más <ArrowRight className="h-3 w-3" />
+                      </span>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))
+            ) : (
+              NEWS_HIGHLIGHTS.map((news) => (
+                <Card
+                  key={news.id}
+                  className="overflow-hidden hover:shadow-lg transition-shadow border-none group cursor-pointer h-full flex flex-col"
+                >
+                  <div className="aspect-video relative bg-slate-200 overflow-hidden">
+                    <img
+                      src={news.image}
+                      alt={news.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-primary uppercase shadow-sm">
+                      {news.category}
+                    </div>
                   </div>
-                  <h3 className="font-heading font-bold text-lg leading-tight mb-2 hover:text-primary transition-colors cursor-pointer flex-grow">
-                    {news.title}
-                  </h3>
-                  <div className="pt-4 mt-auto">
-                    <span className="text-primary text-sm font-medium inline-flex items-center gap-1 group-hover:gap-2 transition-all">
-                      Leer más <ArrowRight className="h-3 w-3" />
-                    </span>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+                  <CardContent className="pt-6 flex-grow flex flex-col">
+                    <div className="text-sm text-muted-foreground mb-3">
+                      {news.date}
+                    </div>
+                    <h3 className="font-heading font-bold text-lg leading-tight mb-2 hover:text-primary transition-colors cursor-pointer flex-grow">
+                      {news.title}
+                    </h3>
+                    <div className="pt-4 mt-auto">
+                      <span className="text-primary text-sm font-medium inline-flex items-center gap-1 group-hover:gap-2 transition-all">
+                        Leer más <ArrowRight className="h-3 w-3" />
+                      </span>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))
+            )}
           </div>
         </Section>
 
@@ -430,11 +625,10 @@ export function Home() {
             className="max-w-3xl mx-auto space-y-6 relative z-10"
           >
             <h2 className="font-heading text-3xl md:text-5xl font-bold">
-              ¿Listo para dar el siguiente paso?
+              {ctaTitle}
             </h2>
             <p className="text-red-100 text-lg md:text-xl">
-              Agenda una visita guiada o inicia el proceso de admisión en línea
-              hoy mismo.
+              {ctaDesc}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
               <Link href="/admisiones">
@@ -443,7 +637,7 @@ export function Home() {
                   variant="secondary"
                   className="h-14 px-8 text-lg shadow-xl hover:scale-105 transition-transform"
                 >
-                  Iniciar Admisión
+                  {ctaBtn1}
                 </Button>
               </Link>
               <Button
@@ -452,8 +646,8 @@ export function Home() {
                 variant="outline"
                 className="h-14 px-8 text-lg bg-transparent border-white text-white hover:bg-white hover:text-primary"
               >
-                <a href="https://wa.me/593984215308" target="_blank" rel="noopener noreferrer">
-                  Contactar Asesor
+                <a href={`https://wa.me/${waNumber}`} target="_blank" rel="noopener noreferrer">
+                  {ctaBtn2}
                 </a>
               </Button>
             </div>

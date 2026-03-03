@@ -1,4 +1,3 @@
-import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Section } from "@/components/ui/section";
 import { Button } from "@/components/ui/button";
@@ -55,8 +54,6 @@ export function Contacto() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Navbar />
-
       <div className="bg-slate-900 text-white py-16 relative overflow-hidden">
         <img
           src={contactBg}
@@ -90,7 +87,7 @@ export function Contacto() {
                           Ubicación
                         </h3>
                         <p className="text-slate-600">
-                          Campus ESPOL Km 30.5 Vía Perimetral, Quito - Ecuador
+                          Campus ESPOL Km 30.5 Vía Perimetral, Guayaquil - Ecuador
                         </p>
                       </div>
                     </CardContent>

@@ -71,7 +71,7 @@ export function Admisiones() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Navbar />
+      
 
       {/* Hero Header */}
       <div className="bg-slate-900 text-white py-20 relative overflow-hidden">

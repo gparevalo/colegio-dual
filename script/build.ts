@@ -1,9 +1,9 @@
 import { build as esbuild } from "esbuild";
 import { build as viteBuild } from "vite";
-import { rm, readFile } from "fs/promises";
+import * as fs from "node:fs";
+import path from "path";
 
 // server deps to bundle to reduce openat(2) syscalls
-// which helps cold start times
 const allowlist = [
   "@google/generative-ai",
   "axios",
@@ -33,13 +33,23 @@ const allowlist = [
 ];
 
 async function buildAll() {
-  await rm("dist", { recursive: true, force: true });
+  await fs.promises.rm("dist", { recursive: true, force: true });
 
   console.log("building client...");
   await viteBuild();
 
+  console.log("copying client to wp-theme-colegio (dist/public)...");
+
+  const wpThemePath = path.resolve("wp-theme-colegio/dist/public");
+
+  await fs.promises.mkdir(wpThemePath, { recursive: true });
+
+  await fs.promises.cp("dist/public", wpThemePath, {
+    recursive: true,
+  });
+
   console.log("building server...");
-  const pkg = JSON.parse(await readFile("package.json", "utf-8"));
+  const pkg = JSON.parse(await fs.promises.readFile("package.json", "utf-8"));
   const allDeps = [
     ...Object.keys(pkg.dependencies || {}),
     ...Object.keys(pkg.devDependencies || {}),
@@ -59,6 +69,8 @@ async function buildAll() {
     external: externals,
     logLevel: "info",
   });
+
+  console.log("✅ Build completo y copiado a wp-theme-colegio/dist/public");
 }
 
 buildAll().catch((err) => {

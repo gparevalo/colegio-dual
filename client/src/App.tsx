@@ -1,4 +1,4 @@
-import { Switch, Route } from "wouter";
+import { Switch, Route, Router as WouterRouter, useLocation } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
@@ -11,21 +11,38 @@ import { Propuesta } from "@/pages/Propuesta";
 import { Noticias } from "@/pages/Noticias";
 import { SobreNosotros } from "@/pages/SobreNosotros";
 import { Contacto } from "@/pages/Contacto";
+import { Gallery } from "@/pages/Gallery";
+import { Navbar } from "@/components/layout/Navbar";
 
 function Router() {
+  // Use the base path from WordPress if available
+  const base = window.wpData?.sitePath || "";
+  const [location] = useLocation();
+
+  console.log(`[Router] Initializing with base: "${base}", current location: "${location}"`);
+  
   return (
-    <Switch>
-      <Route path="/" component={Home} />
-      <Route path="/admisiones" component={Admisiones} />
-      <Route path="/oferta-academica" component={OfertaAcademica} />
-      <Route path="/propuesta" component={Propuesta} />
-      <Route path="/noticias" component={Noticias} />
-      <Route path="/sobre-nosotros" component={SobreNosotros} />
-      <Route path="/contacto" component={Contacto} />
-      
-      {/* Fallback to 404 */}
-      <Route component={NotFound} />
-    </Switch>
+    <WouterRouter base={base}>
+      <div className="flex flex-col min-h-screen">
+        <Navbar />
+        <main className="flex-grow">
+          <Switch>
+            <Route path="/" component={Home} />
+            <Route path="/home" component={Home} />
+            <Route path="/admisiones" component={Admisiones} />
+            <Route path="/oferta-academica" component={OfertaAcademica} />
+            <Route path="/propuesta" component={Propuesta} />
+            <Route path="/noticias" component={Noticias} />
+            <Route path="/sobre-nosotros" component={SobreNosotros} />
+            <Route path="/contacto" component={Contacto} />
+            <Route path="/galeria" component={Gallery} />
+            
+            {/* Fallback to 404 */}
+            <Route component={NotFound} />
+          </Switch>
+        </main>
+      </div>
+    </WouterRouter>
   );
 }
 

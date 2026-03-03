@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Check, BookOpen, GraduationCap, Briefcase, Globe, School } from "lucide-react";
 import { Link } from "wouter";
+import { useWordPress } from "@/hooks/use-wordpress";
 
 const PRIMARIA_IMG = "https://static.wixstatic.com/media/e2a619_97c87a2dd0aa409d934b77b54a53dee3~mv2.jpg/v1/fill/w_1904,h_606,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/e2a619_97c87a2dd0aa409d934b77b54a53dee3~mv2.jpg";
 const EGB_IMG = "https://static.wixstatic.com/media/720b25_c97aad89c0204683935218d6f5194161~mv2.png/v1/fill/w_1000,h_1000,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG_9258edit.png";
@@ -102,11 +103,104 @@ const LEVELS = [
   }
 ];
 
+function LevelContent({ level }: { level: typeof LEVELS[0] }) {
+  const { data: wpPage, isLoading } = useWordPress(level.id);
+
+  // Fallback to static data if WP content is not available
+  const title = wpPage?.title.rendered || level.title;
+  const description = wpPage?.content.rendered || level.description;
+  const subtitle = wpPage?.excerpt.rendered || level.subtitle;
+  const image = wpPage?.featured_media_url || level.image;
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center py-20">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="mt-0 animate-in fade-in slide-in-from-bottom-4 duration-500">
+      {/* Hero Banner */}
+      <div className="relative rounded-2xl overflow-hidden mb-12 h-64 md:h-80">
+        <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/30 z-10" />
+        <img 
+          src={image} 
+          alt={title}
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 z-20 flex items-center">
+          <div className="container-custom text-white">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 backdrop-blur-sm text-white font-medium text-sm mb-4">
+              <level.icon className="h-4 w-4" />
+              {level.age}
+            </div>
+            <h2 className="font-heading text-3xl md:text-5xl font-bold mb-2" dangerouslySetInnerHTML={{ __html: title }} />
+            <p className="text-lg md:text-xl text-white/90" dangerouslySetInnerHTML={{ __html: subtitle }} />
+          </div>
+        </div>
+      </div>
+
+      {/* Content Grid */}
+      <div className="grid md:grid-cols-2 gap-12 items-start">
+        <div>
+          <h3 className="font-heading text-2xl font-bold mb-4 text-slate-900">¿Quiénes somos?</h3>
+          <div 
+            className="text-lg text-slate-600 mb-8 leading-relaxed dynamic-content"
+            dangerouslySetInnerHTML={{ __html: description }}
+          />
+          
+          <h3 className="font-heading text-xl font-bold mb-4 text-slate-900">Metodología</h3>
+          <p className="text-slate-600 mb-8 leading-relaxed">
+            {level.methodology}
+          </p>
+
+          {level.locations && (
+            <div className="space-y-4 mb-8">
+              <h3 className="font-heading text-xl font-bold text-slate-900">Nuestras Sedes</h3>
+              <div className="grid sm:grid-cols-2 gap-4">
+                {level.locations.map((loc, i) => (
+                  <div key={i} className="bg-slate-800 text-white p-5 rounded-xl">
+                    <img src={loc.logo} alt={loc.name} className="h-12 mb-4 object-contain" />
+                    <p className="font-bold text-2xl mb-1">{loc.days}</p>
+                    <p className="font-medium">{loc.name}</p>
+                    <p className="text-sm text-slate-300">{loc.address}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+        
+        <div>
+          <h3 className="font-bold text-xl mb-6 text-slate-900">Lo que nos diferencia</h3>
+          <div className="space-y-4">
+            {level.features.map((feature, i) => (
+              <div key={i} className="flex items-start gap-4 p-4 rounded-xl bg-slate-50 hover:bg-slate-100 transition-colors">
+                <div className="h-8 w-8 rounded-full bg-green-100 flex items-center justify-center shrink-0">
+                  <Check className="h-5 w-5 text-green-600" />
+                </div>
+                <span className="text-slate-700 font-medium text-lg">{feature}</span>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-10 flex flex-col sm:flex-row gap-4">
+            <Link href="/admisiones">
+              <Button size="lg" className="w-full sm:w-auto">Solicitar Cupo</Button>
+            </Link>
+            <Button variant="outline" size="lg" className="w-full sm:w-auto">Descargar Malla Curricular</Button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export function OfertaAcademica() {
   return (
     <div className="min-h-screen flex flex-col">
-      <Navbar />
-      
       {/* Header */}
       <div className="bg-primary text-white py-16">
         <div className="container-custom">
@@ -135,78 +229,8 @@ export function OfertaAcademica() {
             </div>
 
             {LEVELS.map((level) => (
-              <TabsContent key={level.id} value={level.id} className="mt-0 animate-in fade-in slide-in-from-bottom-4 duration-500">
-                {/* Hero Banner */}
-                <div className="relative rounded-2xl overflow-hidden mb-12 h-64 md:h-80">
-                  <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/30 z-10" />
-                  <img 
-                    src={level.image} 
-                    alt={level.title}
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 z-20 flex items-center">
-                    <div className="container-custom text-white">
-                      <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 backdrop-blur-sm text-white font-medium text-sm mb-4">
-                        <level.icon className="h-4 w-4" />
-                        {level.age}
-                      </div>
-                      <h2 className="font-heading text-3xl md:text-5xl font-bold mb-2">{level.title}</h2>
-                      <p className="text-lg md:text-xl text-white/90">{level.subtitle}</p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Content Grid */}
-                <div className="grid md:grid-cols-2 gap-12 items-start">
-                  <div>
-                    <h3 className="font-heading text-2xl font-bold mb-4 text-slate-900">¿Quiénes somos?</h3>
-                    <p className="text-lg text-slate-600 mb-8 leading-relaxed">
-                      {level.description}
-                    </p>
-                    
-                    <h3 className="font-heading text-xl font-bold mb-4 text-slate-900">Metodología</h3>
-                    <p className="text-slate-600 mb-8 leading-relaxed">
-                      {level.methodology}
-                    </p>
-
-                    {level.locations && (
-                      <div className="space-y-4 mb-8">
-                        <h3 className="font-heading text-xl font-bold text-slate-900">Nuestras Sedes</h3>
-                        <div className="grid sm:grid-cols-2 gap-4">
-                          {level.locations.map((loc, i) => (
-                            <div key={i} className="bg-slate-800 text-white p-5 rounded-xl">
-                              <img src={loc.logo} alt={loc.name} className="h-12 mb-4 object-contain" />
-                              <p className="font-bold text-2xl mb-1">{loc.days}</p>
-                              <p className="font-medium">{loc.name}</p>
-                              <p className="text-sm text-slate-300">{loc.address}</p>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                  
-                  <div>
-                    <h3 className="font-bold text-xl mb-6 text-slate-900">Lo que nos diferencia</h3>
-                    <div className="space-y-4">
-                      {level.features.map((feature, i) => (
-                        <div key={i} className="flex items-start gap-4 p-4 rounded-xl bg-slate-50 hover:bg-slate-100 transition-colors">
-                          <div className="h-8 w-8 rounded-full bg-green-100 flex items-center justify-center shrink-0">
-                            <Check className="h-5 w-5 text-green-600" />
-                          </div>
-                          <span className="text-slate-700 font-medium text-lg">{feature}</span>
-                        </div>
-                      ))}
-                    </div>
-
-                    <div className="mt-10 flex flex-col sm:flex-row gap-4">
-                      <Link href="/admisiones">
-                        <Button size="lg" className="w-full sm:w-auto">Solicitar Cupo</Button>
-                      </Link>
-                      <Button variant="outline" size="lg" className="w-full sm:w-auto">Descargar Malla Curricular</Button>
-                    </div>
-                  </div>
-                </div>
+              <TabsContent key={level.id} value={level.id}>
+                <LevelContent level={level} />
               </TabsContent>
             ))}
           </Tabs>
