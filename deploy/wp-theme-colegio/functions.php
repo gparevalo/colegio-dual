@@ -29,6 +29,22 @@ function colegio_dual_get_current_slug() {
 }
 
 /**
+ * Localization data for React
+ */
+function colegio_dual_localize_data() {
+    $wpData = [
+        'apiUrl'   => esc_url_raw(rest_url()),
+        'nonce'    => wp_create_nonce('wp_rest'),
+        'pageSlug' => colegio_dual_get_current_slug(),
+        'sitePath' => parse_url(home_url(), PHP_URL_PATH) ?: '',
+        'isApp'    => true,
+        'v'        => '1.0.5'
+    ];
+    echo "<script id='wp-data-sync'>window.wpData = " . json_encode($wpData) . "; console.log('wpData Initialized v1.0.5');</script>\n";
+}
+add_action('wp_head', 'colegio_dual_localize_data', 1);
+
+/**
  * Enqueue React assets from dist/public
  */
 function colegio_dual_enqueue_assets() {
@@ -43,19 +59,6 @@ function colegio_dual_enqueue_assets() {
 
     $manifest = json_decode(file_get_contents($manifest_path), true);
     if (!$manifest) return;
-
-    // Define wpData globally in <head> for maximum reliability
-    add_action('wp_head', function() {
-        $wpData = [
-            'apiUrl'   => esc_url_raw(rest_url()),
-            'nonce'    => wp_create_nonce('wp_rest'),
-            'pageSlug' => colegio_dual_get_current_slug(),
-            'sitePath' => parse_url(home_url(), PHP_URL_PATH) ?: '',
-            'isApp'    => true,
-            'v'        => '1.0.4'
-        ];
-        echo "<script>window.wpData = " . json_encode($wpData) . "; console.log('wpData Initialized');</script>\n";
-    });
 
     $main_js = '';
     $main_css = [];
