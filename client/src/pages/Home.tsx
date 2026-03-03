@@ -198,6 +198,38 @@ export function Home() {
   const ctaBtn2 = wpPage?.acf?.home_cta_content?.btn_contacto_text || "Contactar Asesor";
   const waNumber = wpPage?.acf?.home_cta_content?.whatsapp_number || "593984215308";
 
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex flex-col bg-white overflow-hidden">
+        <Navbar />
+        <main className="flex-grow">
+          {/* Skeleton Hero */}
+          <div className="relative h-[85vh] bg-slate-50 animate-pulse flex items-center justify-center">
+            <div className="container-custom text-center">
+              <div className="h-4 bg-primary/20 rounded-full w-24 mx-auto mb-6"></div>
+              <div className="h-16 bg-slate-200 rounded-2xl w-3/4 mx-auto mb-6"></div>
+              <div className="h-8 bg-slate-200 rounded-xl w-1/2 mx-auto"></div>
+            </div>
+          </div>
+          {/* Skeleton Stats */}
+          <div className="relative z-20 -mt-12 bg-white shadow-lg border-y border-border">
+            <div className="container-custom">
+              <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-border">
+                {[1, 2, 3, 4].map((i) => (
+                  <div key={i} className="py-10 px-4 flex flex-col items-center justify-center animate-pulse">
+                    <div className="h-10 bg-primary/10 rounded-lg w-16 mb-2"></div>
+                    <div className="h-4 bg-slate-100 rounded-md w-24"></div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen flex flex-col font-sans">
       <main className="flex-grow">

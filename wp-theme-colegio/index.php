@@ -19,16 +19,43 @@
 <?php wp_body_open(); ?>
 
 <div id="root">
-    <div style="display: flex; align-items: center; justify-content: center; height: 100vh; font-family: sans-serif; color: #666;">
-        <div style="text-align: center;">
-            <p>Cargando aplicación...</p>
-            <p style="font-size: 12px; margin-top: 20px; color: #999;">Si este mensaje no desaparece, hay un error en el archivo JavaScript.</p>
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; background: #fff; font-family: sans-serif;">
+        <div style="position: relative; margin-bottom: 40px;">
+            <div style="width: 80px; height: 80px; border: 2px solid #f3f3f3; border-top: 2px solid #DC1E35; border-radius: 50%; animation: dual-spin 1.5s linear infinite;"></div>
+            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                 <img src="<?php echo get_template_directory_uri(); ?>/dist/public/favicon.png" style="width: 32px; height: 32px; opacity: 0.8;">
+            </div>
         </div>
+        <p style="color: #666; font-size: 14px; font-weight: 500; letter-spacing: 0.1em; margin: 0;">COLEGIO DUAL</p>
+        <p id="debug-status" style="color: #999; font-size: 11px; margin-top: 15px;">Iniciando sistema...</p>
     </div>
 </div>
 
-<div class="debug-indicator" style="position: fixed; bottom: 0; left: 0; background: #000; color: #fff; font-size: 9px; padding: 2px 5px; z-index: 9999;">
-    Colegio Dual Theme v1.0.1
+<script>
+    // Global error tracking to help debug in WordPress
+    window.onerror = function(msg, url, line, col, error) {
+        var status = document.getElementById('debug-status');
+        if (status) {
+            status.style.color = '#DC1E35';
+            status.innerHTML = 'Error de carga: ' + msg.split('\n')[0];
+        }
+        return false;
+    };
+    
+    // Check for wpData
+    window.addEventListener('load', function() {
+        if (typeof wpData === 'undefined') {
+            console.warn('wpData is not defined. Check functions.php output.');
+        }
+    });
+</script>
+
+<style>
+    @keyframes dual-spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+</style>
+
+<div class="debug-indicator" style="position: fixed; bottom: 0; left: 0; background: #000; color: #fff; font-size: 9px; padding: 2px 5px; z-index: 9999; opacity: 0.5;">
+    Colegio Dual Theme v1.0.2
 </div>
 
 <?php wp_footer(); ?>
