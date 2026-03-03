@@ -38,9 +38,9 @@ function colegio_dual_localize_data() {
         'pageSlug' => colegio_dual_get_current_slug(),
         'sitePath' => parse_url(home_url(), PHP_URL_PATH) ?: '',
         'isApp'    => true,
-        'v'        => '1.0.6'
+        'v'        => '1.0.7'
     ];
-    echo "<script id='wp-data-sync'>window.wpData = " . json_encode($wpData) . "; console.log('wpData Initialized v1.0.6');</script>\n";
+    echo "<script id='wp-data-sync'>window.wpData = " . json_encode($wpData) . "; console.log('wpData Initialized v1.0.7');</script>\n";
 }
 add_action('wp_head', 'colegio_dual_localize_data', 1);
 
@@ -52,13 +52,21 @@ function colegio_dual_enqueue_assets() {
 
     if (!file_exists($manifest_path)) {
         add_action('wp_head', function() use ($manifest_path) {
-            echo "<!-- Colegio Dual Error: Manifest not found at $manifest_path -->\n";
+            echo "<!-- Colegio Dual Error: Manifest NOT FOUND at $manifest_path -->\n";
+            echo "<script>window.wpManifestError = 'Manifest not found at $manifest_path';</script>\n";
         });
         return;
     }
 
     $manifest = json_decode(file_get_contents($manifest_path), true);
-    if (!$manifest) return;
+    if (!$manifest) {
+        add_action('wp_head', function() use ($manifest_path) {
+            echo "<!-- Colegio Dual Error: Manifest INVALID at $manifest_path -->\n";
+        });
+        return;
+    }
+
+    // ... (logic to find main_js)
 
     $main_js = '';
     $main_css = [];

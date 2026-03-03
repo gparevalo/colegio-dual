@@ -43,18 +43,37 @@
         return false;
     };
     
-    // Check for wpData with timeout
+    // Check for wpData and Bundle status with timeout
     setTimeout(function() {
         var status = document.getElementById('debug-status');
+        var diag = document.createElement('div');
+        diag.style.marginTop = '40px';
+        diag.style.padding = '15px';
+        diag.style.background = '#f9f9f9';
+        diag.style.border = '1px solid #eee';
+        diag.style.borderRadius = '8px';
+        diag.style.fontSize = '12px';
+        diag.style.color = '#444';
+        diag.style.textAlign = 'left';
+        diag.style.maxWidth = '400px';
+        diag.style.fontFamily = 'monospace';
+
+        var report = '<strong>Diagnóstico de Sistema (v1.0.7):</strong><br>';
+        report += '• wpData: ' + (typeof wpData !== 'undefined' ? '<span style="color:green">OK</span>' : '<span style="color:red">ERROR</span>') + '<br>';
+        report += '• Manifest: ' + (window.wpManifestError ? '<span style="color:red">No encontrado</span>' : '<span style="color:green">OK</span>') + '<br>';
+        report += '• React Root: ' + (window.wpAppStarted ? '<span style="color:green">Iniciado</span>' : '<span style="color:orange">No responde</span>') + '<br>';
+        
+        if (window.wpManifestError) { report += '<br><span style="color:red">Detalle: ' + window.wpManifestError + '</span>'; }
+
+        diag.innerHTML = report;
+        document.querySelector('#root > div').appendChild(diag);
+
         if (typeof wpData === 'undefined') {
-            console.warn('wpData is not defined.');
-            if (status) status.innerHTML = 'Error: wpData no encontrado. Revisa functions.php';
-        } else {
-            if (status && status.innerHTML === 'Iniciando sistema...') {
-                status.innerHTML = 'Conectando con WordPress...';
-            }
+            if (status) status.innerHTML = 'Error de inicialización.';
+        } else if (!window.wpAppStarted) {
+            if (status) status.innerHTML = 'El núcleo React no responde.';
         }
-    }, 2000);
+    }, 5000);
 </script>
 
 <style>
@@ -62,7 +81,7 @@
 </style>
 
 <div class="debug-indicator" style="position: fixed; bottom: 0; left: 0; background: #000; color: #fff; font-size: 9px; padding: 2px 5px; z-index: 9999; opacity: 0.5;">
-    Colegio Dual Theme v1.0.6
+    Colegio Dual Theme v1.0.7
 </div>
 
 <?php wp_footer(); ?>

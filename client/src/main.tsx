@@ -1,9 +1,17 @@
-console.log("[Main] Script entry reached at " + new Date().toISOString());
+declare global {
+  interface Window {
+    wpAppStarted?: boolean;
+    wpManifestError?: string;
+  }
+}
+
+console.log("[Main] Script entry reached at " + new Date().toISOString() + " (v1.0.7)");
 import { createRoot } from "react-dom/client";
 import App from "./App";
 import "./index.css";
 
 function mount() {
+  window.wpAppStarted = true;
   console.log("[Main] Starting mount process...");
   const container = document.getElementById("root");
   
