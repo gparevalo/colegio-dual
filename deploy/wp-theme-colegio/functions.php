@@ -64,13 +64,15 @@ function colegio_dual_enqueue_assets() {
             true
         );
 
-        wp_localize_script('colegio-dual-app', 'wpData', [
+        // Inject wpData as an inline script BEFORE the main module to ensure it's available
+        $wpData = [
             'apiUrl'   => esc_url_raw(rest_url()),
             'nonce'    => wp_create_nonce('wp_rest'),
             'pageSlug' => colegio_dual_get_current_slug(),
             'sitePath' => parse_url(home_url(), PHP_URL_PATH) ?: '',
             'isApp'    => true
-        ]);
+        ];
+        wp_add_inline_script('colegio-dual-app', 'window.wpData = ' . json_encode($wpData) . ';', 'before');
     }
 
     foreach ($main_css as $i => $css) {
