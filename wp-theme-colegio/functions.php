@@ -188,3 +188,61 @@ add_filter('acf/settings/load_json', function($paths) {
     $paths[] = get_template_directory() . '/acf-json';
     return $paths;
 });
+
+/**
+ * PHP SEO Bridge: Inject ACF SEO tags into server-side HTML
+ * This satisfies SEO plugins and non-JS social crawlers
+ */
+function colegio_dual_seo_bridge() {
+    if (!function_exists('get_field')) return;
+
+    $id = is_front_page() ? get_option('page_on_front') : get_queried_object_id();
+    if (!$id) return;
+
+    $seo_title = get_field('seo_title', $id);
+    $seo_desc = get_field('seo_description', $id);
+    $og_image = get_field('og_image', $id);
+    $canonical = get_field('canonical_url', $id);
+    $aeo_data = get_field('structured_data', $id);
+
+    $site_name = get_bloginfo('name');
+    $full_title = $seo_title ? $seo_title . " | " . $site_name : wp_get_document_title();
+    $default_desc = "Colegio binacional con metodología de Formación Dual y Aprendizaje Basado en Proyectos.";
+    $default_og = "https://tecnologia.pdagencia.eu/cms/wp-content/uploads/2026/03/logo.png";
+
+    // Standard SEO
+    if ($seo_desc) {
+        echo '<meta name="description" content="' . esc_attr($seo_desc) . '" />' . "\n";
+    }
+
+    // Open Graph
+    echo '<meta property="og:title" content="' . esc_attr($full_title) . '" />' . "\n";
+    echo '<meta property="og:description" content="' . esc_attr($seo_desc ?: $default_desc) . '" />' . "\n";
+    echo '<meta property="og:image" content="' . esc_url($og_image ?: $default_og) . '" />' . "\n";
+    echo '<meta property="og:type" content="website" />' . "\n";
+
+    // X (Twitter)
+    echo '<meta name="twitter:card" content="summary_large_image" />' . "\n";
+    echo '<meta name="twitter:title" content="' . esc_attr($full_title) . '" />' . "\n";
+    echo '<meta name="twitter:description" content="' . esc_attr($seo_desc ?: $default_desc) . '" />' . "\n";
+    echo '<meta name="twitter:image" content="' . esc_url($og_image ?: $default_og) . '" />' . "\n";
+
+    // TEO: Canonical
+    if ($canonical) {
+        echo '<link rel="canonical" href="' . esc_url($canonical) . '" />' . "\n";
+    }
+
+    // AEO: Structured Data
+    if ($aeo_data) {
+        echo '<script type="application/ld+json">' . $aeo_data . '</script>' . "\n";
+    }
+}
+add_action('wp_head', 'colegio_dual_seo_bridge', 2);
+
+// Fix title tag to use our ACF title
+add_filter('pre_get_document_title', function($title) {
+    if (!function_exists('get_field')) return $title;
+    $id = is_front_page() ? get_option('page_on_front') : get_queried_object_id();
+    $seo_title = get_field('seo_title', $id);
+    return $seo_title ?: $title;
+}, 10);
