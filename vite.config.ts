@@ -43,7 +43,7 @@ export default defineConfig({
   build: {
     outDir: path.resolve(__dirname, "dist/public"),
     emptyOutDir: true,
-    manifest: true,
+    manifest: "manifest.json",
   },
   server: {
     host: "0.0.0.0",

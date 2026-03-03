@@ -58,7 +58,7 @@
         diag.style.maxWidth = '400px';
         diag.style.fontFamily = 'monospace';
 
-        var report = '<strong>Diagnóstico de Sistema (v1.0.7):</strong><br>';
+        var report = '<strong>Diagnóstico de Sistema (v1.0.8):</strong><br>';
         report += '• wpData: ' + (typeof wpData !== 'undefined' ? '<span style="color:green">OK</span>' : '<span style="color:red">ERROR</span>') + '<br>';
         report += '• Manifest: ' + (window.wpManifestError ? '<span style="color:red">No encontrado</span>' : '<span style="color:green">OK</span>') + '<br>';
         report += '• React Root: ' + (window.wpAppStarted ? '<span style="color:green">Iniciado</span>' : '<span style="color:orange">No responde</span>') + '<br>';
@@ -81,7 +81,7 @@
 </style>
 
 <div class="debug-indicator" style="position: fixed; bottom: 0; left: 0; background: #000; color: #fff; font-size: 9px; padding: 2px 5px; z-index: 9999; opacity: 0.5;">
-    Colegio Dual Theme v1.0.7
+    Colegio Dual Theme v1.0.8
 </div>
 
 <?php wp_footer(); ?>

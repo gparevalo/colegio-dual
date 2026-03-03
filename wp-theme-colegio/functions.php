@@ -38,9 +38,9 @@ function colegio_dual_localize_data() {
         'pageSlug' => colegio_dual_get_current_slug(),
         'sitePath' => parse_url(home_url(), PHP_URL_PATH) ?: '',
         'isApp'    => true,
-        'v'        => '1.0.7'
+        'v'        => '1.0.8'
     ];
-    echo "<script id='wp-data-sync'>window.wpData = " . json_encode($wpData) . "; console.log('wpData Initialized v1.0.7');</script>\n";
+    echo "<script id='wp-data-sync'>window.wpData = " . json_encode($wpData) . "; console.log('wpData Initialized v1.0.8');</script>\n";
 }
 add_action('wp_head', 'colegio_dual_localize_data', 1);
 
@@ -48,7 +48,7 @@ add_action('wp_head', 'colegio_dual_localize_data', 1);
  * Enqueue React assets from dist/public
  */
 function colegio_dual_enqueue_assets() {
-    $manifest_path = get_template_directory() . '/dist/public/.vite/manifest.json';
+    $manifest_path = get_template_directory() . '/dist/public/manifest.json';
 
     if (!file_exists($manifest_path)) {
         add_action('wp_head', function() use ($manifest_path) {
