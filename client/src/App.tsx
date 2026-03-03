@@ -19,7 +19,6 @@ function Router() {
   const base = window.wpData?.sitePath || "";
   const [location] = useLocation();
 
-  console.log(`[Router] Initializing with base: "${base}", current location: "${location}"`);
   
   return (
     <WouterRouter base={base}>
@@ -47,7 +46,6 @@ function Router() {
 }
 
 function App() {
-  console.log("[App] Component execution started.");
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>

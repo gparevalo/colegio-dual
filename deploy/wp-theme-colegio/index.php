@@ -12,6 +12,7 @@
             visibility: visible !important;
             opacity: 1 !important;
         }
+        @keyframes dual-spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
     <?php wp_head(); ?>
 </head>
@@ -28,60 +29,7 @@
             </div>
         </div>
         <p style="color: #666; font-size: 14px; font-weight: 500; letter-spacing: 0.1em; margin: 0;">COLEGIO DUAL</p>
-        <p id="debug-status" style="color: #999; font-size: 11px; margin-top: 15px;">Iniciando sistema...</p>
     </div>
-</div>
-
-<script>
-    // Global error tracking to help debug in WordPress
-    window.onerror = function(msg, url, line, col, error) {
-        var status = document.getElementById('debug-status');
-        if (status) {
-            status.style.color = '#DC1E35';
-            status.innerHTML = 'Error de carga: ' + msg.split('\n')[0];
-        }
-        return false;
-    };
-    
-    // Check for wpData and Bundle status with timeout
-    setTimeout(function() {
-        var status = document.getElementById('debug-status');
-        var diag = document.createElement('div');
-        diag.style.marginTop = '40px';
-        diag.style.padding = '15px';
-        diag.style.background = '#f9f9f9';
-        diag.style.border = '1px solid #eee';
-        diag.style.borderRadius = '8px';
-        diag.style.fontSize = '12px';
-        diag.style.color = '#444';
-        diag.style.textAlign = 'left';
-        diag.style.maxWidth = '400px';
-        diag.style.fontFamily = 'monospace';
-
-        var report = '<strong>Diagnóstico de Sistema (v1.0.8):</strong><br>';
-        report += '• wpData: ' + (typeof wpData !== 'undefined' ? '<span style="color:green">OK</span>' : '<span style="color:red">ERROR</span>') + '<br>';
-        report += '• Manifest: ' + (window.wpManifestError ? '<span style="color:red">No encontrado</span>' : '<span style="color:green">OK</span>') + '<br>';
-        report += '• React Root: ' + (window.wpAppStarted ? '<span style="color:green">Iniciado</span>' : '<span style="color:orange">No responde</span>') + '<br>';
-        
-        if (window.wpManifestError) { report += '<br><span style="color:red">Detalle: ' + window.wpManifestError + '</span>'; }
-
-        diag.innerHTML = report;
-        document.querySelector('#root > div').appendChild(diag);
-
-        if (typeof wpData === 'undefined') {
-            if (status) status.innerHTML = 'Error de inicialización.';
-        } else if (!window.wpAppStarted) {
-            if (status) status.innerHTML = 'El núcleo React no responde.';
-        }
-    }, 5000);
-</script>
-
-<style>
-    @keyframes dual-spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-</style>
-
-<div class="debug-indicator" style="position: fixed; bottom: 0; left: 0; background: #000; color: #fff; font-size: 9px; padding: 2px 5px; z-index: 9999; opacity: 0.5;">
-    Colegio Dual Theme v1.0.8
 </div>
 
 <?php wp_footer(); ?>
