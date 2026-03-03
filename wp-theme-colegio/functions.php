@@ -34,10 +34,28 @@ function colegio_dual_get_current_slug() {
 function colegio_dual_enqueue_assets() {
     $manifest_path = get_template_directory() . '/dist/public/.vite/manifest.json';
 
-    if (!file_exists($manifest_path)) return;
+    if (!file_exists($manifest_path)) {
+        add_action('wp_head', function() use ($manifest_path) {
+            echo "<!-- Colegio Dual Error: Manifest not found at $manifest_path -->\n";
+        });
+        return;
+    }
 
     $manifest = json_decode(file_get_contents($manifest_path), true);
     if (!$manifest) return;
+
+    // Define wpData globally in <head> for maximum reliability
+    add_action('wp_head', function() {
+        $wpData = [
+            'apiUrl'   => esc_url_raw(rest_url()),
+            'nonce'    => wp_create_nonce('wp_rest'),
+            'pageSlug' => colegio_dual_get_current_slug(),
+            'sitePath' => parse_url(home_url(), PHP_URL_PATH) ?: '',
+            'isApp'    => true,
+            'v'        => '1.0.4'
+        ];
+        echo "<script>window.wpData = " . json_encode($wpData) . "; console.log('wpData Initialized');</script>\n";
+    });
 
     $main_js = '';
     $main_css = [];
@@ -63,16 +81,6 @@ function colegio_dual_enqueue_assets() {
             null,
             true
         );
-
-        // Inject wpData as an inline script BEFORE the main module to ensure it's available
-        $wpData = [
-            'apiUrl'   => esc_url_raw(rest_url()),
-            'nonce'    => wp_create_nonce('wp_rest'),
-            'pageSlug' => colegio_dual_get_current_slug(),
-            'sitePath' => parse_url(home_url(), PHP_URL_PATH) ?: '',
-            'isApp'    => true
-        ];
-        wp_add_inline_script('colegio-dual-app', 'window.wpData = ' . json_encode($wpData) . ';', 'before');
     }
 
     foreach ($main_css as $i => $css) {

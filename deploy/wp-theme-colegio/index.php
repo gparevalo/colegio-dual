@@ -43,12 +43,18 @@
         return false;
     };
     
-    // Check for wpData
-    window.addEventListener('load', function() {
+    // Check for wpData with timeout
+    setTimeout(function() {
+        var status = document.getElementById('debug-status');
         if (typeof wpData === 'undefined') {
-            console.warn('wpData is not defined. Check functions.php output.');
+            console.warn('wpData is not defined.');
+            if (status) status.innerHTML = 'Error: wpData no encontrado. Revisa functions.php';
+        } else {
+            if (status && status.innerHTML === 'Iniciando sistema...') {
+                status.innerHTML = 'Conectando con WordPress...';
+            }
         }
-    });
+    }, 2000);
 </script>
 
 <style>
@@ -56,7 +62,7 @@
 </style>
 
 <div class="debug-indicator" style="position: fixed; bottom: 0; left: 0; background: #000; color: #fff; font-size: 9px; padding: 2px 5px; z-index: 9999; opacity: 0.5;">
-    Colegio Dual Theme v1.0.2
+    Colegio Dual Theme v1.0.4
 </div>
 
 <?php wp_footer(); ?>
