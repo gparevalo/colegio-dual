@@ -38,9 +38,9 @@ function colegio_dual_localize_data() {
         'pageSlug' => colegio_dual_get_current_slug(),
         'sitePath' => parse_url(home_url(), PHP_URL_PATH) ?: '',
         'isApp'    => true,
-        'v'        => '1.0.5'
+        'v'        => '1.0.6'
     ];
-    echo "<script id='wp-data-sync'>window.wpData = " . json_encode($wpData) . "; console.log('wpData Initialized v1.0.5');</script>\n";
+    echo "<script id='wp-data-sync'>window.wpData = " . json_encode($wpData) . "; console.log('wpData Initialized v1.0.6');</script>\n";
 }
 add_action('wp_head', 'colegio_dual_localize_data', 1);
 

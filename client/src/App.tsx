@@ -47,6 +47,7 @@ function Router() {
 }
 
 function App() {
+  console.log("[App] Component execution started.");
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>

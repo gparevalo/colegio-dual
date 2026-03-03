@@ -62,7 +62,7 @@
 </style>
 
 <div class="debug-indicator" style="position: fixed; bottom: 0; left: 0; background: #000; color: #fff; font-size: 9px; padding: 2px 5px; z-index: 9999; opacity: 0.5;">
-    Colegio Dual Theme v1.0.5
+    Colegio Dual Theme v1.0.6
 </div>
 
 <?php wp_footer(); ?>
