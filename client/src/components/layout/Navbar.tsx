@@ -12,7 +12,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 
 const LOGO_URL =
-  "https://static.wixstatic.com/media/e2a619_9b518fdc457d4856af0d8f7b13c6760a~mv2.png/v1/crop/x_0,y_825,w_3000,h_1350/fill/w_440,h_198,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Logo%20Duale%20Schule%20sin%20hz_Mesa%20de%20trabajo%201_Mesa%20de%20trabajo%201_edited.png";
+  "https://tecnologia.pdagencia.eu/cms/wp-content/uploads/2026/03/logo.png";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);

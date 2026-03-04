@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useRoute } from "wouter";
 import { Footer } from "@/components/layout/Footer";
-import { Navbar } from "@/components/layout/Navbar";
 import { Section } from "@/components/ui/section";
 import { SEO } from "@/components/layout/SEO";
 import { Calendar, User, ArrowLeft } from "lucide-react";
@@ -66,7 +65,6 @@ export function PostDetail() {
   if (isLoading) {
     return (
       <div className="min-h-screen flex flex-col bg-white">
-        <Navbar />
         <main className="flex-grow pt-32 container-custom">
           <div className="animate-pulse">
             <div className="h-4 bg-slate-200 w-24 mb-6 rounded" />
@@ -87,7 +85,6 @@ export function PostDetail() {
   if (!post) {
     return (
       <div className="min-h-screen flex flex-col pt-20">
-        <Navbar />
         <main className="flex-grow flex items-center justify-center">
           <div className="text-center">
             <h2 className="text-2xl font-bold mb-4">Post no encontrado</h2>
@@ -113,7 +110,6 @@ export function PostDetail() {
         canonicalUrl={post.acf?.canonical_url}
         structuredData={post.acf?.structured_data}
       />
-      <Navbar />
       
       <main className="flex-grow pt-28 pb-20">
         <article className="container-custom max-w-4xl">

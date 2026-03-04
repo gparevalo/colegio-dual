@@ -1,4 +1,3 @@
-import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Hero } from "@/components/home/Hero";
 import { Testimonials } from "@/components/home/Testimonials";
@@ -214,7 +213,6 @@ export function Home() {
           canonicalUrl={wpPage?.acf?.canonical_url}
           structuredData={wpPage?.acf?.structured_data}
         />
-        <Navbar />
         <main className="flex-grow">
           {/* Skeleton Hero */}
           <div className="relative h-[85vh] bg-slate-50 animate-pulse flex items-center justify-center">
