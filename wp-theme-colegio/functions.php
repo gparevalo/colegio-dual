@@ -148,10 +148,42 @@ add_action('add_meta_boxes', function() {
 });
 
 /**
- * Remove Gutenberg editor
+ * Remove Gutenberg editor and set default templates
  */
 add_action('init', function() {
+    // Remove editor from pages (we use ACF only)
     remove_post_type_support('page', 'editor');
+
+    // Default template for News (Posts)
+    $post_type_object = get_post_type_object('post');
+    $post_type_object->template = [
+        ['core/heading', ['placeholder' => 'Título de la Noticia...', 'level' => 2]],
+        ['core/paragraph', ['placeholder' => 'Escribe una introducción cautivadora aquí...']],
+        ['core/image', ['align' => 'center']],
+        ['core/heading', ['content' => 'Detalles Adicionales', 'level' => 3]],
+        ['core/table', [
+            'hasFixedLayout' => true,
+            'head' => [
+                ['cells' => [
+                    ['content' => 'Característica'],
+                    ['content' => 'Descripción']
+                ]]
+            ],
+            'body' => [
+                ['cells' => [
+                    ['content' => 'Fecha de Inicio'],
+                    ['content' => 'Ej: 15 de Marzo']
+                ]],
+                ['cells' => [
+                    ['content' => 'Lugar'],
+                    ['content' => 'Ej: Auditorio Principal']
+                ]]
+            ]
+        ]],
+        ['core/paragraph', ['placeholder' => 'Continúa escribiendo el resto de la noticia...']]
+    ];
+    // Optional: lock it if you want to force this structure
+    // $post_type_object->template_lock = 'all'; 
 });
 
 /**
