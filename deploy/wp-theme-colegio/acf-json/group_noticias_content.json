@@ -28,6 +28,30 @@
             "type": "url",
             "instructions": "Pega el enlace de un video para mostrarlo en una sección destacada.",
             "required": 0
+        },
+        {
+            "key": "field_tracking_facebook",
+            "label": "Link de Seguimiento Facebook",
+            "name": "tracking_facebook",
+            "type": "url",
+            "instructions": "Pega el link de la publicación de esta noticia en Facebook.",
+            "required": 0
+        },
+        {
+            "key": "field_tracking_x",
+            "label": "Link de Seguimiento X",
+            "name": "tracking_x",
+            "type": "url",
+            "instructions": "Pega el link de la publicación de esta noticia en X (Twitter).",
+            "required": 0
+        },
+        {
+            "key": "field_tracking_linkedin",
+            "label": "Link de Seguimiento LinkedIn",
+            "name": "tracking_linkedin",
+            "type": "url",
+            "instructions": "Pega el link de la publicación de esta noticia en LinkedIn.",
+            "required": 0
         }
     ],
     "location": [

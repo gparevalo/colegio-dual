@@ -284,3 +284,55 @@ add_filter('pre_get_document_title', function($title) {
     $seo_title = get_field('seo_title', $id);
     return $seo_title ?: $title;
 }, 10);
+
+/**
+ * ENGAGEMENT METRICS: Views & Likes
+ */
+
+// Track views when a post is requested via REST API
+add_action('rest_api_init', function() {
+    register_rest_field('post', 'views_count', [
+        'get_callback' => function($post_array) {
+            return (int) get_post_meta($post_array['id'], 'colegio_dual_views', true) ?: 0;
+        }
+    ]);
+
+    register_rest_field('post', 'likes_count', [
+        'get_callback' => function($post_array) {
+            return (int) get_post_meta($post_array['id'], 'colegio_dual_likes', true) ?: 0;
+        }
+    ]);
+
+    register_rest_field('post', 'comments_count', [
+        'get_callback' => function($post_array) {
+            return (int) get_comments_number($post_array['id']);
+        }
+    ]);
+});
+
+// Increment views on single post fetch
+// Using rest_prepare_post for single post contexts
+add_filter('rest_prepare_post', function($response, $post, $request) {
+    if ($request->get_method() === 'GET' && strpos($request->get_route(), '/wp/v2/posts/') !== false) {
+        $views = (int) get_post_meta($post->ID, 'colegio_dual_views', true);
+        update_post_meta($post->ID, 'colegio_dual_views', $views + 1);
+    }
+    return $response;
+}, 10, 3);
+
+// Custom endpoint for Likes
+add_action('rest_api_init', function() {
+    register_rest_route('colegio-dual/v1', '/post/(?P<id>\d+)/like', [
+        'methods' => 'POST',
+        'callback' => function($data) {
+            $post_id = $data['id'];
+            $likes = (int) get_post_meta($post_id, 'colegio_dual_likes', true);
+            update_post_meta($post_id, 'colegio_dual_likes', $likes + 1);
+            return [
+                'success' => true,
+                'new_count' => $likes + 1
+            ];
+        },
+        'permission_callback' => '__return_true'
+    ]);
+});
