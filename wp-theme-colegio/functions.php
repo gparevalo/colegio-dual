@@ -237,6 +237,23 @@ function colegio_dual_seo_bridge() {
     $id = is_front_page() ? get_option('page_on_front') : get_queried_object_id();
     if (!$id) return;
 
+    // 1. Intentar obtener el campo manual de ACF
+    $seo_title = get_field('seo_title', $id);
+    $seo_desc = get_field('seo_description', $id);
+
+    // 2. AUTO-GENERACIÓN: Si están vacíos, usamos los datos del post
+    if (!$seo_title) {
+        $seo_title = get_the_title($id); 
+    }
+    if (!$seo_desc) {
+        $post_content = get_post_field('post_content', $id);
+        $seo_desc = wp_trim_words(strip_shortcodes($post_content), 25, '...'); 
+    }
+    if (!function_exists('get_field')) return;
+
+    $id = is_front_page() ? get_option('page_on_front') : get_queried_object_id();
+    if (!$id) return;
+
     $seo_title = get_field('seo_title', $id);
     $seo_desc = get_field('seo_description', $id);
     $og_image = get_field('og_image', $id);
@@ -336,3 +353,182 @@ add_action('rest_api_init', function() {
         'permission_callback' => '__return_true'
     ]);
 });
+
+
+
+
+/**
+ * CUSTOM PRO DASHBOARD CORREGIDO (Ruta pp-calendar): Colegio Dual
+ */
+
+add_action('wp_dashboard_setup', function() {
+    remove_meta_box('dashboard_primary', 'dashboard', 'side');
+    remove_meta_box('dashboard_quick_press', 'dashboard', 'side');
+    remove_meta_box('dashboard_right_now', 'dashboard', 'normal');
+    remove_meta_box('dashboard_activity', 'dashboard', 'normal');
+
+    add_meta_box(
+        'colegio_dual_dashboard',
+        '🚀 Panel de Control - Colegio Dual',
+        'colegio_dual_dashboard_render',
+        'dashboard',
+        'normal',
+        'high'
+    );
+});
+
+function colegio_dual_dashboard_render() {
+    global $wpdb;
+    // Sumamos las métricas de tus funciones personalizadas
+    $total_views = $wpdb->get_var("SELECT SUM(meta_value) FROM $wpdb->postmeta WHERE meta_key = 'colegio_dual_views'");
+    $total_likes = $wpdb->get_var("SELECT SUM(meta_value) FROM $wpdb->postmeta WHERE meta_key = 'colegio_dual_likes'");
+    
+    // RUTA EXACTA DETECTADA
+    $url_calendario = admin_url('admin.php?page=pp-calendar');
+    $url_nuevo_post = admin_url('post-new.php?post_type=post');
+    ?>
+    <style>
+        .cd-dash-container { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; padding: 10px; font-family: sans-serif; }
+        .cd-card { background: #fff; border: 1px solid #ccd0d4; border-radius: 8px; padding: 20px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .cd-card h3 { margin: 0 0 10px 0; color: #2271b1; font-size: 1.1em; }
+        .cd-card .metric { font-size: 2.8em; font-weight: bold; color: #1d2327; display: block; line-height: 1.2; }
+        .cd-btn { display: inline-flex; align-items: center; justify-content: center; background: #2271b1; color: white !important; padding: 15px 25px; text-decoration: none; border-radius: 6px; font-weight: bold; flex: 1; transition: 0.2s; border: none; }
+        .cd-btn:hover { background: #135e96; transform: scale(1.02); }
+        .cd-full { grid-column: 1 / -1; background: #f8f9fa; border-top: 4px solid #2271b1; }
+        .cd-grid-btns { display: flex; gap: 15px; margin-top: 15px; }
+    </style>
+
+    <div class="cd-dash-container">
+        <div class="cd-card">
+            <h3>Vistas en Blog</h3>
+            <span class="metric"><?php echo number_format($total_views ?: 0); ?></span>
+            <small>Impacto Total</small>
+        </div>
+        <div class="cd-card">
+            <h3>Likes Comunidad</h3>
+            <span class="metric"><?php echo number_format($total_likes ?: 0); ?></span>
+            <small>Reacciones Totales</small>
+        </div>
+
+        <div class="cd-card cd-full">
+            <h3>Gestión de Contenidos</h3>
+            <p>Acceso directo a la planificación editorial:</p>
+            <div class="cd-grid-btns">
+                <a href="<?php echo $url_calendario; ?>" class="cd-btn">📅 Abrir Calendario de Publicaciones</a>
+                <a href="<?php echo $url_nuevo_post; ?>" class="cd-btn" style="background:#008a20;">✍️ Crear Nueva Noticia</a>
+            </div>
+        </div>
+    </div>
+    
+    <style>
+        /* Limpieza de avisos intrusivos para mantener el Dashboard Pro */
+        .notice:not(.cd-notice), .update-nag, .updated, .error, .is-dismissible { display: none !important; }
+    </style>
+    <?php
+}
+
+
+
+ /**
+ * REBRANDING TOTAL V3: Corrección de legibilidad y Dashboard visible
+ */
+function colegio_dual_custom_admin_style() {
+    $logo_url = "https://tecnologia.pdagencia.eu/cms/wp-content/uploads/2026/03/logo.png";
+    
+    echo '
+    <style type="text/css">
+        /* 1. FONDO Y ESTRUCTURA */
+        body, #wpwrap { background: #f0f2f5 !important; }
+        #wpcontent { padding-left: 20px !important; }
+
+        /* 2. HEADER PRO (Sin transparencias conflictivas) */
+        #wpadminbar {
+            background: #ffffff !important;
+            border-bottom: 1px solid #e2e8f0 !important;
+        }
+        #wpadminbar .ab-item, #wpadminbar a.ab-item, #wpadminbar .ab-label { 
+            color: #475569 !important; 
+        }
+        
+        /* Logo único */
+        #wpadminbar #wp-admin-bar-wp-logo > .ab-item .ab-icon:before {
+            content: "" !important; background: url(' . $logo_url . ') no-repeat center !important;
+            background-size: contain !important; width: 22px !important; height: 32px !important;
+            display: block !important; filter: none !important;
+        }
+
+        /* 3. CORRECCIÓN DE SUBMENÚS (HOVER NEGRO SOLUCIONADO) */
+        /* Fondo del dropdown */
+        #wpadminbar .menupop .ab-sub-wrapper, #wpadminbar .ab-sub-active .ab-sub-wrapper {
+            background: #ffffff !important;
+            border: 1px solid #e2e8f0 !important;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1) !important;
+        }
+        /* Texto normal en submenú */
+        #wpadminbar .ab-submenu .ab-item {
+            color: #64748b !important;
+        }
+        /* HOVER: Fondo azul claro, texto azul oscuro (Legible) */
+        #wpadminbar .ab-submenu .ab-item:hover, 
+        #wpadminbar .quicklinks .menupop ul li a:hover,
+        #wpadminbar .quicklinks .menupop.hover ul li a:hover {
+            color: #2563eb !important; 
+            background: #eff6ff !important;
+        }
+
+        /* 4. SIDEBAR (MENÚ LATERAL) */
+        #adminmenu, #adminmenuwrap, #adminmenuback { background: #ffffff !important; border-right: 1px solid #e2e8f0 !important; }
+        #adminmenu a { color: #475569 !important; font-weight: 500 !important; }
+        #adminmenu li.current a.menu-top, #adminmenu li.wp-has-current-submenu a.wp-has-current-submenu {
+            background: #f1f5f9 !important; color: #2563eb !important;
+        }
+        /* Submenús laterales al hacer hover */
+        #adminmenu .wp-submenu { background: #ffffff !important; border: 1px solid #e2e8f0 !important; }
+        #adminmenu .wp-submenu a { color: #64748b !important; }
+        #adminmenu .wp-submenu a:hover { color: #2563eb !important; }
+
+        /* 5. DASHBOARD WIDGETS (Forzar visibilidad) */
+        #dashboard-widgets-wrap { margin-top: 20px !important; }
+        .postbox {
+            background: #ffffff !important;
+            border: 1px solid #e2e8f0 !important;
+            border-radius: 12px !important;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05) !important;
+        }
+            /* Color base de los iconos (Celeste Tenue / Slate) */
+        #adminmenu .wp-menu-image:before {
+            color: #94a3b8 !important; /* Un gris azulado elegante */
+            opacity: 0.8;
+            transition: all 0.2s ease;
+        }
+
+        /* Color al hacer HOVER (Azul vivo) */
+        #adminmenu li.menu-top:hover .wp-menu-image:before,
+        #adminmenu li.opensub .wp-menu-image:before {
+            color: #2563eb !important;
+            opacity: 1;
+        }
+
+        /* Color cuando la opción está SELECCIONADA */
+        #adminmenu li.current .wp-menu-image:before,
+        #adminmenu li.wp-has-current-submenu .wp-menu-image:before {
+            color: #2563eb !important;
+            opacity: 1;
+        }
+
+        /* Ajuste para iconos SVG (como los de algunos plugins) */
+        #adminmenu .wp-menu-image img {
+            filter: opacity(0.5);
+            transition: all 0.2s ease;
+        }
+        #adminmenu li.menu-top:hover .wp-menu-image img,
+        #adminmenu li.current .wp-menu-image img {
+            filter: opacity(1) sepia(100%) saturate(2000%) hue-rotate(190deg);
+        }
+        
+        /* Ocultar avisos que rompen el diseño */
+        .notice, .update-nag, #footer-upgrade, #wp-admin-bar-comments { display: none !important; }
+    </style>
+    ';
+}
+add_action('admin_head', 'colegio_dual_custom_admin_style');

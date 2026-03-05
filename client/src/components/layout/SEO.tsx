@@ -18,7 +18,7 @@ export function SEO({
   const siteName = "Colegio Dual";
   const fullTitle = title ? `${title} | ${siteName}` : siteName;
   const defaultDescription = "Colegio binacional con metodología de Formación Dual y Aprendizaje Basado en Proyectos.";
-  const defaultOgImage = "https://tecnologia.pdagencia.eu/cms/wp-content/uploads/2026/03/logo.png";
+  const defaultOgImage = "https://serverdual.pdagencia.eu/wp-content/uploads/2026/03/logo.png";
 
   return (
     <Helmet>

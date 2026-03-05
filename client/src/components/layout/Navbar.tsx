@@ -12,7 +12,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 
 const LOGO_URL =
-  "https://tecnologia.pdagencia.eu/cms/wp-content/uploads/2026/03/logo.png";
+  "https://serverdual.pdagencia.eu/wp-content/uploads/2026/03/logo.png";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);

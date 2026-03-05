@@ -1,4 +1,4 @@
 deployment:
   tasks:
-    - export DEPLOYPATH=/home1/tecnologiapd/public_html/cms/wp-content/themes/wp-theme-colegio
+    - export DEPLOYPATH=/home1/serverdualpdagen/public_html/wp-content/themes/wp-theme-colegio
     - /bin/cp -Rf deploy/wp-theme-colegio/. $DEPLOYPATH

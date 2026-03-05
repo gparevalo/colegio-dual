@@ -3,7 +3,7 @@
 <head>
     <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="https://tecnologia.pdagencia.eu/cms/wp-content/uploads/2026/03/logo.png">
+    <link rel="icon" type="image/png" href="https://serverdual.pdagencia.eu/wp-content/uploads/2026/03/logo.png">
     <style>
         #root { 
             min-height: 100vh; 
@@ -25,7 +25,7 @@
         <div style="position: relative; margin-bottom: 40px;">
             <div style="width: 80px; height: 80px; border: 2px solid #f3f3f3; border-top: 2px solid #DC1E35; border-radius: 50%; animation: dual-spin 1.5s linear infinite;"></div>
             <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-                 <img src="https://tecnologia.pdagencia.eu/cms/wp-content/uploads/2026/03/logo.png" style="width: 48px; height: auto; opacity: 0.9;">
+                 <img src="https://serverdual.pdagencia.eu/wp-content/uploads/2026/03/logo.png" style="width: 48px; height: auto; opacity: 0.9;">
             </div>
         </div>
         <p style="color: #666; font-size: 14px; font-weight: 500; letter-spacing: 0.1em; margin: 0;">COLEGIO DUAL</p>
